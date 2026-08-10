@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cunqc3rpt10on"]
 
 [ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_dsnr4"]
-[ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="1_dxppu"]
 [ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://player.gd" id="2_gy3sr"]
 [ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://cam_system.gd" id="3_1lwx6"]
+[ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="4_dsnr4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_dsnr4")
@@ -30,15 +30,21 @@ point_count = 4
 curve = SubResource("Curve_dsnr4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yf5fn"]
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, -1, 0)
 spread = 0.0
 initial_velocity_min = 10.0
 initial_velocity_max = 10.0
-gravity = Vector3(0, -20, 0)
+gravity = Vector3(0, -3, 0)
 scale_curve = SubResource("CurveTexture_cnaw2")
 turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.020000001
 
 [sub_resource type="Gradient" id="Gradient_lf0gk"]
 offsets = PackedFloat32Array(0.53731346, 0.76865673)
@@ -54,18 +60,76 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 shading_mode = 0
+diffuse_mode = 3
 albedo_texture = SubResource("GradientTexture2D_uu1iw")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
+proximity_fade_distance = 2.0
+distance_fade_mode = 2
+distance_fade_min_distance = 2.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_kt6p6"]
 material = SubResource("StandardMaterial3D_57qmd")
 
+[sub_resource type="Curve" id="Curve_lf0gk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_kt6p6"]
+curve = SubResource("Curve_lf0gk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uu1iw"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -3, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_kt6p6")
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.020000001
+
+[sub_resource type="Curve" id="Curve_cnaw2"]
+_data = [Vector2(0.18817204, 0), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_uu1iw"]
+curve = SubResource("Curve_cnaw2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4tg7h"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -1.0000023
+radial_accel_max = -1.0000023
+tangential_accel_min = 0.09999776
+tangential_accel_max = 0.09999776
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_uu1iw")
+turbulence_enabled = true
+turbulence_influence_min = 0.0050000004
+turbulence_influence_max = 0.0050000004
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsnr4"]
-albedo_texture = ExtResource("1_dxppu")
+albedo_texture = ExtResource("4_dsnr4")
 uv1_triplanar = true
 
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
@@ -95,12 +159,31 @@ script = ExtResource("3_1lwx6")
 [node name="Camera3D" type="Camera3D" parent="Player/CamSystem" unique_id=1159758231]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Player" unique_id=1527098064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
-amount = 512
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.200005, 0)
+amount = 8192
 lifetime = 5.0
 fixed_fps = 60
-visibility_aabb = AABB(-4, -17.18, -4, 8, 8, 8)
+visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_yf5fn")
+draw_pass_1 = SubResource("QuadMesh_kt6p6")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Player" unique_id=1394289215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.200005, 0)
+visible = false
+amount = 16
+lifetime = 5.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_uu1iw")
+draw_pass_1 = SubResource("QuadMesh_kt6p6")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Player" unique_id=1829284739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.200005, 0)
+amount = 512
+lifetime = 20.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_4tg7h")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Player" unique_id=1066796039]
@@ -109,6 +192,7 @@ attenuation = 28.840042
 radius = 4.21514
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1885179726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 use_collision = true
 size = Vector3(1000, 1, 1000)
 material = SubResource("StandardMaterial3D_dsnr4")
