@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://cunqc3rpt10on"]
+
+[ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_dsnr4"]
+[ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="1_dxppu"]
+[ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://player.gd" id="2_gy3sr"]
+[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://cam_system.gd" id="3_1lwx6"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
+panorama = ExtResource("1_dsnr4")
+
+[sub_resource type="Sky" id="Sky_lf0gk"]
+sky_material = SubResource("PanoramaSkyMaterial_1lwx6")
+
+[sub_resource type="Environment" id="Environment_cnaw2"]
+background_mode = 2
+sky = SubResource("Sky_lf0gk")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+fog_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+
+[sub_resource type="Curve" id="Curve_dsnr4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_cnaw2"]
+curve = SubResource("Curve_dsnr4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yf5fn"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -20, 0)
+scale_curve = SubResource("CurveTexture_cnaw2")
+turbulence_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_lf0gk"]
+offsets = PackedFloat32Array(0.53731346, 0.76865673)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uu1iw"]
+gradient = SubResource("Gradient_lf0gk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_uu1iw")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_kt6p6"]
+material = SubResource("StandardMaterial3D_57qmd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsnr4"]
+albedo_texture = ExtResource("1_dxppu")
+uv1_triplanar = true
+
+[node name="TestWorld" type="Node3D" unique_id=1195026586]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1081421026]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1845372337]
+environment = SubResource("Environment_cnaw2")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1672549652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("2_gy3sr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=309131637]
+mesh = SubResource("CapsuleMesh_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=846595441]
+shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="CamSystem" type="Node3D" parent="Player" unique_id=669011130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+script = ExtResource("3_1lwx6")
+
+[node name="Camera3D" type="Camera3D" parent="Player/CamSystem" unique_id=1159758231]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player" unique_id=1527098064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+amount = 512
+lifetime = 5.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -17.18, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_yf5fn")
+draw_pass_1 = SubResource("QuadMesh_kt6p6")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Player" unique_id=1066796039]
+strength = -128.0
+attenuation = 28.840042
+radius = 4.21514
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1885179726]
+use_collision = true
+size = Vector3(1000, 1, 1000)
+material = SubResource("StandardMaterial3D_dsnr4")
