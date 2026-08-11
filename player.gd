@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4.5
 
 
 func _physics_process(delta: float) -> void:
+	Dp.push(&"fps", Engine.get_frames_per_second())
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

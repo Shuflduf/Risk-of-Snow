@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://player.gd" id="2_gy3sr"]
 [ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://cam_system.gd" id="3_1lwx6"]
 [ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="4_dsnr4"]
+[ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://snow_manager.gd" id="5_lf0gk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_dsnr4")
@@ -17,6 +18,8 @@ sky = SubResource("Sky_lf0gk")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 fog_enabled = true
+fog_light_color = Color(0.90327996, 0.9133536, 0.9290344, 1)
+fog_density = 0.02
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
 
@@ -69,7 +72,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 proximity_fade_distance = 2.0
 distance_fade_mode = 2
-distance_fade_min_distance = 2.0
+distance_fade_min_distance = 4.0
+distance_fade_max_distance = 20.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_kt6p6"]
 material = SubResource("StandardMaterial3D_57qmd")
@@ -101,7 +105,7 @@ turbulence_influence_min = 0.0
 turbulence_influence_max = 0.020000001
 
 [sub_resource type="Curve" id="Curve_cnaw2"]
-_data = [Vector2(0.18817204, 0), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.035714388), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_uu1iw"]
@@ -110,23 +114,23 @@ curve = SubResource("Curve_cnaw2")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4tg7h"]
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
-emission_ring_height = 1.0
-emission_ring_radius = 40.0
+emission_ring_height = 5.0
+emission_ring_radius = 100.0
 emission_ring_inner_radius = 0.0
 emission_ring_cone_angle = 90.0
 direction = Vector3(0, -1, 0)
 spread = 0.0
+initial_velocity_min = 0.049999997
+initial_velocity_max = 0.099999994
+radial_velocity_min = -1.3000224
+radial_velocity_max = -0.70002234
 gravity = Vector3(0, 0, 0)
-radial_accel_min = -1.0000023
-radial_accel_max = -1.0000023
-tangential_accel_min = 0.09999776
-tangential_accel_max = 0.09999776
 scale_min = 5.0
 scale_max = 10.0
 scale_curve = SubResource("CurveTexture_uu1iw")
 turbulence_enabled = true
-turbulence_influence_min = 0.0050000004
-turbulence_influence_max = 0.0050000004
+turbulence_influence_min = 0.010000001
+turbulence_influence_max = 0.040000003
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsnr4"]
 albedo_texture = ExtResource("4_dsnr4")
@@ -158,8 +162,17 @@ script = ExtResource("3_1lwx6")
 
 [node name="Camera3D" type="Camera3D" parent="Player/CamSystem" unique_id=1159758231]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Player" unique_id=1527098064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.200005, 0)
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Player" unique_id=1066796039]
+strength = -128.0
+attenuation = 28.840042
+radius = 4.21514
+
+[node name="SnowManager" type="Node3D" parent="Player" unique_id=2030235564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+script = ExtResource("5_lf0gk")
+
+[node name="Snowflakes" type="GPUParticles3D" parent="Player/SnowManager" unique_id=1527098064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
 amount = 8192
 lifetime = 5.0
 fixed_fps = 60
@@ -167,9 +180,8 @@ visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_yf5fn")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="Player" unique_id=1394289215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.200005, 0)
-visible = false
+[node name="BigSnowflakes" type="GPUParticles3D" parent="Player/SnowManager" unique_id=1394289215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
 amount = 16
 lifetime = 5.0
 fixed_fps = 60
@@ -177,19 +189,14 @@ visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_uu1iw")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="Player" unique_id=1829284739]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.200005, 0)
-amount = 512
-lifetime = 20.0
+[node name="Clouds" type="GPUParticles3D" parent="Player/SnowManager" unique_id=1829284739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
+amount = 4096
+lifetime = 10.0
 fixed_fps = 60
 visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_4tg7h")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
-
-[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Player" unique_id=1066796039]
-strength = -128.0
-attenuation = 28.840042
-radius = 4.21514
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1885179726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
