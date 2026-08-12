@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://c1btrm2bfra51"]
+
+[ext_resource type="Script" uid="uid://ctiioisatw7um" path="res://Player/Inside/inside_player.gd" id="1_aiegb"]
+[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="2_arrdh"]
+[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="3_ju58f"]
+[ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="4_ju58f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aiegb"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_oqbmf"]
+sky_material = SubResource("ProceduralSkyMaterial_aiegb")
+
+[sub_resource type="Environment" id="Environment_arrdh"]
+background_mode = 2
+sky = SubResource("Sky_oqbmf")
+glow_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqbmf"]
+
+[sub_resource type="Gradient" id="Gradient_sqxie"]
+offsets = PackedFloat32Array(0.17605634, 0.2535211)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+gradient = SubResource("Gradient_sqxie")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bd7ek"]
+texture = SubResource("GradientTexture2D_yf5fn")
+
+[node name="TestRoom" type="Node3D" unique_id=687979815]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=299749638]
+environment = SubResource("Environment_arrdh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=215033865]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1833037945]
+use_collision = true
+flip_faces = true
+size = Vector3(8, 4, 7)
+
+[node name="IndoorPlayer" type="CharacterBody3D" parent="." unique_id=1671782282]
+collision_layer = 4
+script = ExtResource("1_aiegb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IndoorPlayer" unique_id=937244376]
+mesh = SubResource("CapsuleMesh_aiegb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IndoorPlayer" unique_id=335471859]
+shape = SubResource("CapsuleShape3D_oqbmf")
+
+[node name="CamSystem" type="Node3D" parent="IndoorPlayer" unique_id=12789869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+script = ExtResource("2_arrdh")
+
+[node name="Pivot" type="Node3D" parent="IndoorPlayer/CamSystem" unique_id=16434646]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="IndoorPlayer/CamSystem/Pivot" unique_id=2144637950]
+remote_path = NodePath("../../../InteractionHandler/RayCast3D")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="IndoorPlayer/CamSystem/Pivot" unique_id=1218484532]
+spring_length = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="IndoorPlayer/CamSystem/Pivot/SpringArm3D" unique_id=1540835487]
+unique_name_in_owner = true
+
+[node name="InteractionHandler" type="Node3D" parent="IndoorPlayer" unique_id=1936376849 node_paths=PackedStringArray("ui")]
+script = ExtResource("3_ju58f")
+ui = NodePath("../UI")
+
+[node name="RayCast3D" type="RayCast3D" parent="IndoorPlayer/InteractionHandler" unique_id=1445346654]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+target_position = Vector3(0, 0, -3)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="UI" type="Control" parent="IndoorPlayer" unique_id=1842979241]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_ju58f")
+
+[node name="Panel" type="Panel" parent="IndoorPlayer/UI" unique_id=476363701]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bd7ek")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IndoorPlayer/UI" unique_id=171056012]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 86.0
+offset_top = -25.0
+offset_right = 152.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="IndoorPlayer/UI/VBoxContainer" unique_id=1025261421]
+layout_mode = 2
+
+[node name="PrimaryActionLabel" type="Label" parent="IndoorPlayer/UI/VBoxContainer/PanelContainer" unique_id=1971586895]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enter [E]"
+
+[node name="PanelContainer2" type="PanelContainer" parent="IndoorPlayer/UI/VBoxContainer" unique_id=331173162]
+layout_mode = 2
+
+[node name="SecondaryActionLabel" type="Label" parent="IndoorPlayer/UI/VBoxContainer/PanelContainer2" unique_id=407659675]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enter [E]"

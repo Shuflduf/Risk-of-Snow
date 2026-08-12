@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://cunqc3rpt10on"]
 
 [ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_dsnr4"]
-[ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://player.gd" id="2_gy3sr"]
-[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://cam_system.gd" id="3_1lwx6"]
+[ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://Player/Outside/outside_player.gd" id="2_gy3sr"]
+[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="3_1lwx6"]
 [ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="4_dsnr4"]
-[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://interaction_handler.gd" id="5_4tg7h"]
-[ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://snow_manager.gd" id="5_lf0gk"]
+[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="5_4tg7h"]
+[ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://Systems/snow_manager.gd" id="5_lf0gk"]
+[ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="5_ud3vi"]
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="6_cnaw2"]
 [ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="7_kt6p6"]
-[ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://door.gd" id="8_uu1iw"]
+[ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="8_uu1iw"]
+[ext_resource type="PackedScene" uid="uid://c1btrm2bfra51" path="res://Areas/test_room.tscn" id="11_5457m"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_dsnr4")
@@ -140,13 +142,13 @@ turbulence_influence_max = 0.040000003
 offsets = PackedFloat32Array(0.17605634, 0.2535211)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ud3vi"]
 gradient = SubResource("Gradient_kt6p6")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
-texture = SubResource("GradientTexture2D_yf5fn")
+texture = SubResource("GradientTexture2D_ud3vi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsnr4"]
 albedo_texture = ExtResource("4_dsnr4")
@@ -163,8 +165,8 @@ albedo_texture = ExtResource("7_kt6p6")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kt6p6"]
-data = PackedVector3Array(-1, -2, 0.5, -1, -2, -0.5, -1, 2, -0.5, 1, -2, -0.5, -1, -2, -0.5, -1, -2, 0.5, -1, 2, -0.5, -1, -2, -0.5, 1, -2, -0.5, -1, 2, -0.5, -1, 2, 0.5, -1, -2, 0.5, -1, -2, 0.5, -1, 2, 0.5, 1, 2, 0.5, 1, 2, 0.5, -1, 2, 0.5, -1, 2, -0.5, -1, -2, 0.5, 1, -2, 0.5, 1, -2, -0.5, 1, 2, 0.5, 1, -2, 0.5, -1, -2, 0.5, 1, -2, -0.5, 1, -2, 0.5, 1, 2, 0.5, 1, -2, -0.5, 1, 2, -0.5, -1, 2, -0.5, -1, 2, -0.5, 1, 2, -0.5, 1, 2, 0.5, 1, 2, 0.5, 1, 2, -0.5, 1, -2, -0.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ud3vi"]
+data = PackedVector3Array(-1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, -1.5, -0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5)
 
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
 
@@ -196,11 +198,11 @@ script = ExtResource("3_1lwx6")
 remote_path = NodePath("../../../InteractionHandler/RayCast3D")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player/CamSystem/Pivot" unique_id=1575417251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="Player/CamSystem/Pivot/SpringArm3D" unique_id=1159758231]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Player" unique_id=1066796039]
 strength = -128.0
@@ -247,6 +249,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("5_ud3vi")
 
 [node name="Panel" type="Panel" parent="Player/UI" unique_id=765477969]
 visible = false
@@ -265,31 +268,44 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
 
-[node name="PanelContainer" type="PanelContainer" parent="Player/UI" unique_id=1250602500]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/UI" unique_id=110406771]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 85.0
-offset_top = -20.0
-offset_right = 151.0
-offset_bottom = 20.0
+offset_left = 86.0
+offset_top = -25.0
+offset_right = 152.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Player/UI/PanelContainer" unique_id=1682107275]
+[node name="PanelContainer" type="PanelContainer" parent="Player/UI/VBoxContainer" unique_id=1250602500]
+layout_mode = 2
+
+[node name="PrimaryActionLabel" type="Label" parent="Player/UI/VBoxContainer/PanelContainer" unique_id=1682107275]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Enter [E]"
 
-[node name="InteractionHandler" type="Node3D" parent="Player" unique_id=788753464]
+[node name="PanelContainer2" type="PanelContainer" parent="Player/UI/VBoxContainer" unique_id=2016432870]
+layout_mode = 2
+
+[node name="SecondaryActionLabel" type="Label" parent="Player/UI/VBoxContainer/PanelContainer2" unique_id=285322882]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enter [E]"
+
+[node name="InteractionHandler" type="Node3D" parent="Player" unique_id=788753464 node_paths=PackedStringArray("ui")]
 script = ExtResource("5_4tg7h")
+ui = NodePath("../UI")
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/InteractionHandler" unique_id=1948714503]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
-target_position = Vector3(0, 0, -2)
+target_position = Vector3(0, 0, -3)
 collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
@@ -307,8 +323,8 @@ size = Vector3(9, 4, 8)
 material = SubResource("StandardMaterial3D_lf0gk")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=603176758]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1, -6.3)
-size = Vector3(2, 4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.5, -6.3)
+size = Vector3(3, 3, 1)
 material = SubResource("StandardMaterial3D_g4v7s")
 
 [node name="Door" type="Area3D" parent="." unique_id=1321519513]
@@ -317,7 +333,9 @@ collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("8_uu1iw")
+room_scene = ExtResource("11_5457m")
 primary_action = "Enter"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=57957202]
-shape = SubResource("ConcavePolygonShape3D_kt6p6")
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=2003052737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_ud3vi")

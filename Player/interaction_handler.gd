@@ -1,0 +1,23 @@
+extends Node3D
+
+@onready var raycast: RayCast3D = %RayCast3D
+@export var ui: UI
+
+func _physics_process(_delta: float) -> void:
+	var interactable: Interactable = raycast.get_collider()
+	if interactable != null and interactable is Interactable:
+		ui.set_primary_action_text(interactable.primary_action)
+		ui.set_secondary_action_text(interactable.secondary_action)
+	else:
+		ui.set_primary_action_text("")
+		ui.set_secondary_action_text("")
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"primary_interact"):
+		var interactable: Interactable = raycast.get_collider()
+		if interactable != null and interactable is Interactable:
+			interactable.primary_action_used.emit()
+	elif event.is_action_pressed(&"secondary_interact"):
+		var interactable: Interactable = raycast.get_collider()
+		if interactable != null and interactable is Interactable:
+			interactable.secondary_action_used.emit()
