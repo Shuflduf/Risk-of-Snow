@@ -1,7 +1,14 @@
 extends Node3D
-@export var sensitivity = 0.005
-@onready var cam: Camera3D = $Camera3D
+
+const MAX_X_ROTATION = PI/2.0 - 0.5
+
+@export var sensitivity = 0.003
+@onready var cam: Camera3D = %Camera3D
+
+@onready var pivot: Node3D = $Pivot
 @onready var player: CharacterBody3D = get_parent()
+
+
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_cancel"):
@@ -10,6 +17,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		player.rotate_y(-event.relative.x * sensitivity)
-		cam.rotate_x(-event.relative.y * sensitivity)
-		cam.rotation.x = clampf(cam.rotation.x, -PI/2.0, PI/2.0)
+		pivot.rotate_x(-event.relative.y * sensitivity)
+		pivot.rotation.x = clampf(pivot.rotation.x, -MAX_X_ROTATION, MAX_X_ROTATION)
 		
