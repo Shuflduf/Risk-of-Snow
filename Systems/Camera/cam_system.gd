@@ -8,7 +8,9 @@ const MAX_X_ROTATION = PI/2.0 - 0.5
 @onready var pivot: Node3D = $Pivot
 @onready var player: CharacterBody3D = get_parent()
 
-
+func set_cam_rotation(new_rot: Vector3):
+	player.rotation.y = new_rot.y
+	pivot.rotation.x = new_rot.x
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_cancel"):

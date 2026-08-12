@@ -24,7 +24,7 @@ func change_state(new_state: WeatherState):
 			await get_tree().create_timer(6.0).timeout
 			snowflakes.emitting = false
 			big_snowflakes.emitting = false
-			
+
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"debug"):

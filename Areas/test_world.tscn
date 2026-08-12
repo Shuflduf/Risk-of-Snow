@@ -1,26 +1,25 @@
 [gd_scene format=3 uid="uid://cunqc3rpt10on"]
 
-[ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_dsnr4"]
-[ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://Player/Outside/outside_player.gd" id="2_gy3sr"]
-[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="3_1lwx6"]
-[ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="4_dsnr4"]
-[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="5_4tg7h"]
-[ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://Systems/snow_manager.gd" id="5_lf0gk"]
-[ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="5_ud3vi"]
-[ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="6_cnaw2"]
-[ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="7_kt6p6"]
-[ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="8_uu1iw"]
-[ext_resource type="PackedScene" uid="uid://c1btrm2bfra51" path="res://Areas/test_room.tscn" id="11_5457m"]
+[ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_yvyhn"]
+[ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://Player/Outside/outside_player.gd" id="2_g2qqk"]
+[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="3_bhw3q"]
+[ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://Systems/snow_manager.gd" id="4_wh10h"]
+[ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="5_qu3yk"]
+[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="6_rcw8m"]
+[ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="7_kh3qk"]
+[ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="8_lvqma"]
+[ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
+[ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
-panorama = ExtResource("1_dsnr4")
+panorama = ExtResource("1_yvyhn")
 
-[sub_resource type="Sky" id="Sky_lf0gk"]
+[sub_resource type="Sky" id="Sky_yvyhn"]
 sky_material = SubResource("PanoramaSkyMaterial_1lwx6")
 
 [sub_resource type="Environment" id="Environment_cnaw2"]
 background_mode = 2
-sky = SubResource("Sky_lf0gk")
+sky = SubResource("Sky_yvyhn")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 fog_enabled = true
@@ -151,22 +150,22 @@ fill_from = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_ud3vi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsnr4"]
-albedo_texture = ExtResource("4_dsnr4")
+albedo_texture = ExtResource("7_kh3qk")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf0gk"]
-albedo_texture = ExtResource("6_cnaw2")
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
-albedo_texture = ExtResource("7_kt6p6")
+albedo_texture = ExtResource("8_lvqma")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ud3vi"]
 data = PackedVector3Array(-1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, -1.5, -0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+albedo_texture = ExtResource("9_gbkhh")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
 
@@ -178,43 +177,43 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1845372337]
 environment = SubResource("Environment_cnaw2")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=1672549652]
+[node name="OutsidePlayer" type="CharacterBody3D" parent="." unique_id=1672549652 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("2_gy3sr")
+script = ExtResource("2_g2qqk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=309131637]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OutsidePlayer" unique_id=309131637]
 mesh = SubResource("CapsuleMesh_g4v7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=846595441]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutsidePlayer" unique_id=846595441]
 shape = SubResource("CapsuleShape3D_g4v7s")
 
-[node name="CamSystem" type="Node3D" parent="Player" unique_id=669011130]
+[node name="CamSystem" type="Node3D" parent="OutsidePlayer" unique_id=669011130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
-script = ExtResource("3_1lwx6")
+script = ExtResource("3_bhw3q")
 
-[node name="Pivot" type="Node3D" parent="Player/CamSystem" unique_id=667829904]
+[node name="Pivot" type="Node3D" parent="OutsidePlayer/CamSystem" unique_id=667829904]
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/CamSystem/Pivot" unique_id=120519429]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="OutsidePlayer/CamSystem/Pivot" unique_id=120519429]
 remote_path = NodePath("../../../InteractionHandler/RayCast3D")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="Player/CamSystem/Pivot" unique_id=1575417251]
+[node name="SpringArm3D" type="SpringArm3D" parent="OutsidePlayer/CamSystem/Pivot" unique_id=1575417251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 spring_length = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="Player/CamSystem/Pivot/SpringArm3D" unique_id=1159758231]
+[node name="Camera3D" type="Camera3D" parent="OutsidePlayer/CamSystem/Pivot/SpringArm3D" unique_id=1159758231]
 unique_name_in_owner = true
 
-[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Player" unique_id=1066796039]
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="OutsidePlayer" unique_id=1066796039]
 strength = -128.0
 attenuation = 28.840042
 radius = 4.21514
 
-[node name="SnowManager" type="Node3D" parent="Player" unique_id=2030235564]
+[node name="SnowManager" type="Node3D" parent="OutsidePlayer" unique_id=2030235564]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 visible = false
-script = ExtResource("5_lf0gk")
+script = ExtResource("4_wh10h")
 
-[node name="Snowflakes" type="GPUParticles3D" parent="Player/SnowManager" unique_id=1527098064]
+[node name="Snowflakes" type="GPUParticles3D" parent="OutsidePlayer/SnowManager" unique_id=1527098064]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
 amount = 8192
 lifetime = 5.0
@@ -223,7 +222,7 @@ visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_yf5fn")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
 
-[node name="BigSnowflakes" type="GPUParticles3D" parent="Player/SnowManager" unique_id=1394289215]
+[node name="BigSnowflakes" type="GPUParticles3D" parent="OutsidePlayer/SnowManager" unique_id=1394289215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
 amount = 16
 lifetime = 5.0
@@ -232,7 +231,7 @@ visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_uu1iw")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
 
-[node name="Clouds" type="GPUParticles3D" parent="Player/SnowManager" unique_id=1829284739]
+[node name="Clouds" type="GPUParticles3D" parent="OutsidePlayer/SnowManager" unique_id=1829284739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
 amount = 4096
 lifetime = 10.0
@@ -241,7 +240,7 @@ visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_4tg7h")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
 
-[node name="UI" type="Control" parent="Player" unique_id=1002236841]
+[node name="UI" type="Control" parent="OutsidePlayer" unique_id=1002236841]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -249,9 +248,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("5_ud3vi")
+script = ExtResource("5_qu3yk")
 
-[node name="Panel" type="Panel" parent="Player/UI" unique_id=765477969]
+[node name="Panel" type="Panel" parent="OutsidePlayer/UI" unique_id=765477969]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -268,7 +267,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/UI" unique_id=110406771]
+[node name="VBoxContainer" type="VBoxContainer" parent="OutsidePlayer/UI" unique_id=110406771]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -282,27 +281,27 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Player/UI/VBoxContainer" unique_id=1250602500]
+[node name="PanelContainer" type="PanelContainer" parent="OutsidePlayer/UI/VBoxContainer" unique_id=1250602500]
 layout_mode = 2
 
-[node name="PrimaryActionLabel" type="Label" parent="Player/UI/VBoxContainer/PanelContainer" unique_id=1682107275]
+[node name="PrimaryActionLabel" type="Label" parent="OutsidePlayer/UI/VBoxContainer/PanelContainer" unique_id=1682107275]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Enter [E]"
 
-[node name="PanelContainer2" type="PanelContainer" parent="Player/UI/VBoxContainer" unique_id=2016432870]
+[node name="PanelContainer2" type="PanelContainer" parent="OutsidePlayer/UI/VBoxContainer" unique_id=2016432870]
 layout_mode = 2
 
-[node name="SecondaryActionLabel" type="Label" parent="Player/UI/VBoxContainer/PanelContainer2" unique_id=285322882]
+[node name="SecondaryActionLabel" type="Label" parent="OutsidePlayer/UI/VBoxContainer/PanelContainer2" unique_id=285322882]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Enter [E]"
 
-[node name="InteractionHandler" type="Node3D" parent="Player" unique_id=788753464 node_paths=PackedStringArray("ui")]
-script = ExtResource("5_4tg7h")
+[node name="InteractionHandler" type="Node3D" parent="OutsidePlayer" unique_id=788753464 node_paths=PackedStringArray("ui")]
+script = ExtResource("6_rcw8m")
 ui = NodePath("../UI")
 
-[node name="RayCast3D" type="RayCast3D" parent="Player/InteractionHandler" unique_id=1948714503]
+[node name="RayCast3D" type="RayCast3D" parent="OutsidePlayer/InteractionHandler" unique_id=1948714503]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
 target_position = Vector3(0, 0, -3)
@@ -322,20 +321,25 @@ use_collision = true
 size = Vector3(9, 4, 8)
 material = SubResource("StandardMaterial3D_lf0gk")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=603176758]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.5, -6.3)
-size = Vector3(3, 3, 1)
-material = SubResource("StandardMaterial3D_g4v7s")
-
-[node name="Door" type="Area3D" parent="." unique_id=1321519513]
+[node name="Door" type="Area3D" parent="." unique_id=1321519513 groups=["Door"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1, -6.3)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
-script = ExtResource("8_uu1iw")
-room_scene = ExtResource("11_5457m")
+script = ExtResource("10_vj2cq")
+door_id = &"exit_room"
+target_scene = "uid://c1btrm2bfra51"
+target_door_id = &"enter_room"
 primary_action = "Enter"
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=2003052737]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=2003052737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("ConcavePolygonShape3D_ud3vi")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Door" unique_id=603176758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(3, 3, 1)
+material = SubResource("StandardMaterial3D_g4v7s")
+
+[node name="SpawnPosition" type="Marker3D" parent="Door" unique_id=989215401]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1)

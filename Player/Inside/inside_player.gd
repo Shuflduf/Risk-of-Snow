@@ -1,8 +1,9 @@
 extends CharacterBody3D
 
-
 const SPEED = 3.0
 const ACCELERATION = 8.0
+
+@onready var cam_system: Node3D = $CamSystem
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -14,3 +15,6 @@ func _physics_process(delta: float) -> void:
 	velocity.z = lerp(velocity.z, direction.z * SPEED, ACCELERATION * delta)
 
 	move_and_slide()
+
+func set_cam_rotation(new_rot: Vector3):
+	cam_system.set_cam_rotation(new_rot)
