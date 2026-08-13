@@ -112,7 +112,8 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Item" type="TextureRect" parent="." unique_id=1570277139]
+[node name="Item" type="TextureRect" parent="." unique_id=1570277139 groups=["Item"]]
+z_index = 1
 custom_minimum_size = Vector2(60, 120)
 layout_mode = 1
 anchors_preset = 8
@@ -131,3 +132,24 @@ texture = ExtResource("2_uc4x3")
 expand_mode = 1
 script = ExtResource("3_uc4x3")
 tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+
+[node name="Item2" type="TextureRect" parent="." unique_id=338456395 groups=["Item"]]
+z_index = 1
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -219.0
+offset_right = -209.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("2_uc4x3")
+expand_mode = 1
+script = ExtResource("3_uc4x3")
+tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])

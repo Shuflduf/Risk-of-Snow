@@ -17,7 +17,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		player.rotate_y(-event.relative.x * sensitivity)
 		pivot.rotate_x(-event.relative.y * sensitivity)
 		pivot.rotation.x = clampf(pivot.rotation.x, -MAX_X_ROTATION, MAX_X_ROTATION)
