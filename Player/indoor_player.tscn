@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="2_1ynhl"]
 [ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="3_r071s"]
 [ext_resource type="PackedScene" uid="uid://c2bjseagwvqvx" path="res://Player/ui.tscn" id="4_q1ncp"]
+[ext_resource type="PackedScene" uid="uid://crfajwvhxcybc" path="res://Player/backpack.tscn" id="5_1ynhl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
 
@@ -48,3 +49,6 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="UI" parent="." unique_id=1204069218 instance=ExtResource("4_q1ncp")]
+
+[node name="Backpack" parent="." unique_id=2094153598 instance=ExtResource("5_1ynhl")]
+visible = false

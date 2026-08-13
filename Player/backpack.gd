@@ -17,6 +17,28 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _ready() -> void:
 	for tile: Panel in background.get_children():
 		tile.custom_minimum_size = Vector2(TILE_SIZE, TILE_SIZE)
+	
+	_load_inventory()
+
+
+func _save_inventory():
+	PlayerData.inventory = {}
+	for item: BackpackItem in get_tree().get_nodes_in_group(&"Item"):
+		if !item.placed:
+			continue
+		
+		PlayerData.inventory.set(item.tile_position, item.data)
+
+
+func _load_inventory():
+	for item_pos in PlayerData.inventory.keys():
+		var item_data = PlayerData.inventory[item_pos]
+		var item = item_data.build()
+		add_child(item)
+		for item_tile_pos in item.tiles():
+			taken_tiles.set(item_tile_pos + item_pos, null)
+			item.place(item_pos)
+
 
 
 func hovering_over(item: BackpackItem, mouse: Vector2):
@@ -55,25 +77,27 @@ func tile_at(pos: Vector2i) -> Panel:  # Panel | null
 func attempt_place(item: BackpackItem):
 	var desired_pos: Vector2i = get_item_pos(get_global_mouse_position())
 	var item_pos = valid_item_position(item, desired_pos)
-	if !item_pos or !can_place_item(item, desired_pos):
+	if item_pos == null or !can_place_item(item, desired_pos):
 		return
 
 	for item_tile_pos in item.tiles():
 		taken_tiles.set(item_tile_pos + item_pos, null)
 	item.place(item_pos)
+	_save_inventory()
 
 
 func valid_item_position(item: BackpackItem, target_position: Vector2i) -> Variant:  # Vector2i | null
 	var success = false
 	var current_y = 0
-
+	
+	
 	while can_place_item(item, Vector2i(target_position.x, current_y)):
 		success = true
 		current_y += 1
-
+	prints(success, current_y)
 	if !success:
 		return null
-
+	
 	return Vector2i(target_position.x, current_y - 1)
 
 
@@ -94,7 +118,7 @@ func start_drag_item(item: BackpackItem) -> bool:
 
 	for item_tile_pos in item.tiles():
 		var current_offset = 0
-		while item_tile_pos.y + item.tile_position.y - current_offset > 0:
+		while item_tile_pos.y + item.tile_position.y - current_offset >= 0:
 			var tile_pos = item_tile_pos + item.tile_position - Vector2i(0, current_offset)
 			if !taken_tiles.has(tile_pos):
 				current_offset += 1

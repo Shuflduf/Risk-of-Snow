@@ -9,6 +9,11 @@ var tile_position: Vector2i
 
 @onready var backpack: Backpack = get_parent()
 
+func _ready() -> void:
+	add_to_group(&"Item")
+	
+	prints(name, is_in_group(&"Item"))
+
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -23,11 +28,6 @@ func _input(event: InputEvent) -> void:
 		continue_drag()
 
 
-func _save_inventory():
-	pass
-
-func _load_inventory():
-	pass
 
 
 func start_drag():

@@ -1,3 +1,3 @@
 extends Node
 
-var inventory: Dictionary[BackpackItem, Vector2i] = {}
+var inventory: Dictionary[Vector2i, ItemData] = {}
