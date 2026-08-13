@@ -21,13 +21,17 @@ func _input(event: InputEvent) -> void:
 
 func start_drag():
 	if placed:
-		backpack.start_drag_item(self)
+		var can_move = backpack.start_drag_item(self)
+		if !can_move:
+			return
 	get_parent().move_child(self, -1)
 	placed = false
 	being_dragged = true
 	continue_drag()
 
 func end_drag():
+	if !being_dragged:
+		return
 	being_dragged = false
 	backpack.attempt_place(self)
 	backpack.reset_tiles()
@@ -35,7 +39,7 @@ func end_drag():
 func continue_drag():
 	var mouse_pos = get_global_mouse_position()
 	position = mouse_pos + (tiles[0] * -backpack.TILE_SIZE) - Vector2(backpack.TILE_SIZE, backpack.TILE_SIZE) / 2.0
-	backpack.hovering_over(mouse_pos, tiles)
+	backpack.hovering_over(self, mouse_pos)
 
 func place(item_pos: Vector2i):
 	placed = true

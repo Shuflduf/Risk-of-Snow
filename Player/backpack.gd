@@ -19,18 +19,25 @@ func _ready() -> void:
 	for tile: Panel in background.get_children():
 		tile.custom_minimum_size = Vector2(TILE_SIZE, TILE_SIZE)
 
-func hovering_over(mouse: Vector2, item_tiles: Array[Vector2i]):
+func hovering_over(item: BackpackItem, mouse: Vector2):
 	reset_tiles()
-	var item_pos: Vector2i = get_item_pos(mouse)
-	for item_tile_pos in item_tiles:
-		var tile_pos = item_tile_pos + item_pos
+	var desired_position: Vector2i = get_item_pos(mouse)
+	var success = false
+	var current_y = 0
+	
+	while test_item_pos(item, Vector2i(desired_position.x, current_y)):
+		success = true
+		current_y += 1
+	
+	if !success or !test_item_pos(item, desired_position):
+		return
+	
+	for item_tile_pos in item.tiles:
+		var tile_pos = item_tile_pos + Vector2i(desired_position.x, current_y - 1)
 		var tile = tile_at(tile_pos)
-		if tile and not taken_tiles.has(tile_pos):
-			tile.modulate = Color.RED
-			hovered_tiles.push_back(tile)
-		else:
-			reset_tiles()
-			break
+		tile.modulate = Color.RED
+		hovered_tiles.push_back(tile)
+	
 
 func get_item_pos(mouse: Vector2) -> Vector2i:
 	var offset_absolute: Vector2 = offset()
@@ -61,7 +68,7 @@ func reset_tiles():
 func attempt_place(item: BackpackItem):
 	var desired_pos: Vector2i = get_item_pos(get_global_mouse_position())
 	var item_pos = can_place_item(item, desired_pos)
-	if !item_pos:
+	if !item_pos or !test_item_pos(item, desired_pos):
 		return
 	
 	for item_tile_pos in item.tiles:
@@ -93,8 +100,21 @@ func test_item_pos(item: BackpackItem, test_position: Vector2i) -> bool:
 func offset() -> Vector2:
 	return background.get_child(0).global_position
 	
-func start_drag_item(item: BackpackItem):
+func start_drag_item(item: BackpackItem) -> bool:
+	var temp_taken_tiles = taken_tiles.duplicate()
 	for item_tile_pos in item.tiles:
 		var tile_pos = item_tile_pos + item.tile_position
 		taken_tiles.erase(tile_pos)
-	print(taken_tiles)
+	
+	
+	for item_tile_pos in item.tiles:
+		var current_offset = 0
+		while item_tile_pos.y + item.tile_position.y - current_offset > 0:
+			var tile_pos = item_tile_pos + item.tile_position - Vector2i(0, current_offset)
+			if !taken_tiles.has(tile_pos):
+				current_offset += 1
+			else:
+				taken_tiles = temp_taken_tiles
+				return false
+	
+	return true
