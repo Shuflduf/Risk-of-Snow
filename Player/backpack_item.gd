@@ -22,6 +22,7 @@ func start_drag():
 
 func end_drag():
 	being_dragged = false
+	backpack.attempt_place(self)
 
 func continue_drag():
 	var mouse_pos = get_global_mouse_position()
