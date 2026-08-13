@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 3.5
 const ACCELERATION = 10.0
 const AIR_ACCELERATION = 2.0
 @onready var cam_system: Node3D = $CamSystem
+
 
 func _physics_process(delta: float) -> void:
 	Dp.push(&"fps", Engine.get_frames_per_second())
@@ -24,5 +24,7 @@ func _physics_process(delta: float) -> void:
 	velocity.z = lerp(velocity.z, direction.z * SPEED, effective_accel * delta)
 
 	move_and_slide()
+
+
 func set_cam_rotation(new_rot: Vector3):
 	cam_system.set_cam_rotation(new_rot)

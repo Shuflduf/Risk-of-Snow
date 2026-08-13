@@ -1,7 +1,9 @@
 extends Node3D
 
-@onready var raycast: RayCast3D = %RayCast3D
 @export var ui: UI
+
+@onready var raycast: RayCast3D = %RayCast3D
+
 
 func _physics_process(_delta: float) -> void:
 	var interactable: Interactable = raycast.get_collider()
@@ -11,6 +13,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		ui.set_primary_action_text("")
 		ui.set_secondary_action_text("")
+
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"primary_interact"):
