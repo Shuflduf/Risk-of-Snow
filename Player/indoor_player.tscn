@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bhwmqw6mtm4j2"]
+
+[ext_resource type="Script" uid="uid://ctiioisatw7um" path="res://Player/Inside/inside_player.gd" id="1_wnt5c"]
+[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="2_1ynhl"]
+[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="3_r071s"]
+[ext_resource type="PackedScene" uid="uid://c2bjseagwvqvx" path="res://Player/ui.tscn" id="4_q1ncp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqbmf"]
+
+[node name="IndoorPlayer" type="CharacterBody3D" unique_id=533373955 groups=["Player"]]
+collision_layer = 4
+script = ExtResource("1_wnt5c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=573317726]
+mesh = SubResource("CapsuleMesh_aiegb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=275932307]
+shape = SubResource("CapsuleShape3D_oqbmf")
+
+[node name="CamSystem" type="Node3D" parent="." unique_id=1254249867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+script = ExtResource("2_1ynhl")
+
+[node name="Pivot" type="Node3D" parent="CamSystem" unique_id=618504865]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CamSystem/Pivot" unique_id=1714012666]
+remote_path = NodePath("../../../InteractionHandler/RayCast3D")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamSystem/Pivot" unique_id=449218347]
+spring_length = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="CamSystem/Pivot/SpringArm3D" unique_id=14481959]
+unique_name_in_owner = true
+
+[node name="InteractionHandler" type="Node3D" parent="." unique_id=1048050541 node_paths=PackedStringArray("ui")]
+script = ExtResource("3_r071s")
+ui = NodePath("../UI")
+
+[node name="RayCast3D" type="RayCast3D" parent="InteractionHandler" unique_id=351674148]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+target_position = Vector3(0, 0, -3)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="UI" parent="." unique_id=1204069218 instance=ExtResource("4_q1ncp")]

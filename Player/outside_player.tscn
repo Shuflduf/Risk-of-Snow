@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://3jvnvl0k8wvx"]
+
+[ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://Player/Outside/outside_player.gd" id="1_8qpu3"]
+[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="2_albhv"]
+[ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://Systems/snow_manager.gd" id="3_o5g07"]
+[ext_resource type="PackedScene" uid="uid://c2bjseagwvqvx" path="res://Player/ui.tscn" id="4_yg5iq"]
+[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="5_e0c4o"]
+[ext_resource type="PackedScene" uid="uid://crfajwvhxcybc" path="res://Player/backpack.tscn" id="6_albhv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+
+[sub_resource type="Curve" id="Curve_dsnr4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_cnaw2"]
+curve = SubResource("Curve_dsnr4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yf5fn"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -3, 0)
+scale_curve = SubResource("CurveTexture_cnaw2")
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.020000001
+
+[sub_resource type="Gradient" id="Gradient_lf0gk"]
+offsets = PackedFloat32Array(0.53731346, 0.76865673)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uu1iw"]
+gradient = SubResource("Gradient_lf0gk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+diffuse_mode = 3
+albedo_texture = SubResource("GradientTexture2D_uu1iw")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_distance = 2.0
+distance_fade_mode = 2
+distance_fade_min_distance = 4.0
+distance_fade_max_distance = 20.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_kt6p6"]
+material = SubResource("StandardMaterial3D_57qmd")
+
+[sub_resource type="Curve" id="Curve_lf0gk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_kt6p6"]
+curve = SubResource("Curve_lf0gk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uu1iw"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -3, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_kt6p6")
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.020000001
+
+[sub_resource type="Curve" id="Curve_cnaw2"]
+_data = [Vector2(0, 0.035714388), 0.0, 0.0, 0, 0, Vector2(0.2948718, 1), 0.0, 0.0, 0, 0, Vector2(0.6282051, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_uu1iw"]
+curve = SubResource("Curve_cnaw2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4tg7h"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 5.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 0.049999997
+initial_velocity_max = 0.099999994
+radial_velocity_min = -1.3000224
+radial_velocity_max = -0.70002234
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_uu1iw")
+turbulence_enabled = true
+turbulence_influence_min = 0.010000001
+turbulence_influence_max = 0.040000003
+
+[node name="OutsidePlayer" type="CharacterBody3D" unique_id=780108907 groups=["Player"]]
+collision_layer = 4
+script = ExtResource("1_8qpu3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=680280666]
+mesh = SubResource("CapsuleMesh_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1562982839]
+shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="CamSystem" type="Node3D" parent="." unique_id=1466062774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+script = ExtResource("2_albhv")
+
+[node name="Pivot" type="Node3D" parent="CamSystem" unique_id=1176538828]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CamSystem/Pivot" unique_id=1420590112]
+remote_path = NodePath("../../../InteractionHandler/RayCast3D")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamSystem/Pivot" unique_id=1359129552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CamSystem/Pivot/SpringArm3D" unique_id=857471001]
+unique_name_in_owner = true
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="." unique_id=1841832094]
+strength = -128.0
+attenuation = 28.840042
+radius = 4.21514
+
+[node name="SnowManager" type="Node3D" parent="." unique_id=1476858386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+visible = false
+script = ExtResource("3_o5g07")
+
+[node name="Snowflakes" type="GPUParticles3D" parent="SnowManager" unique_id=285092867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
+amount = 8192
+lifetime = 5.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_yf5fn")
+draw_pass_1 = SubResource("QuadMesh_kt6p6")
+
+[node name="BigSnowflakes" type="GPUParticles3D" parent="SnowManager" unique_id=1182995918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
+amount = 16
+lifetime = 5.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_uu1iw")
+draw_pass_1 = SubResource("QuadMesh_kt6p6")
+
+[node name="Clouds" type="GPUParticles3D" parent="SnowManager" unique_id=1736091653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.200005, 0)
+amount = 4096
+lifetime = 10.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_4tg7h")
+draw_pass_1 = SubResource("QuadMesh_kt6p6")
+
+[node name="UI" parent="." unique_id=1204069218 instance=ExtResource("4_yg5iq")]
+
+[node name="InteractionHandler" type="Node3D" parent="." unique_id=230701168 node_paths=PackedStringArray("ui")]
+script = ExtResource("5_e0c4o")
+ui = NodePath("../UI")
+
+[node name="RayCast3D" type="RayCast3D" parent="InteractionHandler" unique_id=713102130]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+target_position = Vector3(0, 0, -3)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Backpack" parent="." unique_id=2094153598 instance=ExtResource("6_albhv")]
+visible = false

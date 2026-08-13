@@ -16,6 +16,7 @@ func switch_to_scene(old_scene: Node, new_scene: String, door_id: StringName):
 func load_next_scene(new_scene: String, door_id: StringName):
 	var new_area: Node3D = load(new_scene).instantiate()
 	get_tree().root.add_child(new_area)
+	new_area.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	for door in new_area.get_tree().get_nodes_in_group(&"Door"):
 		if door.door_id == door_id:
@@ -26,3 +27,5 @@ func load_next_scene(new_scene: String, door_id: StringName):
 	var tween = get_tree().create_tween()
 	tween.tween_property(panel, ^"modulate", Color(0.0, 0.0, 0.0, 0.0), 0.5)
 	await tween.finished
+	
+	new_area.process_mode = Node.PROCESS_MODE_INHERIT

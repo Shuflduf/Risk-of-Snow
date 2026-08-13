@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://c1btrm2bfra51"]
 
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="1_8fwrc"]
-[ext_resource type="Script" uid="uid://ctiioisatw7um" path="res://Player/Inside/inside_player.gd" id="1_e8e04"]
-[ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="2_8fwrc"]
-[ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="3_wphqg"]
-[ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="4_xrl34"]
-[ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="5_sslib"]
-[ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="6_amiua"]
+[ext_resource type="PackedScene" uid="uid://bhwmqw6mtm4j2" path="res://Player/indoor_player.tscn" id="2_ua6mp"]
+[ext_resource type="PackedScene" uid="uid://cy3ks31sinymg" path="res://Interactables/door.tscn" id="3_eyrdj"]
 
 [sub_resource type="Environment" id="Environment_8fwrc"]
 background_mode = 2
@@ -21,30 +17,6 @@ albedo_texture = ExtResource("1_8fwrc")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqbmf"]
-
-[sub_resource type="Gradient" id="Gradient_sqxie"]
-offsets = PackedFloat32Array(0.17605634, 0.2535211)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
-gradient = SubResource("Gradient_sqxie")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bd7ek"]
-texture = SubResource("GradientTexture2D_yf5fn")
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pugwq"]
-data = PackedVector3Array(-1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, -1.5, -0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eghc1"]
-albedo_texture = ExtResource("6_amiua")
-uv1_triplanar = true
-uv1_world_triplanar = true
-
 [node name="TestRoom" type="Node3D" unique_id=687979815]
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=1612095572]
@@ -56,119 +28,7 @@ flip_faces = true
 size = Vector3(8, 4, 7)
 material = SubResource("StandardMaterial3D_wphqg")
 
-[node name="IndoorPlayer" type="CharacterBody3D" parent="." unique_id=1671782282 groups=["Player"]]
-collision_layer = 4
-script = ExtResource("1_e8e04")
+[node name="IndoorPlayer" parent="." unique_id=533373955 instance=ExtResource("2_ua6mp")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="IndoorPlayer" unique_id=937244376]
-mesh = SubResource("CapsuleMesh_aiegb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="IndoorPlayer" unique_id=335471859]
-shape = SubResource("CapsuleShape3D_oqbmf")
-
-[node name="CamSystem" type="Node3D" parent="IndoorPlayer" unique_id=12789869]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
-script = ExtResource("2_8fwrc")
-
-[node name="Pivot" type="Node3D" parent="IndoorPlayer/CamSystem" unique_id=16434646]
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="IndoorPlayer/CamSystem/Pivot" unique_id=2144637950]
-remote_path = NodePath("../../../InteractionHandler/RayCast3D")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="IndoorPlayer/CamSystem/Pivot" unique_id=1218484532]
-spring_length = 0.0
-
-[node name="Camera3D" type="Camera3D" parent="IndoorPlayer/CamSystem/Pivot/SpringArm3D" unique_id=1540835487]
-unique_name_in_owner = true
-
-[node name="InteractionHandler" type="Node3D" parent="IndoorPlayer" unique_id=1936376849 node_paths=PackedStringArray("ui")]
-script = ExtResource("3_wphqg")
-ui = NodePath("../UI")
-
-[node name="RayCast3D" type="RayCast3D" parent="IndoorPlayer/InteractionHandler" unique_id=1445346654]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
-target_position = Vector3(0, 0, -3)
-collision_mask = 16
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="UI" type="Control" parent="IndoorPlayer" unique_id=1842979241]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("4_xrl34")
-
-[node name="Panel" type="Panel" parent="IndoorPlayer/UI" unique_id=476363701]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bd7ek")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="IndoorPlayer/UI" unique_id=171056012]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 86.0
-offset_top = -25.0
-offset_right = 152.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="IndoorPlayer/UI/VBoxContainer" unique_id=1025261421]
-layout_mode = 2
-
-[node name="PrimaryActionLabel" type="Label" parent="IndoorPlayer/UI/VBoxContainer/PanelContainer" unique_id=1971586895]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Enter [E]"
-
-[node name="PanelContainer2" type="PanelContainer" parent="IndoorPlayer/UI/VBoxContainer" unique_id=331173162]
-layout_mode = 2
-
-[node name="SecondaryActionLabel" type="Label" parent="IndoorPlayer/UI/VBoxContainer/PanelContainer2" unique_id=407659675]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Enter [E]"
-
-[node name="Door" type="Area3D" parent="." unique_id=1067821257 groups=["Door"]]
+[node name="Door" parent="." unique_id=1968565005 instance=ExtResource("3_eyrdj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100000024, -3.7000003)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("5_sslib")
-door_id = &"enter_room"
-target_scene = "uid://cunqc3rpt10on"
-target_door_id = &"exit_room"
-primary_action = "Exit"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1425559199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("ConcavePolygonShape3D_pugwq")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Door" unique_id=512642552]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(3, 3, 1)
-material = SubResource("StandardMaterial3D_eghc1")
-
-[node name="SpawnPosition" type="Marker3D" parent="Door" unique_id=84601368]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 1)

@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://c2bjseagwvqvx"]
+
+[ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="1_4qruw"]
+
+[sub_resource type="Gradient" id="Gradient_kt6p6"]
+offsets = PackedFloat32Array(0.17605634, 0.2535211)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ud3vi"]
+gradient = SubResource("Gradient_kt6p6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = SubResource("GradientTexture2D_ud3vi")
+
+[node name="UI" type="Control" unique_id=1204069218]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4qruw")
+
+[node name="Panel" type="Panel" parent="." unique_id=1403060224]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=763352733]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 86.0
+offset_top = -25.0
+offset_right = 152.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=526722446]
+layout_mode = 2
+
+[node name="PrimaryActionLabel" type="Label" parent="VBoxContainer/PanelContainer" unique_id=421285949]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Enter [E]"
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer" unique_id=1633024676]
+layout_mode = 2
+
+[node name="SecondaryActionLabel" type="Label" parent="VBoxContainer/PanelContainer2" unique_id=117588429]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Enter [E]"
