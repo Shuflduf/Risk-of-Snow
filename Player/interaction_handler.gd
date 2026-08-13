@@ -8,9 +8,11 @@ extends Node3D
 func _physics_process(_delta: float) -> void:
 	var interactable: Interactable = raycast.get_collider()
 	if interactable != null and interactable is Interactable:
+		ui.set_display_name_text(interactable.display_name)
 		ui.set_primary_action_text(interactable.primary_action)
 		ui.set_secondary_action_text(interactable.secondary_action)
 	else:
+		ui.set_display_name_text("")
 		ui.set_primary_action_text("")
 		ui.set_secondary_action_text("")
 

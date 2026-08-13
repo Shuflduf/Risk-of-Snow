@@ -3,7 +3,11 @@ extends Control
 
 @onready var primary_action_label: Label = %PrimaryActionLabel
 @onready var secondary_action_label: Label = %SecondaryActionLabel
+@onready var display_name_label: Label = %DisplayNameLabel
 
+func set_display_name_text(new_text: String):
+	display_name_label.visible = new_text != ""
+	display_name_label.text = new_text
 
 func set_primary_action_text(new_text: String):
 	primary_action_label.visible = new_text != ""

@@ -19,6 +19,7 @@ script = ExtResource("1_pyvbm")
 door_id = &"enter_room"
 target_scene = "uid://cunqc3rpt10on"
 target_door_id = &"exit_room"
+display_name = "Door"
 primary_action = "Exit"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1155449522]

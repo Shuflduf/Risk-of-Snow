@@ -6,5 +6,6 @@ signal primary_action_used
 @warning_ignore("unused_signal")
 signal secondary_action_used
 
+@export var display_name: String = ""
 @export var primary_action: String = ""
 @export var secondary_action: String = ""

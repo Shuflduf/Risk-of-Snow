@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_yvyhn"]
 [ext_resource type="PackedScene" uid="uid://3jvnvl0k8wvx" path="res://Player/outside_player.tscn" id="2_1xon7"]
+[ext_resource type="Script" uid="uid://b3ccsgo52qvrb" path="res://Areas/chest.gd" id="7_853n0"]
 [ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="7_kh3qk"]
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="8_lvqma"]
 [ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
@@ -40,6 +41,9 @@ albedo_texture = ExtResource("9_gbkhh")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_853n0"]
+data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
+
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1081421026]
@@ -74,6 +78,7 @@ script = ExtResource("10_vj2cq")
 door_id = &"exit_room"
 target_scene = "uid://c1btrm2bfra51"
 target_door_id = &"enter_room"
+display_name = "Door"
 primary_action = "Enter"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=2003052737]
@@ -87,3 +92,21 @@ material = SubResource("StandardMaterial3D_g4v7s")
 
 [node name="SpawnPosition" type="Marker3D" parent="Door" unique_id=989215401]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1)
+
+[node name="Chest" type="Area3D" parent="." unique_id=75248113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 6.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("7_853n0")
+display_name = "Chest"
+primary_action = "Open"
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chest" unique_id=1031517865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+use_collision = true
+material = SubResource("StandardMaterial3D_g4v7s")
+
+[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="Chest" unique_id=1429349502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+shape = SubResource("ConcavePolygonShape3D_853n0")

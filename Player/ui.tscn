@@ -55,6 +55,12 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DisplayNameLabel" type="Label" parent="VBoxContainer" unique_id=1052990589]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Enter [E]"
+
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=526722446]
 layout_mode = 2
 
