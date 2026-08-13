@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Dp="*uid://c7ir7cd6c2523"
 TransitionHandler="*uid://dsm313advetf3"
+PlayerData="*uid://b4xnc08016ca8"
 
 [display]
 

@@ -131,6 +131,7 @@ shape = SubResource("CapsuleShape3D_g4v7s")
 [node name="CamSystem" type="Node3D" parent="." unique_id=1466062774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
 script = ExtResource("2_albhv")
+look_margin = 0.5
 
 [node name="Pivot" type="Node3D" parent="CamSystem" unique_id=1176538828]
 

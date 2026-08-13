@@ -1,7 +1,7 @@
 class_name BackpackItem
-extends TextureRect
+extends Control
 
-@export var tiles: Array[Vector2i] = []
+@export var data: ItemData
 
 var being_dragged = false
 var placed = false
@@ -21,6 +21,13 @@ func _gui_input(event: InputEvent) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and being_dragged:
 		continue_drag()
+
+
+func _save_inventory():
+	pass
+
+func _load_inventory():
+	pass
 
 
 func start_drag():
@@ -46,7 +53,7 @@ func continue_drag():
 	var mouse_pos = get_global_mouse_position()
 	position = (
 		mouse_pos
-		+ (tiles[0] * -backpack.TILE_SIZE)
+		+ (data.tiles[0] * -backpack.TILE_SIZE)
 		- Vector2(backpack.TILE_SIZE, backpack.TILE_SIZE) / 2.0
 	)
 	backpack.hovering_over(self, mouse_pos)
@@ -58,3 +65,7 @@ func place(item_pos: Vector2i):
 	position = (
 		backpack.offset() + Vector2(item_pos) * Vector2(backpack.TILE_SIZE, backpack.TILE_SIZE)
 	)
+
+
+func tiles() -> Array[Vector2i]:
+	return data.tiles
