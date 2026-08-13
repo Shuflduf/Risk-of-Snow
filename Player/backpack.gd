@@ -41,7 +41,7 @@ func get_item_pos(mouse: Vector2) -> Vector2i:
 	return item_pos
 
 
-func tile_at(pos: Vector2i) -> Panel:
+func tile_at(pos: Vector2i) -> Panel: # Panel | null
 	if (
 		pos.x < 0
 		or pos.x >= background.columns 
@@ -59,17 +59,36 @@ func reset_tiles():
 	hovered_tiles = []
 
 func attempt_place(item: BackpackItem):
-	var item_pos: Vector2i = get_item_pos(get_global_mouse_position())
-	for item_tile_pos in item.tiles:
-		var tile_pos = item_tile_pos + item_pos
-		var tile = tile_at(tile_pos)
-		if !tile or taken_tiles.has(tile_pos):
-			return
+	var desired_pos: Vector2i = get_item_pos(get_global_mouse_position())
+	var item_pos = can_place_item(item, desired_pos)
+	if !item_pos:
+		return
 	
 	for item_tile_pos in item.tiles:
-		taken_tiles.set(item_tile_pos  + item_pos, null)
+		taken_tiles.set(item_tile_pos + item_pos, null)
 	item.place(item_pos)
 	print(taken_tiles)
+
+func can_place_item(item: BackpackItem, target_position: Vector2i) -> Variant: # Vector2i | null
+	var success = false
+	var current_y = 0
+	
+	while test_item_pos(item, Vector2i(target_position.x, current_y)):
+		success = true
+		current_y += 1
+	
+	if !success:
+		return null
+	
+	return Vector2i(target_position.x, current_y - 1)
+
+func test_item_pos(item: BackpackItem, test_position: Vector2i) -> bool:
+	for item_tile_pos in item.tiles:
+		var tile_pos = item_tile_pos + test_position
+		var tile = tile_at(tile_pos)
+		if !tile or taken_tiles.has(tile_pos):
+			return false
+	return true
 
 func offset() -> Vector2:
 	return background.get_child(0).global_position
