@@ -6,12 +6,10 @@ const TILE_SIZE = 60.0
 var hovered_tiles: Array[Panel] = []
 var taken_tiles: Dictionary[Vector2i, Variant] = {}
 
+@onready var inventory = get_parent()
 @onready var background: GridContainer = $Background
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"backpack"):
-		visible = !visible
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if visible else Input.MOUSE_MODE_CAPTURED
+
 
 
 func _ready() -> void:
@@ -23,7 +21,7 @@ func _ready() -> void:
 
 func _save_inventory():
 	PlayerData.inventory = {}
-	for item: BackpackItem in get_tree().get_nodes_in_group(&"Item"):
+	for item: InventoryItem in inventory.get_tree().get_nodes_in_group(&"Item"):
 		if !item.placed:
 			continue
 		
@@ -41,7 +39,7 @@ func _load_inventory():
 
 
 
-func hovering_over(item: BackpackItem, mouse: Vector2):
+func hovering_over(item: InventoryItem, mouse: Vector2):
 	reset_tiles()
 	var desired_position: Vector2i = get_item_pos(mouse)
 	var success = false
@@ -74,7 +72,7 @@ func tile_at(pos: Vector2i) -> Panel:  # Panel | null
 	return background.get_child(idx)
 
 
-func attempt_place(item: BackpackItem):
+func attempt_place(item: InventoryItem):
 	var desired_pos: Vector2i = get_item_pos(get_global_mouse_position())
 	var item_pos = valid_item_position(item, desired_pos)
 	if item_pos == null or !can_place_item(item, desired_pos):
@@ -86,7 +84,7 @@ func attempt_place(item: BackpackItem):
 	_save_inventory()
 
 
-func valid_item_position(item: BackpackItem, target_position: Vector2i) -> Variant:  # Vector2i | null
+func valid_item_position(item: InventoryItem, target_position: Vector2i) -> Variant:  # Vector2i | null
 	var success = false
 	var current_y = 0
 	
@@ -101,7 +99,7 @@ func valid_item_position(item: BackpackItem, target_position: Vector2i) -> Varia
 	return Vector2i(target_position.x, current_y - 1)
 
 
-func can_place_item(item: BackpackItem, test_position: Vector2i) -> bool:
+func can_place_item(item: InventoryItem, test_position: Vector2i) -> bool:
 	for item_tile_pos in item.tiles():
 		var tile_pos = item_tile_pos + test_position
 		var tile = tile_at(tile_pos)
@@ -110,7 +108,7 @@ func can_place_item(item: BackpackItem, test_position: Vector2i) -> bool:
 	return true
 
 
-func start_drag_item(item: BackpackItem) -> bool:
+func start_drag_item(item: InventoryItem) -> bool:
 	var temp_taken_tiles = taken_tiles.duplicate()
 	for item_tile_pos in item.tiles():
 		var tile_pos = item_tile_pos + item.tile_position

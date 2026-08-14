@@ -6,8 +6,8 @@ extends Resource
 
 var data: Dictionary[StringName, Variant] = {}
 
-func build() -> BackpackItem:
-	var root = BackpackItem.new()
+func build() -> InventoryItem:
+	var root = InventoryItem.new()
 	root.data = self
 	root.set_anchors_preset(Control.PRESET_CENTER)
 	for tile in tiles:

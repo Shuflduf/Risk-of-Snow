@@ -1,6 +1,8 @@
+class_name InteractionHandler
 extends Node3D
 
 @export var ui: UI
+@export var inventory: InventoryManager
 
 @onready var raycast: RayCast3D = %RayCast3D
 
@@ -21,8 +23,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"primary_interact"):
 		var interactable: Interactable = raycast.get_collider()
 		if interactable != null and interactable is Interactable:
-			interactable.primary_action_used.emit()
+			interactable.primary_action_used.emit(self)
 	elif event.is_action_pressed(&"secondary_interact"):
 		var interactable: Interactable = raycast.get_collider()
 		if interactable != null and interactable is Interactable:
-			interactable.secondary_action_used.emit()
+			interactable.secondary_action_used.emit(self)
+
+
+func open_other_inventory(def: InventoryDefinition, items: Dictionary[Vector2i, ItemData]):
+	inventory.open_other(def, items)
