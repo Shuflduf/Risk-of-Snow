@@ -44,8 +44,9 @@ func open_other(def: InventoryDefinition, items: Dictionary[Vector2i, ItemData])
 		other.visible = true
 		other.add_child(new_item_grid)
 		for pos in items:
+			print(pos)
 			var item = items[pos].build()
-			item.place(pos, other)
+			item.place(pos, new_item_grid)
 	
 	if not visible:
 		open()
