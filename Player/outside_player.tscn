@@ -199,3 +199,4 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Inventory" parent="." unique_id=2094153598 instance=ExtResource("6_albhv")]
+visible = false

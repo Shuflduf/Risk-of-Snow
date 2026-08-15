@@ -6,8 +6,9 @@ extends Control
 var being_dragged = false
 var placed = false
 var tile_position: Vector2i
+var current_grid: ItemGrid
 
-@onready var backpack: Backpack = get_parent()
+@onready var inventory: InventoryManager = get_parent()
 
 func _ready() -> void:
 	add_to_group(&"Item")
@@ -32,7 +33,7 @@ func _input(event: InputEvent) -> void:
 
 func start_drag():
 	if placed:
-		var can_move = backpack.start_drag_item(self)
+		var can_move = current_grid.start_drag_item(self)
 		if !can_move:
 			return
 	get_parent().move_child(self, -1)
@@ -45,25 +46,26 @@ func end_drag():
 	if !being_dragged:
 		return
 	being_dragged = false
-	backpack.attempt_place(self)
-	backpack.reset_tiles()
+	inventory.attempt_place(self)
+	inventory.reset_hovered_tiles()
 
 
 func continue_drag():
 	var mouse_pos = get_global_mouse_position()
 	position = (
 		mouse_pos
-		+ (data.tiles[0] * -backpack.TILE_SIZE)
-		- Vector2(backpack.TILE_SIZE, backpack.TILE_SIZE) / 2.0
+		+ (data.tiles[0] * -ItemGrid.TILE_SIZE)
+		- Vector2(ItemGrid.TILE_SIZE, ItemGrid.TILE_SIZE) / 2.0
 	)
-	backpack.hovering_over(self, mouse_pos)
+	inventory.hovering(self, mouse_pos)
 
 
-func place(item_pos: Vector2i):
+func place(item_pos: Vector2i, grid: ItemGrid):
 	placed = true
 	tile_position = item_pos
+	current_grid = grid
 	position = (
-		backpack.offset() + Vector2(item_pos) * Vector2(backpack.TILE_SIZE, backpack.TILE_SIZE)
+		grid.offset() + Vector2(item_pos) * Vector2(ItemGrid.TILE_SIZE, ItemGrid.TILE_SIZE)
 	)
 
 
