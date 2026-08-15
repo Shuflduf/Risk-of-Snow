@@ -2,8 +2,7 @@ class_name InteractionHandler
 extends Node3D
 
 @export var ui: UI
-@export var inventory: InventoryManager
-
+@export var backpack: Node3D
 @onready var raycast: RayCast3D = %RayCast3D
 
 
@@ -30,5 +29,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			interactable.secondary_action_used.emit(self)
 
 
-func open_other_inventory(def: InventoryDefinition, items: Dictionary[Vector2i, ItemData]) -> ItemGrid:
-	return inventory.open_other(def, items)
+func open_other_inventory(inventory: Inventory):
+	InventoryManager.close_all()
+	InventoryManager.open(backpack.inventory)
+	InventoryManager.open(inventory)

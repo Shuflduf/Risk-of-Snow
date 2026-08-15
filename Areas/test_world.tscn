@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_yvyhn"]
 [ext_resource type="PackedScene" uid="uid://3jvnvl0k8wvx" path="res://Player/outside_player.tscn" id="2_1xon7"]
-[ext_resource type="Script" uid="uid://b3ccsgo52qvrb" path="res://Areas/chest.gd" id="7_853n0"]
+[ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest.gd" id="7_853n0"]
 [ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="7_kh3qk"]
-[ext_resource type="Script" uid="uid://dp7niun5tbxga" path="res://Systems/inventory/inventory_definition.gd" id="8_8uemi"]
+[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/inventory/inventory.gd" id="8_8uemi"]
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="8_lvqma"]
 [ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
 [ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
@@ -44,10 +44,9 @@ uv1_world_triplanar = true
 
 [sub_resource type="Resource" id="Resource_853n0"]
 script = ExtResource("8_8uemi")
-display_name = "Chest"
+id = &"chest"
 size = Vector2i(6, 4)
-chest = true
-metadata/_custom_type_script = "uid://dp7niun5tbxga"
+metadata/_custom_type_script = "uid://csbaujloxmsje"
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_853n0"]
 data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
@@ -107,7 +106,7 @@ collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("7_853n0")
-def = SubResource("Resource_853n0")
+inventory = SubResource("Resource_853n0")
 display_name = "Chest"
 primary_action = "Open"
 
