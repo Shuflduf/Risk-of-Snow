@@ -1,30 +1,18 @@
 extends Control
 
-const TILE_SIZE = 60
+const TILE_SIZE = InventoryView.TILE_SIZE
 
 func open(inventory: Inventory):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	var root = Control.new()
-	root.custom_minimum_size = inventory.size * TILE_SIZE
-	for x in inventory.size.x:
-		for y in inventory.size.y:
-			var tile = Panel.new()
-			tile.size = Vector2(TILE_SIZE, TILE_SIZE)
-			tile.position.x = x * TILE_SIZE
-			tile.position.y = y * TILE_SIZE
-			root.add_child(tile)
+	var view = InventoryView.build(inventory,
+		func(item: InventoryItem):
+			item.picked_up.connect(item_picked_up.bind(item))
+			item.moved.connect(item_moved.bind(item))
+			item.dropped.connect(item_dropped.bind(item))
+	)
 	
-	for pos in inventory.items:
-		var item_data: ItemData = inventory.items[pos]
-		var item = item_data.build()
-		item.position = pos * TILE_SIZE
-		item.picked_up.connect(item_picked_up.bind(item))
-		item.moved.connect(item_moved.bind(item))
-		item.dropped.connect(item_dropped.bind(item))
-		root.add_child(item)
-	
-	add_child(root)
+	add_child(view)
 
 
 func none_shown() -> bool:
@@ -39,6 +27,9 @@ func close_all() -> void:
 
 
 func item_picked_up(item: InventoryItem) -> void:
+	var view = item.get_parent()
+	if view is InventoryView:
+		view.inventory.items.erase(item.tile_position())
 	item.top_level = true
 	item.reparent(self)
 	move_child(item, 0)
@@ -47,7 +38,11 @@ func item_picked_up(item: InventoryItem) -> void:
 func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:
 	item.position = mouse_pos - Vector2(TILE_SIZE, TILE_SIZE) / 2.0
 	
+	
 func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
-	#item.position = mouse_pos
-	pass
+	for view in get_children():
+		if view is not InventoryView:
+			continue
+		
+		view.attempt_place(item, mouse_pos)
 	

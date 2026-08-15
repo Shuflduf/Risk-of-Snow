@@ -20,6 +20,7 @@ var being_dragged = false
 #
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		print(event.is_pressed())
 		if event.is_pressed():
 			being_dragged = true
 			picked_up.emit()
@@ -32,7 +33,10 @@ func _gui_input(event: InputEvent) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and being_dragged:
 		moved.emit(get_global_mouse_position())
-#
+
+
+func tile_position() -> Vector2i:
+	return Vector2i(floor(position / InventoryView.TILE_SIZE))
 #
 #func start_drag():
 	#if placed:

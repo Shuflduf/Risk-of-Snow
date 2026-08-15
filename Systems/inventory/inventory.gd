@@ -6,11 +6,29 @@ extends Resource
 
 var items: Dictionary[Vector2i, ItemData] = {}
 
-func can_place(item: InventoryItem, desired_position: Vector2i) -> bool:
-	for item_tile_pos in item.tiles():
-		var tile_pos = item_tile_pos + desired_position
+# Vector2i | null
+func get_valid_position(item: InventoryItem, desired_position: Vector2i) -> Variant: 
+	if not can_place_item_at_pos(item.data, desired_position):
+		return null
+	var current_y = 0
+	var can_be_placed = false
+	
+	while can_place_item_at_pos(item.data, Vector2i(desired_position.x, current_y)):
+		can_be_placed = true
+		current_y += 1
+	
+	if not can_be_placed:
+		return null
+	
+	return Vector2i(desired_position.x, current_y - 1)
+
+
+func can_place_item_at_pos(item: ItemData, pos: Vector2i) -> bool:
+	for item_tile_pos in item.tiles:
+		var tile_pos = item_tile_pos + pos
 		if !is_valid_position(tile_pos) or taken_tiles().has(tile_pos):
 			return false
+	
 	return true
 
 
