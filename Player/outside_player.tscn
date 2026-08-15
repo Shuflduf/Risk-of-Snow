@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="5_e0c4o"]
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/inventory/inventory.gd" id="6_albhv"]
 [ext_resource type="Script" uid="uid://36ommleq48xn" path="res://Player/backpack.gd" id="6_o5g07"]
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/item_data.gd" id="8_yg5iq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
 
@@ -125,6 +126,11 @@ id = &"backpack"
 size = Vector2i(4, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
+[sub_resource type="Resource" id="Resource_o5g07"]
+script = ExtResource("8_yg5iq")
+tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
+
 [node name="OutsidePlayer" type="CharacterBody3D" unique_id=780108907 groups=["Player"]]
 collision_layer = 4
 script = ExtResource("1_8qpu3")
@@ -208,3 +214,4 @@ collide_with_bodies = false
 [node name="Backpack" type="Node3D" parent="." unique_id=516555380]
 script = ExtResource("6_o5g07")
 inventory = SubResource("Resource_8qpu3")
+temp_item = SubResource("Resource_o5g07")

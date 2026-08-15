@@ -1,12 +1,12 @@
 class_name InventoryItem
 extends Control
 #
-#@export var data: ItemData
-#
-#var being_dragged = false
-#var placed = false
-#var tile_position: Vector2i
-##var current_grid: ItemGrid
+@export var data: ItemData
+
+var being_dragged = false
+var placed = false
+var tile_position: Vector2i
+#var current_grid: ItemGrid
 ##
 ##@onready var inventory: InventoryManager = get_parent()
 #

@@ -15,6 +15,12 @@ func open(inventory: Inventory):
 			tile.position.y = y * TILE_SIZE
 			root.add_child(tile)
 	
+	for pos in inventory.items:
+		var item_data: ItemData = inventory.items[pos]
+		var item = item_data.build()
+		item.position = pos * TILE_SIZE
+		root.add_child(item)
+	
 	add_child(root)
 
 
