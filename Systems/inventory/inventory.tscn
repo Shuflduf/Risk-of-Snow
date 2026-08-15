@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://crfajwvhxcybc"]
 
-[ext_resource type="Script" uid="uid://c81e8488bqrek" path="res://Systems/inventory/inventory.gd" id="1_1hxsl"]
-[ext_resource type="Script" uid="uid://bxmojj4riwd1k" path="res://Systems/inventory/item_grid.gd" id="2_nlgyt"]
+[ext_resource type="Script" uid="uid://c81e8488bqrek" path="res://Systems/inventory/inventory_manager.gd" id="1_1hxsl"]
+[ext_resource type="Script" uid="uid://bt5sthn0vafm8" path="res://Systems/inventory/backpack.gd" id="2_nlgyt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

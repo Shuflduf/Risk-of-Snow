@@ -12,8 +12,6 @@ var current_grid: ItemGrid
 
 func _ready() -> void:
 	add_to_group(&"Item")
-	
-	prints(name, is_in_group(&"Item"))
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -27,8 +25,6 @@ func _gui_input(event: InputEvent) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and being_dragged:
 		continue_drag()
-
-
 
 
 func start_drag():
@@ -68,6 +64,14 @@ func place(item_pos: Vector2i, grid: ItemGrid):
 		grid.offset() + Vector2(item_pos) * Vector2(ItemGrid.TILE_SIZE, ItemGrid.TILE_SIZE)
 	)
 
+
+func replace():
+	if placed and current_grid != null:
+		prints(tile_position, current_grid)
+		position = (
+			current_grid.offset() + Vector2(tile_position) * Vector2(ItemGrid.TILE_SIZE, ItemGrid.TILE_SIZE)
+		)
+		print(position)
 
 func tiles() -> Array[Vector2i]:
 	return data.tiles

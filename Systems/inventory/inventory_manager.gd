@@ -23,30 +23,49 @@ func close():
 	other.visible = false
 	for child in other.get_children():
 		child.queue_free()
+	for item in get_tree().get_nodes_in_group(&"Item"):
+		item.queue_free()
 
 
 func open():
 	visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+
+	backpack.load_items()
 
 
-func open_other(def: InventoryDefinition, items: Dictionary[Vector2i, ItemData]):
+func open_other(def: InventoryDefinition, items: Dictionary[Vector2i, ItemData]) -> ItemGrid:
+	var new_item_grid = null
+	if not other.visible:
+		new_item_grid = def.build()
+		other.visible = true
+		other.add_child(new_item_grid)
+		for pos in items:
+			var item = items[pos].build()
+			item.place(pos, other)
+	
 	if not visible:
 		open()
 	
-	if not other.visible:
-		var new_background = def.build()
-		other.visible = true
-		other.add_child(new_background)
+	return new_item_grid
 
 
 func hovering(item: InventoryItem, mouse_pos: Vector2):
 	backpack.hovering_over(item, mouse_pos)
+	for child in other.get_children():
+		child.hovering_over(item, mouse_pos)
 
 
 func attempt_place(item: InventoryItem):
 	backpack.attempt_place(item)
+	for child in other.get_children():
+		child.attempt_place(item)
 
 
 func reset_hovered_tiles():
 	backpack.reset_hovered_tiles()
+	for child in other.get_children():
+		child.reset_hovered_tiles()

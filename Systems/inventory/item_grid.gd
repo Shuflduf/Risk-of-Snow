@@ -1,4 +1,4 @@
-class_name ItemGrid
+@abstract class_name ItemGrid
 extends GridContainer
 
 const TILE_SIZE = 60.0
@@ -8,32 +8,17 @@ var taken_tiles: Dictionary[Vector2i, Variant] = {}
 
 @onready var inventory = get_parent()
 
+@abstract func _save_inventory()
+@abstract func _load_inventory()
+
 func _ready() -> void:
 	for tile: Panel in get_children():
 		tile.custom_minimum_size = Vector2(TILE_SIZE, TILE_SIZE)
 	
 	#_load_inventory()
 
-
-#func _save_inventory():
-	#PlayerData.inventory = {}
-	#for item: InventoryItem in inventory.get_tree().get_nodes_in_group(&"Item"):
-		#if !item.placed:
-			#continue
-		#
-		#PlayerData.inventory.set(item.tile_position, item.data)
-
-
-#func _load_inventory():
-	#for item_pos in PlayerData.inventory.keys():
-		#var item_data = PlayerData.inventory[item_pos]
-		#var item = item_data.build()
-		#add_child(item)
-		#for item_tile_pos in item.tiles():
-			#taken_tiles.set(item_tile_pos + item_pos, null)
-			#item.place(item_pos)
-
-
+func load_items():
+	_load_inventory()
 
 func hovering_over(item: InventoryItem, mouse: Vector2):
 	reset_hovered_tiles()
@@ -77,7 +62,7 @@ func attempt_place(item: InventoryItem):
 	for item_tile_pos in item.tiles():
 		taken_tiles.set(item_tile_pos + item_pos, null)
 	item.place(item_pos, self)
-	#_save_inventory()
+	_save_inventory()
 
 
 func valid_item_position(item: InventoryItem, target_position: Vector2i) -> Variant:  # Vector2i | null

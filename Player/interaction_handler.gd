@@ -30,5 +30,5 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			interactable.secondary_action_used.emit(self)
 
 
-func open_other_inventory(def: InventoryDefinition, items: Dictionary[Vector2i, ItemData]):
-	inventory.open_other(def, items)
+func open_other_inventory(def: InventoryDefinition, items: Dictionary[Vector2i, ItemData]) -> ItemGrid:
+	return inventory.open_other(def, items)
