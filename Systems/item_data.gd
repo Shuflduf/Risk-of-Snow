@@ -9,6 +9,7 @@ var data: Dictionary[StringName, Variant] = {}
 func build() -> InventoryItem:
 	var root = InventoryItem.new()
 	root.data = self
+	root.z_index = 2
 	#root.set_anchors_preset(Control.PRESET_CENTER)
 	#root.top_level = true
 	for tile in tiles:

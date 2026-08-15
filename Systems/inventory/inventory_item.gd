@@ -1,11 +1,15 @@
 class_name InventoryItem
 extends Control
-#
+
+signal picked_up
+signal moved(mouse_pos: Vector2)
+signal dropped(mouse_pos: Vector2)
+
 @export var data: ItemData
 
 var being_dragged = false
-var placed = false
-var tile_position: Vector2i
+#var placed = false
+
 #var current_grid: ItemGrid
 ##
 ##@onready var inventory: InventoryManager = get_parent()
@@ -14,17 +18,20 @@ var tile_position: Vector2i
 	#add_to_group(&"Item")
 #
 #
-#func _gui_input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		#if event.is_pressed():
-			#start_drag()
-		#else:
-			#end_drag()
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_pressed():
+			being_dragged = true
+			picked_up.emit()
+			moved.emit(get_global_mouse_position())
+		else:
+			being_dragged = false
+			dropped.emit(get_global_mouse_position())
 #
 #
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventMouseMotion and being_dragged:
-		#continue_drag()
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and being_dragged:
+		moved.emit(get_global_mouse_position())
 #
 #
 #func start_drag():
