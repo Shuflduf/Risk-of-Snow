@@ -1,7 +1,7 @@
 class_name InventoryView
 extends Control
 
-const TILE_SIZE = 60
+const TILE_SIZE = 64
 
 var inventory: Inventory
 
@@ -35,7 +35,6 @@ func attempt_hover(item: InventoryItem, mouse_pos: Vector2) -> void:
 	var item_pos = inventory.get_valid_position(item, tile_pos)
 	if item_pos:
 		for tile in item.data.tiles:
-			print(tile + item_pos)
 			panel_at(tile + item_pos).modulate = Color.RED
 
 
@@ -51,8 +50,6 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
 		item.position = item_pos * TILE_SIZE
 		inventory.items.set(item_pos, item.data)
 		
-	prints(tile_pos, item_pos)
-
 
 func reset_hovered():
 	var panels = get_children().filter(func(child: Node): return child is Panel)

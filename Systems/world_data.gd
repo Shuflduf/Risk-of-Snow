@@ -4,7 +4,7 @@ extends Node
 # 	String, <-- owner.scene_file_path
 # 	Dictionary [
 # 		StringName, <-- storage.id
-# 		Dictionary[Vector2i, ItemDef] <-- items and their positions
+# 		Inventory
 #	]
 # ]
 var inventories: Dictionary[String, Dictionary] = {} 
