@@ -31,5 +31,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func open_other_inventory(inventory: Inventory):
 	InventoryManager.close_all()
+	InventoryManager.show_held()
 	InventoryManager.open(backpack.inventory)
 	InventoryManager.open(inventory)

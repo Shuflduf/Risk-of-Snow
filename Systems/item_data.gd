@@ -25,3 +25,13 @@ func build() -> InventoryItem:
 	root.add_child(tex)
 	
 	return root
+
+
+func bounds() -> Vector2i:
+	var biggest = Vector2i(1, 1)
+	for tile in tiles:
+		if tile.x + 1 > biggest.x:
+			biggest.x = tile.x + 1
+		if tile.y + 1 > biggest.y:
+			biggest.y = tile.y + 1
+	return biggest

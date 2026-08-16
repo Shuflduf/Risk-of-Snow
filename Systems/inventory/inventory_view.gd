@@ -49,6 +49,7 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
 		item.reparent(self)
 		item.z_index = 2
 		item.position = item_pos * TILE_SIZE
+		#custom_minimum_size = item.size
 		inventory.items.set(item_pos, item.data)
 		
 
