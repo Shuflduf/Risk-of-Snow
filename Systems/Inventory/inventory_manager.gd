@@ -35,7 +35,7 @@ func show_held() -> void:
 func dropped_items(items: Array[DroppedItem]) -> void:
 	for drop in items:
 		var item = drop.data.build()
-		item.top_level = true
+		item.set_not_placed()
 		item.position = Vector2.ZERO
 		item.picked_up.connect(dropped_item_picked_up.bind(drop, item))
 		item.picked_up.connect(item_picked_up.bind(item))
@@ -52,9 +52,8 @@ func item_picked_up(item: InventoryItem) -> void:
 		else:
 			item.being_dragged = false
 			return
-	item.top_level = true
 	item.reparent(self)
-	item.z_index = 10
+	item.set_not_placed()
 
 
 func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:

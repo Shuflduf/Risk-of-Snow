@@ -7,9 +7,8 @@ func _ready() -> void:
 
 	build_background(PlayerData.equipped_item)
 	var item = PlayerData.equipped_item.build()
-	item.top_level = false
+	item.set_placed()
 	item.position = Vector2.ZERO
-	item.z_index = 2
 	item.picked_up.connect(item_picked_up.bind(item))
 	item.moved.connect(get_parent().item_moved.bind(item))
 	item.dropped.connect(get_parent().item_dropped.bind(item))
@@ -32,9 +31,8 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
 		PlayerData.equipped_item = item.data
 		build_background(item.data)
 		item.reparent(self)
-		item.top_level = false
+		item.set_placed()
 		item.position = Vector2.ZERO
-		item.z_index = 2
 
 		var old_signal: Callable
 		for conn in item.picked_up.get_connections():
@@ -46,9 +44,8 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
 func item_picked_up(item: InventoryItem):
 	PlayerData.equipped_item = null
 	build_background()
-	item.top_level = true
 	item.reparent(get_parent())
-	item.z_index = 10
+	item.set_not_placed()
 	for conn in item.picked_up.get_connections():
 		item.picked_up.disconnect(conn["callable"])
 

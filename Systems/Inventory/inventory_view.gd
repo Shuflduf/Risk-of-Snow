@@ -22,6 +22,7 @@ static func build(inv: Inventory, per_item: Callable) -> InventoryView:
 	for pos in inv.items:
 		var item_data: ItemData = inv.items[pos]
 		var item = item_data.build()
+		item.set_placed()
 		item.position = pos * TILE_SIZE
 		per_item.call(item)
 		new_self.add_child(item)
@@ -45,9 +46,8 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
 	var tile_pos = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
 	var item_pos = inventory.get_valid_position(item, tile_pos)
 	if item_pos != null:
-		item.top_level = false
 		item.reparent(self)
-		item.z_index = 2
+		item.set_placed()
 		item.position = item_pos * TILE_SIZE
 		#custom_minimum_size = item.size
 		inventory.items.set(item_pos, item.data)
