@@ -6,6 +6,7 @@ extends Control
 @onready var display_name_label: Label = %DisplayNameLabel
 @onready var equipped_item: TextureRect = %EquippedItem
 
+
 func _ready() -> void:
 	_equipped_item_changed(PlayerData.equipped_item)
 	PlayerData.equipped_item_changed.connect(_equipped_item_changed)

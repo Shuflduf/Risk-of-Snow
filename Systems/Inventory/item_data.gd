@@ -6,6 +6,8 @@ extends Resource
 @export var sprite: Texture2D
 
 var data: Dictionary[StringName, Variant] = {}
+
+
 #
 func build() -> InventoryItem:
 	var root = InventoryItem.new()
@@ -16,14 +18,16 @@ func build() -> InventoryItem:
 	for tile_pos in tiles:
 		var tile = Control.new()
 		tile.size = Vector2(InventoryManager.TILE_SIZE, InventoryManager.TILE_SIZE)
-		tile.position = Vector2(tile_pos) * Vector2(InventoryManager.TILE_SIZE, InventoryManager.TILE_SIZE)
+		tile.position = (
+			Vector2(tile_pos) * Vector2(InventoryManager.TILE_SIZE, InventoryManager.TILE_SIZE)
+		)
 		root.add_child(tile)
-	
+
 	var tex = TextureRect.new()
 	tex.texture = sprite
 	tex.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	root.add_child(tex)
-	
+
 	return root
 
 

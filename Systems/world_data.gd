@@ -7,4 +7,4 @@ extends Node
 # 		Inventory
 #	]
 # ]
-var inventories: Dictionary[String, Dictionary] = {} 
+var inventories: Dictionary[String, Dictionary] = {}
