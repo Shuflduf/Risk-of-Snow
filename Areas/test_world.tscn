@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cunqc3rpt10on"]
 
+[ext_resource type="Script" uid="uid://dpkp6wmpb3t72" path="res://Areas/test_world.gd" id="1_g2qqk"]
 [ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_yvyhn"]
-[ext_resource type="PackedScene" uid="uid://3jvnvl0k8wvx" path="res://Player/outside_player.tscn" id="2_1xon7"]
+[ext_resource type="PackedScene" uid="uid://3jvnvl0k8wvx" path="res://Player/Outside/outside_player.tscn" id="2_1xon7"]
 [ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest.gd" id="7_853n0"]
 [ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="7_kh3qk"]
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="8_8uemi"]
@@ -61,6 +62,7 @@ sprite = ExtResource("11_g2qqk")
 metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
+script = ExtResource("1_g2qqk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1081421026]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

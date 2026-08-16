@@ -3,6 +3,7 @@ extends Control
 
 @onready var panel: Panel = $Panel
 
+var current_area: Node3D
 
 func switch_to_scene(old_scene: Node, new_scene: String, door_id: StringName):
 	old_scene.process_mode = Node.PROCESS_MODE_DISABLED
@@ -17,6 +18,7 @@ func switch_to_scene(old_scene: Node, new_scene: String, door_id: StringName):
 
 func load_next_scene(new_scene: String, door_id: StringName):
 	var new_area: Node3D = load(new_scene).instantiate()
+	current_area = new_area
 	get_tree().root.add_child(new_area)
 	new_area.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -25,7 +27,7 @@ func load_next_scene(new_scene: String, door_id: StringName):
 			var player: Node3D = new_area.get_tree().get_first_node_in_group(&"Player")
 			player.global_position = door.spawn_position.global_position
 			player.set_cam_rotation(door.spawn_position.global_rotation)
-
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property(panel, ^"modulate", Color(0.0, 0.0, 0.0, 0.0), 0.5)
 	await tween.finished

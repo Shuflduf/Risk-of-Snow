@@ -40,7 +40,7 @@ func attempt_hover(item: InventoryItem, mouse_pos: Vector2) -> void:
 			panel_at(tile + item_pos).modulate = Color.RED
 
 
-func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
+func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 	reset_hovered()
 
 	var tile_pos = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
@@ -51,6 +51,9 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
 		item.position = item_pos * TILE_SIZE
 		#custom_minimum_size = item.size
 		inventory.items.set(item_pos, item.data)
+		return true
+	else:
+		return false
 
 
 func reset_hovered():

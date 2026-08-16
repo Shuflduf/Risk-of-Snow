@@ -4,6 +4,6 @@ extends Area3D
 
 func get_items() -> Array[DroppedItem]:
 	var items: Array[DroppedItem]
-	for area in get_overlapping_areas():
+	for area in get_overlapping_bodies():
 		items.append(area)
 	return items

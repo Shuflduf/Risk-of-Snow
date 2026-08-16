@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1btrm2bfra51"]
 
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="1_8fwrc"]
-[ext_resource type="PackedScene" uid="uid://bhwmqw6mtm4j2" path="res://Player/indoor_player.tscn" id="2_ua6mp"]
+[ext_resource type="PackedScene" uid="uid://bhwmqw6mtm4j2" path="res://Player/Inside/inside_player.tscn" id="2_ua6mp"]
 [ext_resource type="PackedScene" uid="uid://cy3ks31sinymg" path="res://Interactables/door.tscn" id="3_eyrdj"]
 
 [sub_resource type="Environment" id="Environment_8fwrc"]

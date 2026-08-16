@@ -2,6 +2,7 @@ extends Control
 
 const TILE_SIZE = InventoryView.TILE_SIZE
 
+var player: Node3D
 
 func open(inventory: Inventory):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -70,7 +71,13 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 		if view is not InventoryView:
 			continue
 
-		view.attempt_place(item, mouse_pos)
+		if view.attempt_place(item, mouse_pos):
+			return
+	
+	var new_drop = item.data.build_dropped()
+	new_drop.position = player.position
+	TransitionHandler.current_area.add_child(new_drop)
+	print("failed")
 
 
 func dropped_item_picked_up(drop: DroppedItem, item: InventoryItem) -> void:

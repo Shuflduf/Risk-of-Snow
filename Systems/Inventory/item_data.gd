@@ -31,6 +31,13 @@ func build() -> InventoryItem:
 	return root
 
 
+func build_dropped() -> DroppedItem:
+	var root: DroppedItem = preload("res://Systems/Inventory/dropped_item.tscn").instantiate()
+	root.data = self
+	
+	return root
+
+
 func bounds() -> Vector2i:
 	var biggest = Vector2i(1, 1)
 	for tile in tiles:

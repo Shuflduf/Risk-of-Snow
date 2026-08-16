@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://36ommleq48xn" path="res://Player/backpack.gd" id="5_q1ncp"]
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="6_5jf8j"]
 [ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="7_u7ti5"]
+[ext_resource type="Script" uid="uid://bqjpefpyj65a8" path="res://Player/item_pickup_handler.gd" id="8_as5sl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
 
@@ -23,7 +24,10 @@ script = ExtResource("7_u7ti5")
 tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
-[node name="IndoorPlayer" type="CharacterBody3D" unique_id=533373955 groups=["Player"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_2xr8j"]
+radius = 2.5
+
+[node name="InsidePlayer" type="CharacterBody3D" unique_id=533373955 groups=["Player"]]
 collision_layer = 4
 script = ExtResource("1_wnt5c")
 
@@ -64,7 +68,17 @@ collide_with_bodies = false
 
 [node name="UI" parent="." unique_id=1204069218 instance=ExtResource("4_q1ncp")]
 
-[node name="Backpack" type="Node3D" parent="." unique_id=1572977664]
+[node name="Backpack" type="Node3D" parent="." unique_id=1572977664 node_paths=PackedStringArray("item_pickup_handler")]
 script = ExtResource("5_q1ncp")
 inventory = SubResource("Resource_fvaq1")
 temp_item = SubResource("Resource_ln5hr")
+item_pickup_handler = NodePath("../ItemPickupHandler")
+
+[node name="ItemPickupHandler" type="Area3D" parent="." unique_id=202794562]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("8_as5sl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPickupHandler" unique_id=1944851100]
+shape = SubResource("SphereShape3D_2xr8j")

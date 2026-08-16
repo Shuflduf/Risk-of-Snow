@@ -24,7 +24,7 @@ func attempt_hover(_item: InventoryItem, mouse_pos: Vector2) -> void:
 		modulate = Color.WHITE
 
 
-func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
+func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 	var tile_pos = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
 	if tile_pos == Vector2i(0, 0):
 		modulate = Color.WHITE
@@ -39,6 +39,9 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> void:
 			old_signal = conn["callable"]
 			item.picked_up.disconnect(old_signal)
 		item.picked_up.connect(item_picked_up.bind(item))
+		return true
+	else:
+		return false
 
 
 func item_picked_up(item: InventoryItem):
