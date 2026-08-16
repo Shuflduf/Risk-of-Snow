@@ -57,7 +57,7 @@ data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.
 
 [sub_resource type="Resource" id="Resource_bhw3q"]
 script = ExtResource("10_yvyhn")
-tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)])
 sprite = ExtResource("11_g2qqk")
 metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
