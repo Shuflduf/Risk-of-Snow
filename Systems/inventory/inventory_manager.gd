@@ -37,7 +37,12 @@ func item_picked_up(item: InventoryItem) -> void:
 
 func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:
 	item.position = mouse_pos - Vector2(TILE_SIZE, TILE_SIZE) / 2.0
-	
+	for view in get_children():
+		if view is not InventoryView:
+			continue
+		
+		view.attempt_hover(item, mouse_pos)
+		
 	
 func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 	for view in get_children():
