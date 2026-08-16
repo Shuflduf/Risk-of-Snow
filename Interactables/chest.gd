@@ -9,7 +9,7 @@ func _ready() -> void:
 	if existing_inventories:
 		var inv = existing_inventories.get(inventory.id)
 		if inv:
-			inventory = inv
+			inventory = inv		
 		
 	primary_action_used.connect(open)
 

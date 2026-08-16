@@ -19,3 +19,5 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			InventoryManager.open(inventory)
 		else:
 			InventoryManager.close_all()
+	elif event.is_action_pressed(&"debug"):
+		inventory.items.set(Vector2i(0, 2), temp_item)

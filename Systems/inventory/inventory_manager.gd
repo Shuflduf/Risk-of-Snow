@@ -29,10 +29,14 @@ func close_all() -> void:
 func item_picked_up(item: InventoryItem) -> void:
 	var view = item.get_parent()
 	if view is InventoryView:
-		view.inventory.items.erase(item.tile_position())
+		if view.inventory.can_pickup_item(item):
+			view.inventory.items.erase(item.tile_position())
+		else:
+			item.being_dragged = false
+			return
 	item.top_level = true
 	item.reparent(self)
-	move_child(item, 0)
+	item.z_index = 10
 
 
 func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:

@@ -14,6 +14,7 @@ func build() -> InventoryItem:
 	#root.top_level = true
 	for tile in tiles:
 		var tex = TextureRect.new()
+		tex.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tex.texture = preload("res://icon.svg")
 		tex.size = Vector2(InventoryManager.TILE_SIZE, InventoryManager.TILE_SIZE)
