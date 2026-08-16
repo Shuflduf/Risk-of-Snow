@@ -9,7 +9,6 @@ size = Vector3(0.6, 0.2, 0.4)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix3wj"]
 albedo_texture = ExtResource("1_tk1tl")
 uv1_triplanar = true
-uv1_world_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_rvcmw"]
 material = SubResource("StandardMaterial3D_ix3wj")

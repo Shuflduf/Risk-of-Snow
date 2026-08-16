@@ -23,7 +23,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			InventoryManager.player = get_parent()
 			InventoryManager.show_held()
 			InventoryManager.open(inventory)
-			InventoryManager.dropped_items(item_pickup_handler.get_items())
+			InventoryManager.show_dropped_items(item_pickup_handler.get_items())
 		else:
 			InventoryManager.close_all()
 	elif event.is_action_pressed(&"debug"):

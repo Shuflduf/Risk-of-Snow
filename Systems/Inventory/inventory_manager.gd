@@ -33,11 +33,13 @@ func show_held() -> void:
 	add_child(preload("res://Systems/Inventory/held_item_slot.tscn").instantiate())
 
 
-func dropped_items(items: Array[DroppedItem]) -> void:
+func show_dropped_items(items: Array[DroppedItem]) -> void:
 	for drop in items:
+		var relative_pos = ((Vector2(drop.position.x - player.position.x, drop.position.z - player.position.z).rotated(player.rotation.y) * 0.3) + Vector2(0.5, 0.5)).clamp(Vector2.ZERO, Vector2.ONE)
+		var screen_pos = (relative_pos* get_window().get_viewport().get_visible_rect().size).clamp(Vector2.ZERO, get_window().get_viewport().get_visible_rect().size - Vector2(drop.data.bounds()) * TILE_SIZE)
 		var item = drop.data.build()
 		item.set_not_placed()
-		item.position = Vector2.ZERO
+		item.position = screen_pos 
 		item.picked_up.connect(dropped_item_picked_up.bind(drop, item))
 		item.picked_up.connect(item_picked_up.bind(item))
 		item.moved.connect(item_moved.bind(item))
@@ -70,14 +72,16 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 	for view in get_children():
 		if view is not InventoryView:
 			continue
-
+	
 		if view.attempt_place(item, mouse_pos):
 			return
 	
 	var new_drop = item.data.build_dropped()
-	new_drop.position = player.position
+	var relative_pos = ((mouse_pos / get_window().get_viewport().get_visible_rect().size) - Vector2(0.5, 0.5)) * 2.0
+	relative_pos *= 1.7
+	new_drop.position = player.position + Vector3(relative_pos.x, 0.0, relative_pos.y).rotated(Vector3.UP, player.rotation.y)
+	item.picked_up.connect(dropped_item_picked_up.bind(new_drop, item))
 	TransitionHandler.current_area.add_child(new_drop)
-	print("failed")
 
 
 func dropped_item_picked_up(drop: DroppedItem, item: InventoryItem) -> void:

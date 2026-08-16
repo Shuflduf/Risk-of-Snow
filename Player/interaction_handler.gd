@@ -34,3 +34,4 @@ func open_other_inventory(inventory: Inventory):
 	InventoryManager.show_held()
 	InventoryManager.open(backpack.inventory)
 	InventoryManager.open(inventory)
+	InventoryManager.show_dropped_items(backpack.item_pickup_handler.get_items())
