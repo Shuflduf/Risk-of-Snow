@@ -26,6 +26,9 @@ func close_all() -> void:
 		child.queue_free()
 
 
+func show_held() -> void:
+	add_child(preload("res://Systems/inventory/held_item_slot.tscn").instantiate())
+
 func item_picked_up(item: InventoryItem) -> void:
 	var view = item.get_parent()
 	if view is InventoryView:

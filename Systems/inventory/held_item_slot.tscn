@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bmncy1jktq57m"]
+
+[ext_resource type="Script" uid="uid://b600fmgh55op1" path="res://Systems/inventory/held_item_slot.gd" id="1_2ebnh"]
+
+[node name="HeldItemSlot" type="Control" unique_id=627910362]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ebnh")
+
+[node name="Panel" type="Panel" parent="." unique_id=1807081485]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
