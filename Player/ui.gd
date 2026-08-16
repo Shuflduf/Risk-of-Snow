@@ -4,18 +4,18 @@ extends Control
 @onready var primary_action_label: Label = %PrimaryActionLabel
 @onready var secondary_action_label: Label = %SecondaryActionLabel
 @onready var display_name_label: Label = %DisplayNameLabel
-@onready var held_item: TextureRect = %HeldItem
+@onready var equipped_item: TextureRect = %EquippedItem
 
 func _ready() -> void:
-	if PlayerData.equipped_item != null:
-		held_item.texture = PlayerData.equipped_item.sprite
+	_equipped_item_changed(PlayerData.equipped_item)
 	PlayerData.equipped_item_changed.connect(_equipped_item_changed)
+
 
 func _equipped_item_changed(new_item: ItemData) -> void:
 	if new_item != null:
-		held_item.texture = new_item.sprite
+		equipped_item.texture = new_item.sprite
 	else:
-		held_item.texture = null
+		equipped_item.texture = null
 
 
 func set_display_name_text(new_text: String):

@@ -27,7 +27,19 @@ func close_all() -> void:
 
 
 func show_held() -> void:
-	add_child(preload("res://Systems/inventory/held_item_slot.tscn").instantiate())
+	add_child(preload("res://Systems/Inventory/held_item_slot.tscn").instantiate())
+
+func dropped_items(items: Array[DroppedItem]) -> void:
+	for drop in items:
+		var item = drop.data.build()
+		item.top_level = true
+		item.position = Vector2.ZERO
+		item.picked_up.connect(dropped_item_picked_up.bind(drop, item))
+		item.picked_up.connect(item_picked_up.bind(item))
+		item.moved.connect(item_moved.bind(item))
+		item.dropped.connect(item_dropped.bind(item))
+		add_child(item)
+
 
 func item_picked_up(item: InventoryItem) -> void:
 	var view = item.get_parent()
@@ -57,4 +69,14 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 			continue
 		
 		view.attempt_place(item, mouse_pos)
+
+
+func dropped_item_picked_up(drop: DroppedItem, item: InventoryItem) -> void:
+	if drop == null:
+		return
+	drop.queue_free()
+	
+	for conn in item.picked_up.get_connections():
+		item.picked_up.disconnect(conn["callable"])
+	item.picked_up.connect(item_picked_up.bind(item))
 	

@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://Systems/snow_manager.gd" id="3_o5g07"]
 [ext_resource type="PackedScene" uid="uid://c2bjseagwvqvx" path="res://Player/ui.tscn" id="4_yg5iq"]
 [ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="5_e0c4o"]
-[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/inventory/inventory.gd" id="6_albhv"]
+[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="6_albhv"]
 [ext_resource type="Script" uid="uid://36ommleq48xn" path="res://Player/backpack.gd" id="6_o5g07"]
-[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/item_data.gd" id="8_yg5iq"]
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="8_yg5iq"]
 [ext_resource type="Texture2D" uid="uid://df340xssioxvw" path="res://Assets/Aseprite/sword.png" id="9_e0c4o"]
+[ext_resource type="Script" uid="uid://bqjpefpyj65a8" path="res://Player/item_pickup_handler.gd" id="10_v32f0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
 
@@ -133,6 +134,9 @@ tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 sprite = ExtResource("9_e0c4o")
 metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvcmw"]
+radius = 2.5
+
 [node name="OutsidePlayer" type="CharacterBody3D" unique_id=780108907 groups=["Player"]]
 collision_layer = 4
 script = ExtResource("1_8qpu3")
@@ -213,7 +217,17 @@ collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Backpack" type="Node3D" parent="." unique_id=516555380]
+[node name="Backpack" type="Node3D" parent="." unique_id=516555380 node_paths=PackedStringArray("item_pickup_handler")]
 script = ExtResource("6_o5g07")
 inventory = SubResource("Resource_8qpu3")
 temp_item = SubResource("Resource_o5g07")
+item_pickup_handler = NodePath("../ItemPickupHandler")
+
+[node name="ItemPickupHandler" type="Area3D" parent="." unique_id=1360223052]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("10_v32f0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPickupHandler" unique_id=777371131]
+shape = SubResource("SphereShape3D_rvcmw")

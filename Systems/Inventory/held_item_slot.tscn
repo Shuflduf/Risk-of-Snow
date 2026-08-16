@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmncy1jktq57m"]
 
-[ext_resource type="Script" uid="uid://b600fmgh55op1" path="res://Systems/inventory/held_item_slot.gd" id="1_2ebnh"]
+[ext_resource type="Script" uid="uid://b600fmgh55op1" path="res://Systems/Inventory/held_item_slot.gd" id="1_2ebnh"]
 
 [node name="HeldItemSlot" type="Control" unique_id=627910362]
 custom_minimum_size = Vector2(64, 64)

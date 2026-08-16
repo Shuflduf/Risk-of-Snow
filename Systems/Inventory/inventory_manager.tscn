@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mvda2v4cfgda"]
 
-[ext_resource type="Script" uid="uid://dwovsmwmmvp7m" path="res://Systems/inventory/inventory_manager.gd" id="1_mju6p"]
+[ext_resource type="Script" uid="uid://dwovsmwmmvp7m" path="res://Systems/Inventory/inventory_manager.gd" id="1_mju6p"]
 
 [node name="InventoryManager" type="HBoxContainer" unique_id=1543852333]
 z_index = 2

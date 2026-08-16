@@ -4,10 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://3jvnvl0k8wvx" path="res://Player/outside_player.tscn" id="2_1xon7"]
 [ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest.gd" id="7_853n0"]
 [ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="7_kh3qk"]
-[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/inventory/inventory.gd" id="8_8uemi"]
+[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="8_8uemi"]
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="8_lvqma"]
+[ext_resource type="PackedScene" uid="uid://dqplny1nmlp83" path="res://Systems/Inventory/dropped_item.tscn" id="9_e8tc1"]
 [ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
 [ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="10_yvyhn"]
+[ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="11_g2qqk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_yvyhn")
@@ -50,6 +53,12 @@ metadata/_custom_type_script = "uid://csbaujloxmsje"
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_853n0"]
 data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
+
+[sub_resource type="Resource" id="Resource_bhw3q"]
+script = ExtResource("10_yvyhn")
+tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+sprite = ExtResource("11_g2qqk")
+metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
 
@@ -118,3 +127,7 @@ material = SubResource("StandardMaterial3D_g4v7s")
 [node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="Chest" unique_id=1429349502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
 shape = SubResource("ConcavePolygonShape3D_853n0")
+
+[node name="DroppedItem" parent="." unique_id=862602607 instance=ExtResource("9_e8tc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 0)
+data = SubResource("Resource_bhw3q")

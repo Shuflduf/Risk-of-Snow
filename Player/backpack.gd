@@ -3,6 +3,7 @@ extends Node3D
 
 @export var inventory: Inventory
 @export var temp_item: ItemData
+@export var item_pickup_handler: ItemPickupHandler
 
 func _ready() -> void:
 	if PlayerData.inventory:
@@ -18,6 +19,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		if InventoryManager.none_shown():
 			InventoryManager.show_held()
 			InventoryManager.open(inventory)
+			InventoryManager.dropped_items(item_pickup_handler.get_items())
 		else:
 			InventoryManager.close_all()
 	elif event.is_action_pressed(&"debug"):

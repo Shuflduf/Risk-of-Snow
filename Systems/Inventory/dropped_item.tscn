@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dqplny1nmlp83"]
+
+[ext_resource type="Script" uid="uid://b0hf4ig0l3rex" path="res://Systems/Inventory/dropped_item.gd" id="1_ix3wj"]
+[ext_resource type="Texture2D" uid="uid://cmm1f5l0dqxvp" path="res://Assets/purple.png" id="1_tk1tl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvcmw"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix3wj"]
+albedo_texture = ExtResource("1_tk1tl")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvcmw"]
+material = SubResource("StandardMaterial3D_ix3wj")
+size = Vector3(0.4345703, 0.11425781, 0.2697754)
+
+[node name="DroppedItem" type="Area3D" unique_id=1589006256]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_ix3wj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=90889378]
+shape = SubResource("SphereShape3D_rvcmw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=348839149]
+mesh = SubResource("BoxMesh_rvcmw")

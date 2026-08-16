@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="3_r071s"]
 [ext_resource type="PackedScene" uid="uid://c2bjseagwvqvx" path="res://Player/ui.tscn" id="4_q1ncp"]
 [ext_resource type="Script" uid="uid://36ommleq48xn" path="res://Player/backpack.gd" id="5_q1ncp"]
-[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/inventory/inventory.gd" id="6_5jf8j"]
-[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/item_data.gd" id="7_u7ti5"]
+[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="6_5jf8j"]
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="7_u7ti5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
 
