@@ -22,6 +22,7 @@ TransitionHandler="*uid://dsm313advetf3"
 PlayerData="*uid://b4xnc08016ca8"
 WorldData="*uid://dq753qyhq1sk7"
 InventoryManager="*uid://mvda2v4cfgda"
+SnowServer="*uid://c5h060eowm7yv"
 
 [display]
 

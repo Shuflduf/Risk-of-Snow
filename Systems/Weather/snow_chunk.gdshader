@@ -1,9 +1,10 @@
 shader_type spatial;
 
 uniform sampler2D snow_depth_texture : hint_default_black;
+uniform float height_offset = 0.0;
 
 void vertex() {
-	VERTEX.y = 1.0 + texture(snow_depth_texture, UV).r;
+	VERTEX.y = height_offset + texture(snow_depth_texture, UV).r;
 	
 }
 
