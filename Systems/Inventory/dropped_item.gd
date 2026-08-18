@@ -1,4 +1,4 @@
 class_name DroppedItem
-extends Node3D
+extends RigidBody3D
 
 @export var data: ItemData

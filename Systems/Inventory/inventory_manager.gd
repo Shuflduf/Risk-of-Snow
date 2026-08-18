@@ -3,6 +3,8 @@ extends Control
 const TILE_SIZE = InventoryView.TILE_SIZE
 
 var player: Node3D
+var second_last_mouse_pos: Vector2
+var last_mouse_pos: Vector2
 
 func open(inventory: Inventory):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -63,6 +65,8 @@ func item_picked_up(item: InventoryItem) -> void:
 
 func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:
 	item.position = mouse_pos - Vector2(TILE_SIZE, TILE_SIZE) / 2.0
+	second_last_mouse_pos = last_mouse_pos
+	last_mouse_pos = mouse_pos
 	for view in get_children():
 		if view is not InventoryView:
 			continue
@@ -78,12 +82,21 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 		if view.attempt_place(item, mouse_pos):
 			return
 	
-	var new_drop = item.data.build_dropped()
+		
+	var new_drop: DroppedItem = item.data.build_dropped()
 	var relative_pos = ((mouse_pos / get_window().get_viewport().get_visible_rect().size) - Vector2(0.5, 0.5)) * 2.0
 	relative_pos *= 1.7
 	new_drop.position = player.position + Vector3(relative_pos.x, 0.0, relative_pos.y).rotated(Vector3.UP, player.rotation.y)
-	item.picked_up.connect(dropped_item_picked_up.bind(new_drop, item))
+	new_drop.rotation.y = randf_range(0.0, PI * 2.0)
+	print(mouse_pos, second_last_mouse_pos)
+	
 	TransitionHandler.current_area.add_child(new_drop)
+	var strength = clamp((second_last_mouse_pos.distance_to(mouse_pos) / get_process_delta_time()) * 0.001, 0.0, 5.0)
+	if strength > 3.0:
+		var dir = second_last_mouse_pos.direction_to(mouse_pos).rotated(-player.rotation.y)
+		new_drop.apply_impulse(Vector3(dir.x, 1.0, dir.y) * strength)
+		new_drop.apply_torque_impulse(Vector3.FORWARD * strength * 0.05)
+	item.picked_up.connect(dropped_item_picked_up.bind(new_drop, item))
 
 
 func dropped_item_picked_up(drop: DroppedItem, item: InventoryItem) -> void:
