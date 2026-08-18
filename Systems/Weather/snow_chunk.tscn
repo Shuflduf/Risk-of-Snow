@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d1lroq0shssmp"]
+
+[ext_resource type="Shader" uid="uid://clkdg5npcsdrw" path="res://Systems/Weather/snow_chunk.gdshader" id="1_khyrb"]
+[ext_resource type="Script" uid="uid://u1enqy8pasqm" path="res://Systems/Weather/snow_chunk.gd" id="1_uovf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uovf5"]
+render_priority = 0
+shader = ExtResource("1_khyrb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g2qqk"]
+material = SubResource("ShaderMaterial_uovf5")
+size = Vector2(32, 32)
+subdivide_width = 64
+subdivide_depth = 64
+
+[sub_resource type="Gradient" id="Gradient_g2qqk"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_owfj5"]
+gradient = SubResource("Gradient_g2qqk")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(36, 1, 36)
+
+[node name="SnowChunk" type="MeshInstance3D" unique_id=19788440]
+mesh = SubResource("PlaneMesh_g2qqk")
+script = ExtResource("1_uovf5")
+indent_tex = SubResource("GradientTexture2D_owfj5")
+
+[node name="EntityDetector" type="Area3D" parent="." unique_id=1195644730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.615448, 0)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntityDetector" unique_id=2124971922]
+shape = SubResource("BoxShape3D_rvcmw")

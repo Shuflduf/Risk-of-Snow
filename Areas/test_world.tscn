@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/chest.tscn" id="10_pxgmu"]
 [ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
 [ext_resource type="Resource" uid="uid://cv8dw32jcecow" path="res://Items/chest.tres" id="11_yvyhn"]
+[ext_resource type="PackedScene" uid="uid://d1lroq0shssmp" path="res://Systems/Weather/snow_chunk.tscn" id="12_g2qqk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_yvyhn")
@@ -108,3 +109,6 @@ data = ExtResource("11_yvyhn")
 [node name="Chest" parent="." unique_id=556528800 instance=ExtResource("10_pxgmu")]
 transform = Transform3D(-0.9659258, 0, -0.25881913, 0, 1, 0, 0.25881913, 0, -0.9659258, 8.354762, 0.2382223, 9.647927)
 inventory = SubResource("Resource_enxnb")
+
+[node name="SnowChunk" parent="." unique_id=19788440 instance=ExtResource("12_g2qqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -1.5, 9)
