@@ -1,6 +1,9 @@
 class_name Inventory
 extends Resource
 
+@warning_ignore("unused_signal")
+signal closed
+
 @export var id: StringName
 @export var size: Vector2i
 

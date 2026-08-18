@@ -8,7 +8,6 @@ extends Resource
 var data: Dictionary[StringName, Variant] = {}
 
 
-#
 func build() -> InventoryItem:
 	var root = InventoryItem.new()
 	root.data = self

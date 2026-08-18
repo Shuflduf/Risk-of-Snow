@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://budotg3ff7o1v"]
+
+[ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest.gd" id="1_enxnb"]
+[ext_resource type="PackedScene" uid="uid://b3met4hht7d0w" path="res://Assets/Blender/chest.glb" id="1_o08mj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(1.8000001, 0.7, 1.2)
+
+[node name="Chest" type="Area3D" unique_id=1925120728]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_enxnb")
+display_name = "Chest"
+primary_action = "Open"
+
+[node name="chest" parent="." unique_id=647377631 instance=ExtResource("1_o08mj")]
+
+[node name="Cube" parent="chest" index="0" unique_id=439762089]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.153446, -0.630627)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1665687572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -0.100000024)
+shape = SubResource("BoxShape3D_rvcmw")
+
+[editable path="chest"]

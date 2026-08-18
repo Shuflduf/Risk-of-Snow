@@ -1,10 +1,14 @@
 class_name InventoryView
 extends Control
 
+signal closed
+
 const TILE_SIZE = 64
 
 var inventory: Inventory
 
+func _ready() -> void:
+	closed.connect(inventory.closed.emit)
 
 static func build(inv: Inventory, per_item: Callable) -> InventoryView:
 	var new_self = InventoryView.new()

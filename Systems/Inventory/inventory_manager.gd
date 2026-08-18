@@ -26,6 +26,8 @@ func close_all() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	for child in get_children():
+		if child is InventoryView:
+			child.closed.emit()
 		child.queue_free()
 
 

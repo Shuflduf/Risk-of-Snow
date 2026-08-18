@@ -3,15 +3,14 @@
 [ext_resource type="Script" uid="uid://dpkp6wmpb3t72" path="res://Areas/test_world.gd" id="1_g2qqk"]
 [ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_yvyhn"]
 [ext_resource type="PackedScene" uid="uid://3jvnvl0k8wvx" path="res://Player/Outside/outside_player.tscn" id="2_1xon7"]
-[ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest.gd" id="7_853n0"]
 [ext_resource type="Texture2D" uid="uid://bqgb2d63ltyt8" path="res://Assets/white.png" id="7_kh3qk"]
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="8_8uemi"]
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="8_lvqma"]
 [ext_resource type="PackedScene" uid="uid://dqplny1nmlp83" path="res://Systems/Inventory/dropped_item.tscn" id="9_e8tc1"]
 [ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
+[ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/chest.tscn" id="10_pxgmu"]
 [ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
-[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="10_yvyhn"]
-[ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="11_g2qqk"]
+[ext_resource type="Resource" uid="uid://cv8dw32jcecow" path="res://Items/chest.tres" id="11_yvyhn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_yvyhn")
@@ -46,20 +45,11 @@ albedo_texture = ExtResource("9_gbkhh")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="Resource" id="Resource_853n0"]
+[sub_resource type="Resource" id="Resource_enxnb"]
 script = ExtResource("8_8uemi")
 id = &"chest"
 size = Vector2i(6, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_853n0"]
-data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
-
-[sub_resource type="Resource" id="Resource_bhw3q"]
-script = ExtResource("10_yvyhn")
-tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)])
-sprite = ExtResource("11_g2qqk")
-metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
 script = ExtResource("1_g2qqk")
@@ -111,25 +101,10 @@ material = SubResource("StandardMaterial3D_g4v7s")
 [node name="SpawnPosition" type="Marker3D" parent="Door" unique_id=989215401]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1)
 
-[node name="Chest" type="Area3D" parent="." unique_id=75248113]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 6.5)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("7_853n0")
-inventory = SubResource("Resource_853n0")
-display_name = "Chest"
-primary_action = "Open"
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Chest" unique_id=1031517865]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
-use_collision = true
-material = SubResource("StandardMaterial3D_g4v7s")
-
-[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="Chest" unique_id=1429349502]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
-shape = SubResource("ConcavePolygonShape3D_853n0")
-
 [node name="DroppedItem" parent="." unique_id=862602607 instance=ExtResource("9_e8tc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 0)
-data = SubResource("Resource_bhw3q")
+data = ExtResource("11_yvyhn")
+
+[node name="Chest" parent="." unique_id=556528800 instance=ExtResource("10_pxgmu")]
+transform = Transform3D(-0.9659258, 0, -0.25881913, 0, 1, 0, 0.25881913, 0, -0.9659258, 8.354762, 0.2382223, 9.647927)
+inventory = SubResource("Resource_enxnb")

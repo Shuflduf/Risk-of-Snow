@@ -3,7 +3,9 @@ extends Interactable
 @export var inventory: Inventory
 
 @onready var scene_path = owner.scene_file_path
+@onready var anim: AnimationPlayer = $chest/AnimationPlayer
 
+var is_open = false
 
 func _ready() -> void:
 	var existing_inventories = WorldData.inventories.get(scene_path)
@@ -11,13 +13,28 @@ func _ready() -> void:
 		var inv = existing_inventories.get(inventory.id)
 		if inv:
 			inventory = inv
-
+	
+	inventory.closed.connect(close)
 	primary_action_used.connect(open)
 
 
 func open(caller: InteractionHandler):
+	if is_open:
+		return
+		
+	await get_tree().physics_frame
+	is_open = true
+	anim.queue(&"Open")
+	
 	caller.open_other_inventory(inventory)
+	
 
+
+func close():
+	is_open = false
+	
+	anim.queue(&"Close")
+	
 
 func _exit_tree() -> void:
 	var existing_inventories: Dictionary[StringName, Inventory] = WorldData.inventories.get_or_add(

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cv8dw32jcecow"]
+
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="1_hlqte"]
+[ext_resource type="Texture2D" uid="uid://cilvqjt1877xp" path="res://Assets/Aseprite/chest.png" id="2_tselb"]
+
+[resource]
+script = ExtResource("1_hlqte")
+display_name = "Chest"
+tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1)])
+sprite = ExtResource("2_tselb")
+metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
