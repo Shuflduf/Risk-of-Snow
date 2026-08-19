@@ -7,8 +7,10 @@ const TILE_SIZE = 64
 
 var inventory: Inventory
 
+
 func _ready() -> void:
 	closed.connect(inventory.closed.emit)
+
 
 static func build(inv: Inventory, per_item: Callable) -> InventoryView:
 	var new_self = InventoryView.new()
@@ -56,8 +58,7 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 		#custom_minimum_size = item.size
 		inventory.items.set(item_pos, item.data)
 		return true
-	else:
-		return false
+	return false
 
 
 func reset_hovered():

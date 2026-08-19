@@ -1,10 +1,7 @@
 class_name ItemData
 extends Resource
 
-enum InsideOrOutside{
-	OUTSIDE,
-	INSIDE
-}
+enum InsideOrOutside { OUTSIDE, INSIDE }
 
 @export var display_name: String
 @export var tiles: Array[Vector2i] = []
@@ -42,7 +39,7 @@ func build() -> InventoryItem:
 func build_dropped() -> DroppedItem:
 	var root: DroppedItem = preload("res://Systems/Inventory/dropped_item.tscn").instantiate()
 	root.data = self
-	
+
 	return root
 
 

@@ -9,6 +9,7 @@ signal dropped(mouse_pos: Vector2)
 
 var being_dragged = false
 
+
 func _gui_input(event: InputEvent) -> void:
 	if (
 		event is InputEventMouseButton

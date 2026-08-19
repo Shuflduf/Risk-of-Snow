@@ -46,8 +46,9 @@ func can_pickup_item(item: InventoryItem) -> bool:
 			if Vector2i(tile.x + item_pos.x, current_y) in taken_tiles():
 				items = actual_items
 				return false
-			else:
-				current_y -= 1
+
+			current_y -= 1
+			continue
 
 	items = actual_items
 	return true

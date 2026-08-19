@@ -3,15 +3,17 @@ extends Node3D
 
 @export var ui: UI
 @export var backpack: Node3D
-@onready var raycast: RayCast3D = %RayCast3D
 
 var disabled = false:
 	get():
 		return PlayerData.equipped_item != null
 
+@onready var raycast: RayCast3D = %RayCast3D
+
+
 func _physics_process(_delta: float) -> void:
 	if disabled:
-		return 
+		return
 	var interactable: Interactable = raycast.get_collider()
 	if interactable != null and interactable is Interactable:
 		ui.set_display_name_text(interactable.display_name)
@@ -25,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if disabled:
-		return 
+		return
 	if event.is_action_pressed(&"primary_interact"):
 		var interactable: Interactable = raycast.get_collider()
 		if interactable != null and interactable is Interactable:

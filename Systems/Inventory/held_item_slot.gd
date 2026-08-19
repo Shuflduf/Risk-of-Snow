@@ -40,8 +40,7 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 			item.picked_up.disconnect(old_signal)
 		item.picked_up.connect(item_picked_up.bind(item))
 		return true
-	else:
-		return false
+	return false
 
 
 func item_picked_up(item: InventoryItem):

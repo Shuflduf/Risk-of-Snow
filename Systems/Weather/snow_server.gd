@@ -11,8 +11,10 @@ func _ready() -> void:
 	TransitionHandler.transition_started.connect(_on_transition_started)
 	add_child(tmp_image)
 
+
 func _on_transition_started():
 	tracked_bodies = {}
+
 
 func _physics_process(_delta: float) -> void:
 	for body: Node3D in tracked_bodies.keys():
