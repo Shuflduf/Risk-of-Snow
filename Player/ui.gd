@@ -19,16 +19,16 @@ func _equipped_item_changed(new_item: ItemData) -> void:
 		equipped_item.texture = null
 
 
-func set_display_name_text(new_text: String):
+func set_display_name_text(new_text: String) -> void:
 	display_name_label.visible = new_text != ""
 	display_name_label.text = new_text
 
 
-func set_primary_action_text(new_text: String):
+func set_primary_action_text(new_text: String) -> void:
 	primary_action_label.visible = new_text != ""
 	primary_action_label.text = "%s [F]" % new_text
 
 
-func set_secondary_action_text(new_text: String):
+func set_secondary_action_text(new_text: String) -> void:
 	secondary_action_label.visible = new_text != ""
 	secondary_action_label.text = "%s [G]" % new_text

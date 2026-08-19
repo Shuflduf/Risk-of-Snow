@@ -5,9 +5,9 @@ extends Node3D
 signal used_up
 
 
-func primary_action():
+func primary_action() -> void:
 	pass
 
 
-func secondary_action():
+func secondary_action() -> void:
 	pass

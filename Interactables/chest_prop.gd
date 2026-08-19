@@ -2,15 +2,15 @@ extends Interactable
 
 @export var inventory: Inventory
 
-var is_open = false
+var is_open: bool = false
 @onready var anim: AnimationPlayer = $chest/AnimationPlayer
 
 
 func _ready() -> void:
 	await get_tree().physics_frame
-	var existing_inventories = WorldData.inventories.get(WorldData.current_area.scene_file_path)
+	var existing_inventories: Variant = WorldData.inventories.get(WorldData.current_area.scene_file_path)
 	if existing_inventories:
-		var inv = existing_inventories.get(inventory.id)
+		var inv: Inventory = existing_inventories.get(inventory.id)
 		if inv:
 			inventory = inv
 
@@ -27,7 +27,7 @@ func _exit_tree() -> void:
 
 
 func placed_data() -> PlacedInteractableData:
-	var placed_interactable_data = PlacedInteractableData.new()
+	var placed_interactable_data: PlacedInteractableData = PlacedInteractableData.new()
 	placed_interactable_data.scene = load(scene_file_path)
 	placed_interactable_data.data.set(&"inventory", inventory)
 	placed_interactable_data.position = position
@@ -36,7 +36,7 @@ func placed_data() -> PlacedInteractableData:
 	return placed_interactable_data
 
 
-func open(caller: InteractionHandler):
+func open(caller: InteractionHandler) -> void:
 	if is_open:
 		return
 
@@ -47,13 +47,13 @@ func open(caller: InteractionHandler):
 	caller.open_other_inventory(inventory)
 
 
-func close():
+func close() -> void:
 	is_open = false
 
 	anim.queue(&"Close")
 
 
-func pickup(_caller: InteractionHandler):
+func pickup(_caller: InteractionHandler) -> void:
 	if is_open:
 		InventoryManager.close_all()
 	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)

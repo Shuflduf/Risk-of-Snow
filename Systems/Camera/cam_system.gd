@@ -1,15 +1,15 @@
 extends Node3D
 
-@export var sensitivity = 0.003
+@export var sensitivity: float = 0.003
 @export var look_margin: float
 
-@onready var max_x_rotation = PI / 2.0 - look_margin
+@onready var max_x_rotation:float = PI / 2.0 - look_margin
 @onready var cam: Camera3D = %Camera3D
 @onready var pivot: Node3D = $Pivot
 @onready var player: CharacterBody3D = get_parent()
 
 
-func set_cam_rotation(new_rot: Vector3):
+func set_cam_rotation(new_rot: Vector3) -> void:
 	player.rotation.y = new_rot.y
 	pivot.rotation.x = new_rot.x
 

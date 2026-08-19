@@ -24,7 +24,7 @@ func _ready() -> void:
 	TransitionHandler.transition_ended.connect(_on_transition_ended)
 
 
-func _on_transition_ended():
+func _on_transition_ended() -> void:
 	if placed_interactables.has(current_area.scene_file_path):
 		_remove_preplaced_interactables()
 	else:
@@ -44,7 +44,7 @@ func _on_transition_ended():
 		current_area.add_child(new_int)
 
 
-func _remove_preplaced_interactables():
+func _remove_preplaced_interactables() -> void:
 	for interactable: Interactable in current_area.get_tree().get_nodes_in_group(
 		&"PlaceableInteractable"
 	):
@@ -52,7 +52,7 @@ func _remove_preplaced_interactables():
 			interactable.queue_free()
 
 
-func _transition_preplaced_interactables():
+func _transition_preplaced_interactables() -> void:
 	for interactable: Interactable in current_area.get_tree().get_nodes_in_group(
 		&"PlaceableInteractable"
 	):

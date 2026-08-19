@@ -12,9 +12,9 @@ func _ready() -> void:
 	show()
 
 
-func primary_action():
+func primary_action() -> void:
 	var new_chest: Interactable = chest_prop.instantiate()
-	var new_inv = Inventory.new()
+	var new_inv: Inventory = Inventory.new()
 	new_inv.id = StringName(str(ResourceUID.create_id()))
 	new_inv.size = Vector2i(4, 6)
 	new_chest.inventory = new_inv

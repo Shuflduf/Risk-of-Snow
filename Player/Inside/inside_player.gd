@@ -18,5 +18,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func set_cam_rotation(new_rot: Vector3):
+func set_cam_rotation(new_rot: Vector3) -> void:
 	cam_system.set_cam_rotation(new_rot)

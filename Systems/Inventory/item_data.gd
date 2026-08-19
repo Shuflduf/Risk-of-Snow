@@ -15,20 +15,20 @@ var data: Dictionary[StringName, Variant] = {}
 
 
 func build() -> InventoryItem:
-	var root = InventoryItem.new()
+	var root: InventoryItem = InventoryItem.new()
 	root.data = self
 	root.z_index = 2
 	#root.set_anchors_preset(Control.PRESET_CENTER)
 	#root.top_level = true
 	for tile_pos in tiles:
-		var tile = Control.new()
+		var tile: Control = Control.new()
 		tile.size = Vector2(InventoryManager.TILE_SIZE, InventoryManager.TILE_SIZE)
 		tile.position = (
 			Vector2(tile_pos) * Vector2(InventoryManager.TILE_SIZE, InventoryManager.TILE_SIZE)
 		)
 		root.add_child(tile)
 
-	var tex = TextureRect.new()
+	var tex: TextureRect = TextureRect.new()
 	tex.texture = sprite
 	tex.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	root.add_child(tex)
@@ -44,7 +44,7 @@ func build_dropped() -> DroppedItem:
 
 
 func bounds() -> Vector2i:
-	var biggest = Vector2i(1, 1)
+	var biggest: Vector2i = Vector2i(1, 1)
 	for tile in tiles:
 		if tile.x + 1 > biggest.x:
 			biggest.x = tile.x + 1

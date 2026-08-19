@@ -7,7 +7,7 @@ signal dropped(mouse_pos: Vector2)
 
 @export var data: ItemData
 
-var being_dragged = false
+var being_dragged: bool = false
 
 
 func _gui_input(event: InputEvent) -> void:

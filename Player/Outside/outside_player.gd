@@ -19,12 +19,12 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector(&"left", &"right", &"forward", &"backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var effective_accel = ACCELERATION if is_on_floor() else AIR_ACCELERATION
+	var effective_accel: float = ACCELERATION if is_on_floor() else AIR_ACCELERATION
 	velocity.x = lerp(velocity.x, direction.x * SPEED, effective_accel * delta)
 	velocity.z = lerp(velocity.z, direction.z * SPEED, effective_accel * delta)
 
 	move_and_slide()
 
 
-func set_cam_rotation(new_rot: Vector3):
+func set_cam_rotation(new_rot: Vector3) -> void:
 	cam_system.set_cam_rotation(new_rot)

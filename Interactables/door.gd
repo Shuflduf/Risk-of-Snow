@@ -10,5 +10,5 @@ func _ready() -> void:
 	primary_action_used.connect(enter_room)
 
 
-func enter_room(_caller: InteractionHandler):
+func enter_room(_caller: InteractionHandler) -> void:
 	TransitionHandler.switch_to_scene(owner, target_scene, target_door_id)

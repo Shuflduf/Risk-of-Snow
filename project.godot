@@ -24,6 +24,10 @@ WorldData="*uid://dq753qyhq1sk7"
 InventoryManager="*uid://mvda2v4cfgda"
 SnowServer="*uid://c5h060eowm7yv"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+
 [display]
 
 window/stretch/mode="canvas_items"

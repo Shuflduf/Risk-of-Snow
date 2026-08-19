@@ -11,7 +11,7 @@ func _ready() -> void:
 	PlayerData.equipped_item_changed.connect(_on_equipped_item_changed)
 
 
-func _on_equipped_item_changed(new_item: ItemData):
+func _on_equipped_item_changed(new_item: ItemData) -> void:
 	if new_item == null or new_item.use_type == ItemData.InsideOrOutside.OUTSIDE:
 		if equipped_item:
 			equipped_item.queue_free()
@@ -25,7 +25,7 @@ func _on_equipped_item_changed(new_item: ItemData):
 	add_child(equipped_item)
 
 
-func _used_up():
+func _used_up() -> void:
 	PlayerData.equipped_item = null
 	_on_equipped_item_changed(null)
 

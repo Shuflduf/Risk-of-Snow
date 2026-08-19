@@ -13,13 +13,13 @@ func _ready() -> void:
 
 
 static func build(inv: Inventory, per_item: Callable) -> InventoryView:
-	var new_self = InventoryView.new()
+	var new_self: InventoryView = InventoryView.new()
 	new_self.inventory = inv
 
 	new_self.custom_minimum_size = inv.size * TILE_SIZE
 	for y in inv.size.y:
 		for x in inv.size.x:
-			var tile = Panel.new()
+			var tile: Panel = Panel.new()
 			tile.size = Vector2(TILE_SIZE, TILE_SIZE)
 			tile.position.x = x * TILE_SIZE
 			tile.position.y = y * TILE_SIZE
@@ -27,7 +27,7 @@ static func build(inv: Inventory, per_item: Callable) -> InventoryView:
 
 	for pos in inv.items:
 		var item_data: ItemData = inv.items[pos]
-		var item = item_data.build()
+		var item: InventoryItem = item_data.build()
 		item.set_placed()
 		item.position = pos * TILE_SIZE
 		per_item.call(item)
@@ -39,8 +39,8 @@ static func build(inv: Inventory, per_item: Callable) -> InventoryView:
 func attempt_hover(item: InventoryItem, mouse_pos: Vector2) -> void:
 	reset_hovered()
 
-	var tile_pos = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
-	var item_pos = inventory.get_valid_position(item, tile_pos)
+	var tile_pos: Vector2i = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
+	var item_pos: Variant = inventory.get_valid_position(item, tile_pos)
 	if item_pos != null:
 		for tile in item.data.tiles:
 			panel_at(tile + item_pos).modulate = Color.RED
@@ -49,8 +49,8 @@ func attempt_hover(item: InventoryItem, mouse_pos: Vector2) -> void:
 func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 	reset_hovered()
 
-	var tile_pos = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
-	var item_pos = inventory.get_valid_position(item, tile_pos)
+	var tile_pos: Vector2i = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
+	var item_pos: Variant = inventory.get_valid_position(item, tile_pos)
 	if item_pos != null:
 		item.reparent(self)
 		item.set_placed()
@@ -61,8 +61,8 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 	return false
 
 
-func reset_hovered():
-	var panels = get_children().filter(func(child: Node): return child is Panel)
+func reset_hovered() -> void:
+	var panels: Array[Node] = get_children().filter(func(child: Node) -> bool: return child is Panel)
 	for panel in panels:
 		panel.modulate = Color.WHITE
 
@@ -72,6 +72,6 @@ func panel_at(pos: Vector2i) -> Panel:
 	if not inventory.is_valid_position(pos):
 		return null
 
-	var panels = get_children().filter(func(child: Node): return child is Panel)
-	var idx = pos.x + pos.y * inventory.size.x
+	var panels: Array[Node] = get_children().filter(func(child: Node) -> bool: return child is Panel)
+	var idx: int = pos.x + pos.y * inventory.size.x
 	return panels[idx]

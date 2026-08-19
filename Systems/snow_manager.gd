@@ -16,7 +16,7 @@ var current_state: WeatherState = WeatherState.SPRINKLE
 @onready var clouds: GPUParticles3D = $Clouds
 
 
-func change_state(new_state: WeatherState):
+func change_state(new_state: WeatherState) -> void:
 	print(new_state)
 	current_state = new_state
 	match new_state:

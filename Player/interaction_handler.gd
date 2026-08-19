@@ -4,7 +4,7 @@ extends Node3D
 @export var ui: UI
 @export var backpack: Node3D
 
-var disabled = false:
+var disabled: bool = false:
 	get():
 		return PlayerData.equipped_item != null
 
@@ -38,7 +38,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			interactable.secondary_action_used.emit(self)
 
 
-func open_other_inventory(inventory: Inventory):
+func open_other_inventory(inventory: Inventory) -> void:
 	InventoryManager.close_all()
 	InventoryManager.show_held()
 	InventoryManager.open(backpack.inventory)

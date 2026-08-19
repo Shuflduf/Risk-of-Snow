@@ -7,12 +7,12 @@ var second_last_mouse_pos: Vector2
 var last_mouse_pos: Vector2
 
 
-func open(inventory: Inventory):
+func open(inventory: Inventory) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	var view = InventoryView.build(
+	var view: InventoryView = InventoryView.build(
 		inventory,
-		func(item: InventoryItem):
+		func(item: InventoryItem) -> void:
 			item.picked_up.connect(item_picked_up.bind(item))
 			item.moved.connect(item_moved.bind(item))
 			item.dropped.connect(item_dropped.bind(item))
@@ -40,7 +40,8 @@ func show_held() -> void:
 
 func show_dropped_items(items: Array[DroppedItem]) -> void:
 	for drop in items:
-		var relative_pos = (
+		# gdformat fucked this up dont worry about it
+		var relative_pos: Vector2 = (
 			(
 				(
 					(
@@ -55,14 +56,14 @@ func show_dropped_items(items: Array[DroppedItem]) -> void:
 			)
 			. clamp(Vector2.ZERO, Vector2.ONE)
 		)
-		var screen_pos = (relative_pos * get_window().get_viewport().get_visible_rect().size).clamp(
+		var screen_pos: Vector2 = (relative_pos * get_window().get_viewport().get_visible_rect().size).clamp(
 			Vector2.ZERO,
 			(
 				get_window().get_viewport().get_visible_rect().size
 				- Vector2(drop.data.bounds()) * TILE_SIZE
 			)
 		)
-		var item = drop.data.build()
+		var item: InventoryItem = drop.data.build()
 		item.set_not_placed()
 		item.position = screen_pos
 		item.picked_up.connect(dropped_item_picked_up.bind(drop, item))
@@ -73,7 +74,7 @@ func show_dropped_items(items: Array[DroppedItem]) -> void:
 
 
 func item_picked_up(item: InventoryItem) -> void:
-	var view = item.get_parent()
+	var view: Control = item.get_parent()
 	if view is InventoryView:
 		if view.inventory.can_pickup_item(item):
 			view.inventory.items.erase(item.tile_position())
@@ -104,7 +105,7 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 			return
 
 	var new_drop: DroppedItem = item.data.build_dropped()
-	var relative_pos = (
+	var relative_pos: Vector2 = (
 		((mouse_pos / get_window().get_viewport().get_visible_rect().size) - Vector2(0.5, 0.5))
 		* 2.0
 	)
@@ -117,11 +118,11 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 	print(mouse_pos, second_last_mouse_pos)
 
 	WorldData.current_area.add_child(new_drop)
-	var strength = clamp(
+	var strength: float = clamp(
 		(second_last_mouse_pos.distance_to(mouse_pos) / get_process_delta_time()) * 0.001, 0.0, 5.0
 	)
 	if strength > 3.0:
-		var dir = second_last_mouse_pos.direction_to(mouse_pos).rotated(-player.rotation.y)
+		var dir: Vector2 = second_last_mouse_pos.direction_to(mouse_pos).rotated(-player.rotation.y)
 		new_drop.apply_impulse(Vector3(dir.x, 1.0, dir.y) * strength)
 		new_drop.apply_torque_impulse(Vector3.FORWARD * strength * 0.05)
 	item.picked_up.connect(dropped_item_picked_up.bind(new_drop, item))
@@ -132,6 +133,6 @@ func dropped_item_picked_up(drop: DroppedItem, item: InventoryItem) -> void:
 		return
 	drop.queue_free()
 
-	for conn in item.picked_up.get_connections():
+	for conn: Dictionary in item.picked_up.get_connections():
 		item.picked_up.disconnect(conn["callable"])
 	item.picked_up.connect(item_picked_up.bind(item))
