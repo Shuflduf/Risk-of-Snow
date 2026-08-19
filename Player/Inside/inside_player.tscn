@@ -27,6 +27,7 @@ radius = 2.5
 
 [node name="InsidePlayer" type="CharacterBody3D" unique_id=533373955 groups=["Player"]]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_wnt5c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=573317726]

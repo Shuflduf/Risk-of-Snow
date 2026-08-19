@@ -90,7 +90,7 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 	new_drop.rotation.y = randf_range(0.0, PI * 2.0)
 	print(mouse_pos, second_last_mouse_pos)
 	
-	TransitionHandler.current_area.add_child(new_drop)
+	WorldData.current_area.add_child(new_drop)
 	var strength = clamp((second_last_mouse_pos.distance_to(mouse_pos) / get_process_delta_time()) * 0.001, 0.0, 5.0)
 	if strength > 3.0:
 		var dir = second_last_mouse_pos.direction_to(mouse_pos).rotated(-player.rotation.y)

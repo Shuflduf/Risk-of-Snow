@@ -3,12 +3,10 @@ extends Node3D
 @export var ui: UI
 @export var raycast: RayCast3D
 
-#@onready var spring_arm: SpringArm3D = $SpringArm3D
-
 var equipped_item: EquippedItem
-#var ghost: Node3D
 
 func _ready() -> void:
+	_on_equipped_item_changed(PlayerData.equipped_item)
 	PlayerData.equipped_item_changed.connect(_on_equipped_item_changed)
 	
 func _on_equipped_item_changed(new_item: ItemData):
@@ -21,8 +19,12 @@ func _on_equipped_item_changed(new_item: ItemData):
 	ui.set_primary_action_text(new_item.primary_action)
 	ui.set_secondary_action_text(new_item.secondary_action)
 	equipped_item = new_item.equipped.instantiate()
-	#equipped_item.rotation.y = PI
+	equipped_item.used_up.connect(_used_up)
 	add_child(equipped_item)
+
+func _used_up():
+	PlayerData.equipped_item = null
+	_on_equipped_item_changed(null)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if equipped_item == null:

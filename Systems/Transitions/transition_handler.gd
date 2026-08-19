@@ -1,8 +1,11 @@
 extends Control
 
+signal transition_started
+
 @onready var panel: Panel = $Panel
 
 func switch_to_scene(old_scene: Node, new_scene: String, door_id: StringName):
+	transition_started.emit()
 	old_scene.process_mode = Node.PROCESS_MODE_DISABLED
 
 	var tween = get_tree().create_tween()
