@@ -50,7 +50,6 @@ uv1_world_triplanar = true
 
 [sub_resource type="Resource" id="Resource_enxnb"]
 script = ExtResource("8_8uemi")
-id = &"chest"
 size = Vector2i(6, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 

@@ -32,6 +32,7 @@ func close_all() -> void:
 		if child is InventoryView:
 			child.closed.emit()
 		elif child is InventoryItem and child.being_dragged:
+			child.being_dragged = false
 			force_drop_item(last_mouse_pos, child)
 		child.queue_free()
 

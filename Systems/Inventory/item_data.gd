@@ -41,9 +41,6 @@ func build() -> InventoryItem:
 func build_dropped() -> DroppedItem:
 	var root: DroppedItem = preload("res://Systems/Inventory/dropped_item.tscn").instantiate()
 	root.data = self
-	if dropped_mesh != null:
-		root.load_scene(dropped_mesh)
-		root.scale_visuals(dropped_mesh_scale)
 
 	return root
 
