@@ -1,9 +1,17 @@
 class_name ItemData
 extends Resource
 
+enum InsideOrOutside{
+	OUTSIDE,
+	INSIDE
+}
+
 @export var display_name: String
 @export var tiles: Array[Vector2i] = []
 @export var sprite: Texture2D
+@export var use_type: InsideOrOutside = InsideOrOutside.OUTSIDE
+@export var primary_action: String
+@export var secondary_action: String
 
 var data: Dictionary[StringName, Variant] = {}
 

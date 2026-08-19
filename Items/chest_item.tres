@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChestItem" format=3 uid="uid://cv8dw32jcecow"]
+
+[ext_resource type="Script" uid="uid://bjtaxjjrab7n5" path="res://Items/chest_item.gd" id="1_36hxk"]
+[ext_resource type="Texture2D" uid="uid://cilvqjt1877xp" path="res://Assets/Aseprite/chest.png" id="2_nbnhs"]
+
+[resource]
+script = ExtResource("1_36hxk")
+display_name = "Chest"
+tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1)])
+sprite = ExtResource("2_nbnhs")
+use_type = 1
+primary_action = "Place"
+metadata/_custom_type_script = "uid://bjtaxjjrab7n5"

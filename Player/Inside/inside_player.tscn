@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2bjseagwvqvx" path="res://Player/ui.tscn" id="4_q1ncp"]
 [ext_resource type="Script" uid="uid://36ommleq48xn" path="res://Player/backpack.gd" id="5_q1ncp"]
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="6_5jf8j"]
-[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="7_u7ti5"]
+[ext_resource type="Script" uid="uid://daoqrb8k6pl77" path="res://Player/Inside/inside_held_item_user.gd" id="8_2xr8j"]
 [ext_resource type="Script" uid="uid://bqjpefpyj65a8" path="res://Player/item_pickup_handler.gd" id="8_as5sl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
@@ -20,8 +20,6 @@ size = Vector2i(4, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
 [sub_resource type="Resource" id="Resource_ln5hr"]
-script = ExtResource("7_u7ti5")
-tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2xr8j"]
@@ -82,3 +80,7 @@ script = ExtResource("8_as5sl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPickupHandler" unique_id=1944851100]
 shape = SubResource("SphereShape3D_2xr8j")
+
+[node name="InsideEquippedItemUser" type="Node3D" parent="." unique_id=1139701185 node_paths=PackedStringArray("ui")]
+script = ExtResource("8_2xr8j")
+ui = NodePath("../UI")

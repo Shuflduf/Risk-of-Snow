@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://budotg3ff7o1v"]
 
-[ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest.gd" id="1_enxnb"]
+[ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest_prop.gd" id="1_enxnb"]
 [ext_resource type="PackedScene" uid="uid://b3met4hht7d0w" path="res://Assets/Blender/chest.glb" id="1_o08mj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]

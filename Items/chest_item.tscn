@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://x7pwrsva0gyi"]
+
+[ext_resource type="Script" uid="uid://bjtaxjjrab7n5" path="res://Items/chest_item.gd" id="1_xxba5"]
+
+[node name="ChestItem" type="Node3D" unique_id=734879682]
+script = ExtResource("1_xxba5")
