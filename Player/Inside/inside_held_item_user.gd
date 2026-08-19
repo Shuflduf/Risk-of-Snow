@@ -31,7 +31,7 @@ func _used_up() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if equipped_item == null:
+	if equipped_item == null or not InventoryManager.none_shown():
 		return
 	if event.is_action_pressed(&"primary_interact"):
 		equipped_item.primary_action()

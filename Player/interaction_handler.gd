@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if disabled:
+	if disabled or not InventoryManager.none_shown():
 		return
 	if event.is_action_pressed(&"primary_interact"):
 		var interactable: Interactable = raycast.get_collider()
