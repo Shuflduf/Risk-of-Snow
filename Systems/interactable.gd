@@ -11,3 +11,6 @@ signal secondary_action_used(caller: InteractionHandler)
 @export var secondary_action: String = ""
 
 var id: int = ResourceUID.create_id()
+
+func placed_data() -> PlacedInteractableData:
+	return PlacedInteractableData.new()

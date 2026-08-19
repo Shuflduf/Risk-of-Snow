@@ -14,8 +14,7 @@ func primary_action():
 	WorldData.current_area.add_child(new_chest)
 	new_chest.global_transform = model.global_transform
 	
-	var placed_interactable_data = new_chest.placed_data()
-	WorldData.placed_interactables[WorldData.current_area.scene_file_path].set(new_chest.id, placed_interactable_data)
+	WorldData.placed_interactables[WorldData.current_area.scene_file_path].set(new_chest.id, new_chest.placed_data())
 	
 	used_up.emit()
 
