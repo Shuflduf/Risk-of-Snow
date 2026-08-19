@@ -7,6 +7,7 @@ extends Node3D
 
 
 func _ready() -> void:
+	InventoryManager.player = get_parent()
 	if PlayerData.inventory:
 		inventory = PlayerData.inventory
 	else:
@@ -20,7 +21,6 @@ func _exit_tree() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"inventory"):
 		if InventoryManager.none_shown():
-			InventoryManager.player = get_parent()
 			InventoryManager.show_held()
 			InventoryManager.open(inventory)
 			InventoryManager.show_dropped_items(item_pickup_handler.get_items())

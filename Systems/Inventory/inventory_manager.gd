@@ -31,6 +31,8 @@ func close_all() -> void:
 	for child: Node in get_children():
 		if child is InventoryView:
 			child.closed.emit()
+		elif child is InventoryItem and child.being_dragged:
+			force_drop_item(last_mouse_pos, child)
 		child.queue_free()
 
 
@@ -103,7 +105,11 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 
 		if view.attempt_place(item, mouse_pos):
 			return
-
+		
+	force_drop_item(mouse_pos, item)
+		
+	
+func force_drop_item(mouse_pos: Vector2, item: InventoryItem) -> void:
 	var new_drop: DroppedItem = item.data.build_dropped()
 	var relative_pos: Vector2 = (
 		((mouse_pos / get_window().get_viewport().get_visible_rect().size) - Vector2(0.5, 0.5))
@@ -115,7 +121,6 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 		+ Vector3(relative_pos.x, 0.0, relative_pos.y).rotated(Vector3.UP, player.rotation.y)
 	)
 	new_drop.rotation.y = randf_range(0.0, PI * 2.0)
-	print(mouse_pos, second_last_mouse_pos)
 
 	WorldData.current_area.add_child(new_drop)
 	var strength: float = clamp(
