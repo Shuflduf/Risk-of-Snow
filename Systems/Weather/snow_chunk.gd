@@ -12,13 +12,10 @@ func _ready() -> void:
 	m.material.set_shader_parameter(&"snow_depth_texture", depth_tex)
 	entity_detector.body_entered.connect(_on_body_entered)
 	SnowServer.update_snow.connect(_update_snow)
-	#entity_detector.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node3D):
 	SnowServer.tracked_bodies.set(body, body.position)
 
-#func _on_body_exited(body: Node3D):
-	#SnowServer.tracked_bodies.erase(body)
 
 func _update_snow(body: Node3D):
 	if not body in entity_detector.get_overlapping_bodies():
@@ -30,3 +27,4 @@ func _update_snow(body: Node3D):
 	print(rel_pos)
 	@warning_ignore("integer_division")
 	depth_tex.blit_rect(Rect2i(rel_pos.x - indent_size / 2, rel_pos.z - indent_size / 2, indent_size, indent_size), indent_tex)
+	SnowServer.tmp_image.texture = depth_tex

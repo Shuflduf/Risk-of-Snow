@@ -3,6 +3,10 @@ extends Node
 signal update_snow(body: Node3D)
 
 var tracked_bodies: Dictionary[Node3D, Vector3]
+var tmp_image: TextureRect
+func _ready() -> void:
+	tmp_image = TextureRect.new()
+	add_child(tmp_image)
 
 func _physics_process(_delta: float) -> void:
 	for body: Node3D in tracked_bodies.keys():
