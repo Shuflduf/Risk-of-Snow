@@ -85,6 +85,7 @@ func item_picked_up(item: InventoryItem) -> void:
 			item.being_dragged = false
 			return
 	item.reparent(self)
+	item.move_to_front()
 	item.set_not_placed()
 
 
