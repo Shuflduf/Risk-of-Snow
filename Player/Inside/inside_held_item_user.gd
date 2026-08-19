@@ -30,7 +30,7 @@ func _used_up() -> void:
 	_on_equipped_item_changed(null)
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if equipped_item == null:
 		return
 	if event.is_action_pressed(&"primary_interact"):

@@ -48,8 +48,7 @@ func _remove_preplaced_interactables() -> void:
 	for interactable: Interactable in current_area.get_tree().get_nodes_in_group(
 		&"PlaceableInteractable"
 	):
-		if not placed_interactables[current_area.scene_file_path].has(interactable.id):
-			interactable.queue_free()
+		interactable.queue_free()
 
 
 func _transition_preplaced_interactables() -> void:

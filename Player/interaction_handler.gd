@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 		ui.set_secondary_action_text("")
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if disabled:
 		return
 	if event.is_action_pressed(&"primary_interact"):

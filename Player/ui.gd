@@ -26,9 +26,9 @@ func set_display_name_text(new_text: String) -> void:
 
 func set_primary_action_text(new_text: String) -> void:
 	primary_action_label.visible = new_text != ""
-	primary_action_label.text = "%s [F]" % new_text
+	primary_action_label.text = "%s [LMB]" % new_text
 
 
 func set_secondary_action_text(new_text: String) -> void:
 	secondary_action_label.visible = new_text != ""
-	secondary_action_label.text = "%s [G]" % new_text
+	secondary_action_label.text = "%s [RMB]" % new_text
