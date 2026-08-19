@@ -1,7 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://343vlgrwr5wh"]
 
 [ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="1_buqrd"]
-[ext_resource type="PackedScene" uid="uid://b3met4hht7d0w" path="res://Assets/Blender/chest.glb" id="1_euox1"]
 [ext_resource type="PackedScene" uid="uid://d1ej5t1lyjsxb" path="res://Items/equipped_chest.tscn" id="1_nbnhs"]
 [ext_resource type="Texture2D" uid="uid://cilvqjt1877xp" path="res://Assets/Aseprite/chest.png" id="2_nbnhs"]
 
@@ -13,5 +12,4 @@ sprite = ExtResource("2_nbnhs")
 equipped = ExtResource("1_nbnhs")
 use_type = 1
 primary_action = "Place"
-dropped_mesh = ExtResource("1_euox1")
 metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"

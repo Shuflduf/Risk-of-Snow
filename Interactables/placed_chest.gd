@@ -43,7 +43,6 @@ func open(caller: InteractionHandler) -> void:
 	await get_tree().physics_frame
 	is_open = true
 	anim.queue(&"Open")
-
 	caller.open_other_inventory(inventory)
 
 

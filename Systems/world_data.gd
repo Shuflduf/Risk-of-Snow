@@ -37,7 +37,8 @@ func _on_transition_ended() -> void:
 			current_area.scene_file_path
 		][id]
 		var new_int: Interactable = interactable.scene.instantiate()
-		new_int.inventory = interactable.data[&"inventory"]
+		for key: StringName in interactable.data.keys():
+			new_int.set(key, interactable.data[key])
 		new_int.position = interactable.position
 		new_int.rotation = interactable.rotation
 		new_int.id = id

@@ -1,0 +1,17 @@
+extends Interactable
+
+func _ready() -> void:
+	secondary_action_used.connect(pickup)
+
+func placed_data() -> PlacedInteractableData:
+	var data: PlacedInteractableData= PlacedInteractableData.new()
+	data.position = position
+	data.rotation = rotation
+	data.scene = load(scene_file_path)
+	return data
+
+
+func pickup(_caller: InteractionHandler) -> void:
+	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)
+	PlayerData.equipped_item = load("res://Items/desk_item.tres")
+	queue_free()

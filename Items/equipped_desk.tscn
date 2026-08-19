@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://vvrufnawtt7e"]
+
+[ext_resource type="PackedScene" uid="uid://c8q3tolm51yl5" path="res://Assets/Blender/desk.glb" id="1_8wm0g"]
+[ext_resource type="Script" uid="uid://bbsnwfat1xmdu" path="res://Items/equipped_interactable.gd" id="1_iu8hx"]
+[ext_resource type="PackedScene" uid="uid://bmfsrguottgsl" path="res://Interactables/placed_desk.tscn" id="2_h35nj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(1.74, 0.5, 1.165)
+
+[node name="Desk" type="Node3D" unique_id=675449130]
+script = ExtResource("1_iu8hx")
+interactable = ExtResource("2_h35nj")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1903016359]
+collision_mask = 3
+shape = SubResource("BoxShape3D_rvcmw")
+spring_length = 3.0
+margin = 0.2
+
+[node name="Model" parent="SpringArm3D" unique_id=1104069445 instance=ExtResource("1_8wm0g")]
+unique_name_in_owner = true

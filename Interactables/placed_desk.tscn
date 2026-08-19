@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bmfsrguottgsl"]
+
+[ext_resource type="PackedScene" uid="uid://c8q3tolm51yl5" path="res://Assets/Blender/desk.glb" id="1_aquxb"]
+[ext_resource type="Script" uid="uid://dlkgq0u8r7ykc" path="res://Interactables/decorative_interactable.gd" id="1_dj0kq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(3.0009766, 1.3156738, 1.282959)
+
+[node name="PlacedDesk" type="Area3D" unique_id=472414893 groups=["PlaceableInteractable"]]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_dj0kq")
+display_name = "Desk"
+secondary_action = "Pickup"
+
+[node name="StaticBody#d" type="StaticBody3D" parent="." unique_id=2075382902]
+
+[node name="desk" parent="StaticBody#d" unique_id=1104069445 instance=ExtResource("1_aquxb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody#d" unique_id=84283026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.060668945, 0)
+shape = SubResource("BoxShape3D_rvcmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1560613929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.060668945, 0)
+shape = SubResource("BoxShape3D_rvcmw")
