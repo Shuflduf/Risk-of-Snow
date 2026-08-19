@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://vvrufnawtt7e" path="res://Items/equipped_desk.tscn" id="1_1pijn"]
 [ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="1_oqmc3"]
 [ext_resource type="PackedScene" uid="uid://c8q3tolm51yl5" path="res://Assets/Blender/desk.glb" id="1_yryxs"]
-[ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="3_yryxs"]
+[ext_resource type="Texture2D" uid="uid://b1byb8dutddxs" path="res://Assets/Aseprite/desk.png" id="4_yryxs"]
 
 [resource]
 script = ExtResource("1_oqmc3")
 display_name = "Desk"
 tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
-sprite = ExtResource("3_yryxs")
+sprite = ExtResource("4_yryxs")
 equipped = ExtResource("1_1pijn")
 use_type = 1
 primary_action = "Place"

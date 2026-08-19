@@ -1,5 +1,7 @@
 extends Interactable
 
+@export_file("*.tres") var item_data: String
+
 func _ready() -> void:
 	secondary_action_used.connect(pickup)
 
@@ -13,5 +15,5 @@ func placed_data() -> PlacedInteractableData:
 
 func pickup(_caller: InteractionHandler) -> void:
 	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)
-	PlayerData.equipped_item = load("res://Items/desk_item.tres")
+	PlayerData.equipped_item = load(item_data)
 	queue_free()

@@ -11,14 +11,15 @@ collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_dj0kq")
+item_data = "uid://ddh0snhqibtwf"
 display_name = "Desk"
 secondary_action = "Pickup"
 
-[node name="StaticBody#d" type="StaticBody3D" parent="." unique_id=2075382902]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2075382902]
 
-[node name="desk" parent="StaticBody#d" unique_id=1104069445 instance=ExtResource("1_aquxb")]
+[node name="desk" parent="StaticBody3D" unique_id=1104069445 instance=ExtResource("1_aquxb")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody#d" unique_id=84283026]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=84283026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.060668945, 0)
 shape = SubResource("BoxShape3D_rvcmw")
 
