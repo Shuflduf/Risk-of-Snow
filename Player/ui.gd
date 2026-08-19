@@ -25,7 +25,6 @@ func set_display_name_text(new_text: String):
 
 
 func set_primary_action_text(new_text: String):
-	print(new_text)
 	primary_action_label.visible = new_text != ""
 	primary_action_label.text = "%s [F]" % new_text
 

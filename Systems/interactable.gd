@@ -9,3 +9,5 @@ signal secondary_action_used(caller: InteractionHandler)
 @export var display_name: String = ""
 @export var primary_action: String = ""
 @export var secondary_action: String = ""
+
+var id: int = ResourceUID.create_id()

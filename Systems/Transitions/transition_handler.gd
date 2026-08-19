@@ -1,6 +1,7 @@
 extends Control
 
 signal transition_started
+signal transition_ended
 
 @onready var panel: Panel = $Panel
 
@@ -20,7 +21,7 @@ func load_next_scene(new_scene: String, door_id: StringName):
 	var new_area: Node3D = load(new_scene).instantiate()
 	WorldData.current_area = new_area
 	get_tree().root.add_child(new_area)
-	WorldData.place_interactables()
+	transition_ended.emit()
 	new_area.process_mode = Node.PROCESS_MODE_DISABLED
 
 	for door in new_area.get_tree().get_nodes_in_group(&"Door"):

@@ -29,12 +29,21 @@ func open(caller: InteractionHandler):
 	caller.open_other_inventory(inventory)
 	
 
-
 func close():
 	is_open = false
 	
 	anim.queue(&"Close")
+
+
+func placed_data() -> PlacedInteractableData:
+	var placed_interactable_data = PlacedInteractableData.new()
+	placed_interactable_data.scene = load(scene_file_path)
+	placed_interactable_data.data.set(&"inventory", inventory)
+	placed_interactable_data.position = position
+	placed_interactable_data.rotation = rotation
 	
+	return placed_interactable_data
+
 
 func _exit_tree() -> void:
 	var existing_inventories: Dictionary[StringName, Inventory] = WorldData.inventories.get_or_add(
