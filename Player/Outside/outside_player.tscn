@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="5_e0c4o"]
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="6_albhv"]
 [ext_resource type="Script" uid="uid://36ommleq48xn" path="res://Player/backpack.gd" id="6_o5g07"]
-[ext_resource type="Script" uid="uid://b4owiujlfylk6" path="res://Systems/Inventory/item_data_todo.gd" id="8_ur6it"]
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="8_yg5iq"]
 [ext_resource type="Texture2D" uid="uid://df340xssioxvw" path="res://Assets/Aseprite/sword.png" id="9_e0c4o"]
 [ext_resource type="Script" uid="uid://bqjpefpyj65a8" path="res://Player/item_pickup_handler.gd" id="10_v32f0"]
 
@@ -128,12 +128,12 @@ id = &"backpack"
 size = Vector2i(4, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
-[sub_resource type="Resource" id="Resource_wh10h"]
-script = ExtResource("8_ur6it")
+[sub_resource type="Resource" id="Resource_as5sl"]
+script = ExtResource("8_yg5iq")
 display_name = "Sword"
 tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 sprite = ExtResource("9_e0c4o")
-metadata/_custom_type_script = "uid://b4owiujlfylk6"
+metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rvcmw"]
 radius = 2.5
@@ -222,7 +222,7 @@ collide_with_bodies = false
 [node name="Backpack" type="Node3D" parent="." unique_id=516555380 node_paths=PackedStringArray("item_pickup_handler")]
 script = ExtResource("6_o5g07")
 inventory = SubResource("Resource_8qpu3")
-temp_item = SubResource("Resource_wh10h")
+temp_item = SubResource("Resource_as5sl")
 item_pickup_handler = NodePath("../ItemPickupHandler")
 
 [node name="ItemPickupHandler" type="Area3D" parent="." unique_id=1360223052]

@@ -81,6 +81,12 @@ script = ExtResource("8_as5sl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPickupHandler" unique_id=1944851100]
 shape = SubResource("SphereShape3D_2xr8j")
 
-[node name="InsideEquippedItemUser" type="Node3D" parent="." unique_id=1139701185 node_paths=PackedStringArray("ui")]
+[node name="InsideEquippedItemUser" type="Node3D" parent="." unique_id=1139701185 node_paths=PackedStringArray("ui", "raycast")]
 script = ExtResource("8_2xr8j")
 ui = NodePath("../UI")
+raycast = NodePath("../InteractionHandler/RayCast3D")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="InsideEquippedItemUser" unique_id=1658075514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+collision_mask = 3
+spring_length = 2.0
