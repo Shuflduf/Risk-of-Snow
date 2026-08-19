@@ -4,9 +4,9 @@ extends Resource
 @warning_ignore("unused_signal")
 signal closed
 
-@export var id: StringName
 @export var size: Vector2i
 
+var id: int = ResourceUID.create_id()
 var items: Dictionary[Vector2i, ItemData] = {}
 
 

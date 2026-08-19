@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b3met4hht7d0w" path="res://Assets/Blender/chest.glb" id="1_04pn6"]
 [ext_resource type="Script" uid="uid://bbsnwfat1xmdu" path="res://Items/equipped_chest.gd" id="1_yahyw"]
-[ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/chest_prop.tscn" id="2_pfa71"]
+[ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/placed_chest.tscn" id="2_pfa71"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
 size = Vector3(1.74, 0.5, 1.165)

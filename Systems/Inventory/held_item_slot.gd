@@ -26,7 +26,7 @@ func attempt_hover(_item: InventoryItem, mouse_pos: Vector2) -> void:
 
 func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 	var tile_pos: Vector2i = Vector2i(floor((mouse_pos - global_position) / TILE_SIZE))
-	if tile_pos == Vector2i(0, 0):
+	if tile_pos == Vector2i(0, 0) and PlayerData.equipped_item == null:
 		modulate = Color.WHITE
 		PlayerData.equipped_item = item.data
 		build_background(item.data)

@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://budotg3ff7o1v"]
 
-[ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/chest_prop.gd" id="1_enxnb"]
-[ext_resource type="PackedScene" uid="uid://b3met4hht7d0w" path="res://Assets/Blender/chest.glb" id="1_o08mj"]
+[ext_resource type="Script" uid="uid://cqe7774wbnr1a" path="res://Interactables/placed_chest.gd" id="1_36m6b"]
+[ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="2_17u12"]
+[ext_resource type="PackedScene" uid="uid://b3met4hht7d0w" path="res://Assets/Blender/chest.glb" id="2_44w68"]
+
+[sub_resource type="Resource" id="Resource_17u12"]
+resource_local_to_scene = true
+script = ExtResource("2_17u12")
+size = Vector2i(6, 4)
+metadata/_custom_type_script = "uid://csbaujloxmsje"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
 size = Vector3(1.8000001, 0.7, 1.2)
@@ -10,12 +17,13 @@ size = Vector3(1.8000001, 0.7, 1.2)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
-script = ExtResource("1_enxnb")
+script = ExtResource("1_36m6b")
+inventory = SubResource("Resource_17u12")
 display_name = "Chest"
 primary_action = "Open"
 secondary_action = "Pickup"
 
-[node name="chest" parent="." unique_id=647377631 instance=ExtResource("1_o08mj")]
+[node name="chest" parent="." unique_id=647377631 instance=ExtResource("2_44w68")]
 
 [node name="Cube" parent="chest" index="0" unique_id=1424406665]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.153446, -0.630627)

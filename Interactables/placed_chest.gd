@@ -20,8 +20,8 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	var existing_inventories: Dictionary[StringName, Inventory] = WorldData.inventories.get_or_add(
-		WorldData.current_area.scene_file_path, {} as Dictionary[StringName, Inventory]
+	var existing_inventories: Dictionary[int, Inventory] = WorldData.inventories.get_or_add(
+		WorldData.current_area.scene_file_path, {} as Dictionary[int, Inventory]
 	)
 	existing_inventories.set(inventory.id, inventory)
 
@@ -56,6 +56,14 @@ func close() -> void:
 func pickup(_caller: InteractionHandler) -> void:
 	if is_open:
 		InventoryManager.close_all()
+	
+	for data: ItemData in inventory.items.values():
+		var drop: DroppedItem = data.build_dropped()
+		drop.position = position
+		WorldData.current_area.add_child(drop)
+		drop.apply_impulse(Vector3(1.0, 3.0, 0.0).rotated(Vector3.UP, randf_range(0, PI * 2.0)))
+		drop.apply_torque_impulse(Vector3.UP * 0.1)
+		
 	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)
 	PlayerData.equipped_item = load("res://Items/chest_item.tres")
 	queue_free()

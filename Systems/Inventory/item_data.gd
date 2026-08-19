@@ -10,6 +10,8 @@ enum InsideOrOutside { OUTSIDE, INSIDE }
 @export var use_type: InsideOrOutside = InsideOrOutside.OUTSIDE
 @export var primary_action: String
 @export var secondary_action: String
+@export var dropped_mesh: PackedScene
+@export var dropped_mesh_scale: Vector3 = Vector3(0.3, 0.3, 0.3)
 
 var data: Dictionary[StringName, Variant] = {}
 
@@ -39,6 +41,9 @@ func build() -> InventoryItem:
 func build_dropped() -> DroppedItem:
 	var root: DroppedItem = preload("res://Systems/Inventory/dropped_item.tscn").instantiate()
 	root.data = self
+	if dropped_mesh != null:
+		root.load_scene(dropped_mesh)
+		root.scale_visuals(dropped_mesh_scale)
 
 	return root
 
