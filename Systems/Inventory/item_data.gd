@@ -20,6 +20,7 @@ func build() -> InventoryItem:
 	var root: InventoryItem = InventoryItem.new()
 	root.data = self
 	root.z_index = 2
+	root.tooltip_text = display_name
 	#root.set_anchors_preset(Control.PRESET_CENTER)
 	#root.top_level = true
 	for tile_pos: Vector2i in tiles:

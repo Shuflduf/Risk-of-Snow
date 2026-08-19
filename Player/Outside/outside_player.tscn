@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dj56vne4gjybl" path="res://Player/Outside/outside_player.gd" id="1_8qpu3"]
 [ext_resource type="Script" uid="uid://nqrtgptnl42n" path="res://Systems/Camera/cam_system.gd" id="2_albhv"]
+[ext_resource type="Script" uid="uid://c2lxln0bstt8m" path="res://Player/Outside/outside_equipped_item_user.gd" id="3_6qxib"]
 [ext_resource type="Script" uid="uid://c8omc6kqnhrvc" path="res://Systems/snow_manager.gd" id="3_o5g07"]
 [ext_resource type="PackedScene" uid="uid://c2bjseagwvqvx" path="res://Player/ui.tscn" id="4_yg5iq"]
 [ext_resource type="Script" uid="uid://dqlooklgmekyp" path="res://Player/interaction_handler.gd" id="5_e0c4o"]
@@ -124,7 +125,6 @@ turbulence_influence_max = 0.040000003
 
 [sub_resource type="Resource" id="Resource_8qpu3"]
 script = ExtResource("6_albhv")
-id = &"backpack"
 size = Vector2i(4, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
@@ -166,6 +166,15 @@ spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="CamSystem/Pivot/SpringArm3D" unique_id=857471001]
 unique_name_in_owner = true
+
+[node name="RayCast3D" type="RayCast3D" parent="CamSystem/Pivot/SpringArm3D/Camera3D" unique_id=1836191429]
+enabled = false
+target_position = Vector3(0, 0, -1)
+
+[node name="OutsideEquippedItemUser" type="Node3D" parent="CamSystem/Pivot" unique_id=1881653888 node_paths=PackedStringArray("ui", "raycast")]
+script = ExtResource("3_6qxib")
+ui = NodePath("../../../UI")
+raycast = NodePath("../SpringArm3D/Camera3D/RayCast3D")
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="." unique_id=1841832094]
 strength = -128.0
