@@ -25,7 +25,7 @@ func load_next_scene(new_scene: String, door_id: StringName) -> void:
 	transition_ended.emit()
 	new_area.process_mode = Node.PROCESS_MODE_DISABLED
 
-	for door in new_area.get_tree().get_nodes_in_group(&"Door"):
+	for door: Interactable in new_area.get_tree().get_nodes_in_group(&"Door"):
 		if door.door_id == door_id:
 			var player: Node3D = new_area.get_tree().get_first_node_in_group(&"Player")
 			player.global_position = door.spawn_position.global_position

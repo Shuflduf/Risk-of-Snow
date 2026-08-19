@@ -20,7 +20,7 @@ func build() -> InventoryItem:
 	root.z_index = 2
 	#root.set_anchors_preset(Control.PRESET_CENTER)
 	#root.top_level = true
-	for tile_pos in tiles:
+	for tile_pos: Vector2i in tiles:
 		var tile: Control = Control.new()
 		tile.size = Vector2(InventoryManager.TILE_SIZE, InventoryManager.TILE_SIZE)
 		tile.position = (
@@ -45,7 +45,7 @@ func build_dropped() -> DroppedItem:
 
 func bounds() -> Vector2i:
 	var biggest: Vector2i = Vector2i(1, 1)
-	for tile in tiles:
+	for tile: Vector2i in tiles:
 		if tile.x + 1 > biggest.x:
 			biggest.x = tile.x + 1
 		if tile.y + 1 > biggest.y:

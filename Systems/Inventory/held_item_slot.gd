@@ -55,7 +55,7 @@ func item_picked_up(item: InventoryItem) -> void:
 
 
 func build_background(data: ItemData = null) -> void:
-	for panel in get_children():
+	for panel: Node in get_children():
 		if panel is not Panel:
 			continue
 
@@ -70,7 +70,7 @@ func build_background(data: ItemData = null) -> void:
 		return
 
 	custom_minimum_size = data.bounds() * TILE_SIZE
-	for tile in data.tiles:
+	for tile: Vector2i in data.tiles:
 		var panel: Panel = Panel.new()
 		panel.size = Vector2(TILE_SIZE, TILE_SIZE)
 		panel.position.x = tile.x * TILE_SIZE

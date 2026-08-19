@@ -1,6 +1,6 @@
 extends Control
 
-const TILE_SIZE = InventoryView.TILE_SIZE
+const TILE_SIZE: int = InventoryView.TILE_SIZE
 
 var player: Node3D
 var second_last_mouse_pos: Vector2
@@ -28,7 +28,7 @@ func none_shown() -> bool:
 func close_all() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	for child in get_children():
+	for child: Node in get_children():
 		if child is InventoryView:
 			child.closed.emit()
 		child.queue_free()
@@ -39,7 +39,7 @@ func show_held() -> void:
 
 
 func show_dropped_items(items: Array[DroppedItem]) -> void:
-	for drop in items:
+	for drop: DroppedItem in items:
 		# gdformat fucked this up dont worry about it
 		var relative_pos: Vector2 = (
 			(
@@ -89,7 +89,7 @@ func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:
 	item.position = mouse_pos - Vector2(TILE_SIZE, TILE_SIZE) / 2.0
 	second_last_mouse_pos = last_mouse_pos
 	last_mouse_pos = mouse_pos
-	for view in get_children():
+	for view: Node in get_children():
 		if view is not InventoryView:
 			continue
 
@@ -97,7 +97,7 @@ func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:
 
 
 func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
-	for view in get_children():
+	for view: Node in get_children():
 		if view is not InventoryView:
 			continue
 

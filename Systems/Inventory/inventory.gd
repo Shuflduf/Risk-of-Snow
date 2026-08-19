@@ -28,7 +28,7 @@ func get_valid_position(item: InventoryItem, desired_position: Vector2i) -> Vari
 
 
 func can_place_item_at_pos(item: ItemData, pos: Vector2i) -> bool:
-	for item_tile_pos in item.tiles:
+	for item_tile_pos: Vector2i in item.tiles:
 		var tile_pos: Vector2i = item_tile_pos + pos
 		if !is_valid_position(tile_pos) or taken_tiles().has(tile_pos):
 			return false
@@ -40,7 +40,7 @@ func can_pickup_item(item: InventoryItem) -> bool:
 	var actual_items: Dictionary[Vector2i, ItemData] = items.duplicate()
 	var item_pos: Vector2i = item.tile_position()
 	items.erase(item_pos)
-	for tile in item.data.tiles:
+	for tile: Vector2i in item.data.tiles:
 		var current_y: int = item_pos.y + tile.y
 		while current_y >= 0:
 			if Vector2i(tile.x + item_pos.x, current_y) in taken_tiles():
@@ -61,9 +61,9 @@ func is_valid_position(tile_pos: Vector2i) -> bool:
 
 func taken_tiles() -> Array[Vector2i]:
 	var tiles: Array[Vector2i] = []
-	for pos in items:
+	for pos: Vector2i in items.keys():
 		var item: ItemData = items[pos]
-		for tile in item.tiles:
+		for tile: Vector2i in item.tiles:
 			tiles.append(tile + pos)
 
 	return tiles
