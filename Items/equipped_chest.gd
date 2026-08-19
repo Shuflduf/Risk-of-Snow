@@ -1,9 +1,14 @@
 extends EquippedItem
 
-
 @export var chest_prop: PackedScene
 
 @onready var model: Node3D = $SpringArm3D/chest
+
+func _ready() -> void:
+	hide()
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	show()
 
 func primary_action():
 	var new_chest: Interactable = chest_prop.instantiate()

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
 [ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/chest_prop.tscn" id="10_pxgmu"]
 [ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
-[ext_resource type="Resource" uid="uid://cv8dw32jcecow" path="res://Items/chest_item.tres" id="11_yvyhn"]
+[ext_resource type="Resource" uid="uid://343vlgrwr5wh" path="res://Items/chest_item.tres" id="11_yvyhn"]
 [ext_resource type="PackedScene" uid="uid://d1lroq0shssmp" path="res://Systems/Weather/snow_chunk.tscn" id="12_g2qqk"]
 [ext_resource type="Shader" uid="uid://clkdg5npcsdrw" path="res://Systems/Weather/snow_chunk.gdshader" id="13_wh10h"]
 [ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="14_qu3yk"]

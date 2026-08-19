@@ -28,6 +28,7 @@ func _on_transition_ended():
 	else:
 		placed_interactables.set(current_area.scene_file_path, {})
 		_transition_preplaced_interactables()
+		return
 		
 	
 	for id: int in placed_interactables[current_area.scene_file_path]:

@@ -16,7 +16,23 @@ func _ready() -> void:
 	
 	inventory.closed.connect(close)
 	primary_action_used.connect(open)
+	secondary_action_used.connect(pickup)
 
+
+func _exit_tree() -> void:
+	var existing_inventories: Dictionary[StringName, Inventory] = WorldData.inventories.get_or_add(
+		WorldData.current_area.scene_file_path, {} as Dictionary[StringName, Inventory]
+	)
+	existing_inventories.set(inventory.id, inventory)
+	
+func placed_data() -> PlacedInteractableData:
+	var placed_interactable_data = PlacedInteractableData.new()
+	placed_interactable_data.scene = load(scene_file_path)
+	placed_interactable_data.data.set(&"inventory", inventory)
+	placed_interactable_data.position = position
+	placed_interactable_data.rotation = rotation
+	
+	return placed_interactable_data
 
 func open(caller: InteractionHandler):
 	if is_open:
@@ -34,19 +50,9 @@ func close():
 	
 	anim.queue(&"Close")
 
-
-func placed_data() -> PlacedInteractableData:
-	var placed_interactable_data = PlacedInteractableData.new()
-	placed_interactable_data.scene = load(scene_file_path)
-	placed_interactable_data.data.set(&"inventory", inventory)
-	placed_interactable_data.position = position
-	placed_interactable_data.rotation = rotation
-	
-	return placed_interactable_data
-
-
-func _exit_tree() -> void:
-	var existing_inventories: Dictionary[StringName, Inventory] = WorldData.inventories.get_or_add(
-		WorldData.current_area.scene_file_path, {} as Dictionary[StringName, Inventory]
-	)
-	existing_inventories.set(inventory.id, inventory)
+func pickup(_caller: InteractionHandler):
+	if is_open:
+		InventoryManager.close_all()
+	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)
+	PlayerData.equipped_item = load("res://Items/chest_item.tres")
+	queue_free()

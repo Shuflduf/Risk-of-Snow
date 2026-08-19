@@ -13,10 +13,11 @@ monitoring = false
 script = ExtResource("1_enxnb")
 display_name = "Chest"
 primary_action = "Open"
+secondary_action = "Pickup"
 
 [node name="chest" parent="." unique_id=647377631 instance=ExtResource("1_o08mj")]
 
-[node name="Cube" parent="chest" index="0" unique_id=819516342]
+[node name="Cube" parent="chest" index="0" unique_id=1424406665]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.153446, -0.630627)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1665687572]
