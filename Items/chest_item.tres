@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="ChestItem" format=3 uid="uid://cv8dw32jcecow"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://343vlgrwr5wh"]
 
-[ext_resource type="Script" uid="uid://bjtaxjjrab7n5" path="res://Items/chest_item.gd" id="1_36hxk"]
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="1_buqrd"]
+[ext_resource type="PackedScene" uid="uid://d1ej5t1lyjsxb" path="res://Items/equipped_chest.tscn" id="1_nbnhs"]
 [ext_resource type="Texture2D" uid="uid://cilvqjt1877xp" path="res://Assets/Aseprite/chest.png" id="2_nbnhs"]
 
 [resource]
-script = ExtResource("1_36hxk")
+script = ExtResource("1_buqrd")
 display_name = "Chest"
 tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1)])
 sprite = ExtResource("2_nbnhs")
+equipped = ExtResource("1_nbnhs")
 use_type = 1
-primary_action = "Place"
-metadata/_custom_type_script = "uid://bjtaxjjrab7n5"
+primary_action = "Chest"
+metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"

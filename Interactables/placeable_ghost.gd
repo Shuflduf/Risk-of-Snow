@@ -1,8 +1,8 @@
-class_name PlaceableGhost
+class_name EquippedItem
 extends Node3D
 
-static func build(scene: PackedScene) -> PlaceableGhost:
-	var new_self = PlaceableGhost.new()
-	new_self.add_child(scene.instantiate())
-	
-	return new_self
+func primary_action():
+	pass
+
+func secondary_action():
+	pass

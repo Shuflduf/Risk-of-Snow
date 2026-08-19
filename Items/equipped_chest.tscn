@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d1ej5t1lyjsxb"]
+
+[ext_resource type="PackedScene" uid="uid://b3met4hht7d0w" path="res://Assets/Blender/chest.glb" id="1_04pn6"]
+[ext_resource type="Script" uid="uid://bbsnwfat1xmdu" path="res://Items/equipped_chest.gd" id="1_yahyw"]
+[ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/chest_prop.tscn" id="2_pfa71"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(1.74, 0.5, 1.165)
+
+[node name="Chest" type="Node3D" unique_id=296529532]
+script = ExtResource("1_yahyw")
+chest_prop = ExtResource("2_pfa71")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1903016359]
+collision_mask = 3
+shape = SubResource("BoxShape3D_rvcmw")
+spring_length = 3.0
+margin = 0.2
+
+[node name="chest" parent="SpringArm3D" unique_id=83250699 instance=ExtResource("1_04pn6")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

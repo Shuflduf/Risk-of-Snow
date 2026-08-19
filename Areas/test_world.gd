@@ -2,4 +2,4 @@ extends Node3D
 
 
 func _ready() -> void:
-	TransitionHandler.current_area = self
+	WorldData.current_area = self

@@ -8,3 +8,4 @@ extends Node
 #	]
 # ]
 var inventories: Dictionary[String, Dictionary] = {}
+var current_area: Node3D

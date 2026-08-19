@@ -1,9 +1,6 @@
-class_name TransitionHandlerClass
 extends Control
 
 @onready var panel: Panel = $Panel
-
-var current_area: Node3D
 
 func switch_to_scene(old_scene: Node, new_scene: String, door_id: StringName):
 	old_scene.process_mode = Node.PROCESS_MODE_DISABLED
@@ -18,7 +15,7 @@ func switch_to_scene(old_scene: Node, new_scene: String, door_id: StringName):
 
 func load_next_scene(new_scene: String, door_id: StringName):
 	var new_area: Node3D = load(new_scene).instantiate()
-	current_area = new_area
+	WorldData.current_area = new_area
 	get_tree().root.add_child(new_area)
 	new_area.process_mode = Node.PROCESS_MODE_DISABLED
 
