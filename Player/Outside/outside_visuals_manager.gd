@@ -9,8 +9,8 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if player.velocity.length_squared() > 0.1:
-		anim.play(&"Walk")
+	if player.velocity.length_squared() > 2.0:
+		anim.play(&"Run")
 		rotation.y = lerp_angle(
 			rotation.y,
 			atan2(-player.velocity.x, -player.velocity.z),
