@@ -1,6 +1,7 @@
 extends Interactable
 
 @export var inventory: Inventory
+@export_file("*.tres") var chest_item_path: String
 
 var is_open: bool = false
 @onready var anim: AnimationPlayer = $chest/AnimationPlayer
@@ -64,5 +65,5 @@ func pickup(_caller: InteractionHandler) -> void:
 		drop.apply_torque_impulse(Vector3.UP * 0.1)
 		
 	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)
-	PlayerData.equipped_item = load("res://Items/chest_item.tres")
+	PlayerData.equipped_item = load(chest_item_path)
 	queue_free()

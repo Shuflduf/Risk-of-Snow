@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="1_4qruw"]
 [ext_resource type="Texture2D" uid="uid://cn8ym25aibqtt" path="res://Assets/Aseprite/saturation_icon.png" id="2_bxrt6"]
+[ext_resource type="Texture2D" uid="uid://btsrb1la5gset" path="res://Assets/Aseprite/health_icon.png" id="2_d6uvt"]
 
 [sub_resource type="Gradient" id="Gradient_kt6p6"]
 offsets = PackedFloat32Array(0.17605634, 0.2535211)
@@ -110,20 +111,49 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="Control" type="Control" parent="." unique_id=314039044]
-custom_minimum_size = Vector2(128, 128)
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1105765771]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -128.0
+offset_top = -128.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="SaturationBar" type="TextureProgressBar" parent="Control" unique_id=508555794]
+[node name="Control2" type="Control" parent="VBoxContainer2" unique_id=1514481895]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="SaturationBar" type="TextureProgressBar" parent="VBoxContainer2/Control2" unique_id=2013699345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 74.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_bxrt6")
+texture_progress = SubResource("GradientTexture2D_4qruw")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/Control2" unique_id=564557513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d6uvt")
+
+[node name="Control" type="Control" parent="VBoxContainer2" unique_id=314039044]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="SaturationBar" type="TextureProgressBar" parent="VBoxContainer2/Control" unique_id=508555794]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -137,7 +167,7 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_bxrt6")
 texture_progress = SubResource("GradientTexture2D_4qruw")
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=321854880]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/Control" unique_id=321854880]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
