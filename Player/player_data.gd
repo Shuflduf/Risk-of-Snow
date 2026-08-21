@@ -3,6 +3,16 @@ extends Node
 signal equipped_item_changed(new_item: ItemData)
 signal saturation_changed(new_saturation: int)
 
+const MIN_RUN_SATURATION: int = 30
+const SATURATION_LEVELS: Array[Dictionary] = [
+	{ &"min": 0, &"col": Color("7a213a") },
+	{ &"min": 10, &"col": Color("e14141") },
+	{ &"min": 30, &"col": Color("ffbf36") },
+	{ &"min": 50, &"col": Color("fff275") },
+	{ &"min": 70, &"col": Color("83e04c") },
+	{ &"min": 90, &"col": Color("39855a") },
+]
+
 var inventory: Inventory
 var equipped_item: ItemData:
 	set(new_item):
@@ -27,5 +37,8 @@ func create_saturation_timer() -> void:
 	add_child(timer)
 	timer.one_shot = false
 	timer.timeout.connect(_on_saturation_timer_timeout)
-	timer.start(10.0)
+	timer.start(0.1)
 	
+
+func can_run() -> bool:
+	return saturation >= MIN_RUN_SATURATION

@@ -24,6 +24,13 @@ func _equipped_item_changed(new_item: ItemData) -> void:
 
 func _saturation_changed(saturation: int) -> void:
 	saturation_bar.value = saturation
+	var bar_tint: Color = PlayerData.SATURATION_LEVELS[0][&"col"]
+	for level: Dictionary[StringName, Variant] in PlayerData.SATURATION_LEVELS:
+		if saturation > level[&"min"]:
+			bar_tint = level[&"col"]
+		else:
+			break
+	saturation_bar.tint_progress = bar_tint
 
 func set_display_name_text(new_text: String) -> void:
 	display_name_label.visible = new_text != ""

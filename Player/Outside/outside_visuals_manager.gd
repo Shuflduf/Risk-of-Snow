@@ -20,8 +20,10 @@ func _process(delta: float) -> void:
 
 	if player.is_on_floor():
 		if moving:
-			anim.play(&"Run")
-			
+			if PlayerData.can_run():
+				anim.play(&"Run")
+			else:
+				anim.play(&"Walk")
 		else:
 			#anim.stop()
 			anim.play(&"Idle")
