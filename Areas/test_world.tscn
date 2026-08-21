@@ -8,10 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="8_lvqma"]
 [ext_resource type="PackedScene" uid="uid://dqplny1nmlp83" path="res://Systems/Inventory/dropped_item.tscn" id="9_e8tc1"]
 [ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
-[ext_resource type="Resource" uid="uid://dxurxaue1utho" path="res://Items/carpet_item.tres" id="9_wh10h"]
+[ext_resource type="Resource" uid="uid://dxurxaue1utho" path="res://Items/Definitions/carpet.tres" id="9_wh10h"]
 [ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/placed_chest.tscn" id="10_pxgmu"]
-[ext_resource type="Resource" uid="uid://ddh0snhqibtwf" path="res://Items/desk_item.tres" id="10_qu3yk"]
+[ext_resource type="Resource" uid="uid://ddh0snhqibtwf" path="res://Items/Definitions/desk.tres" id="10_qu3yk"]
 [ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
+[ext_resource type="Resource" uid="uid://cemb1v4fkv6um" path="res://Items/Definitions/bungus.tres" id="11_rcw8m"]
 [ext_resource type="PackedScene" uid="uid://d1lroq0shssmp" path="res://Systems/Weather/snow_chunk.tscn" id="12_g2qqk"]
 [ext_resource type="Shader" uid="uid://clkdg5npcsdrw" path="res://Systems/Weather/snow_chunk.gdshader" id="13_wh10h"]
 [ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="14_qu3yk"]
@@ -54,30 +55,30 @@ script = ExtResource("8_8uemi")
 size = Vector2i(6, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qu3yk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcw8m"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_wh10h")
 shader_parameter/snow_depth_texture = ExtResource("14_qu3yk")
 shader_parameter/height_offset = -0.3
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_rcw8m"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_kh3qk"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_qu3yk")
+material = SubResource("ShaderMaterial_rcw8m")
 size = Vector2(32, 32)
 subdivide_width = 64
 subdivide_depth = 64
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kh3qk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvqma"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_wh10h")
 shader_parameter/snow_depth_texture = ExtResource("14_qu3yk")
 shader_parameter/height_offset = -0.3
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_lvqma"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_gbkhh"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_kh3qk")
+material = SubResource("ShaderMaterial_lvqma")
 size = Vector2(32, 32)
 subdivide_width = 64
 subdivide_depth = 64
@@ -140,14 +141,18 @@ data = ExtResource("9_wh10h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 2)
 data = ExtResource("10_qu3yk")
 
+[node name="BungusItem" parent="." unique_id=246039537 instance=ExtResource("9_e8tc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 4)
+data = ExtResource("11_rcw8m")
+
 [node name="Chest" parent="." unique_id=556528800 instance=ExtResource("10_pxgmu")]
 transform = Transform3D(-0.9659258, 0, -0.25881913, 0, 1, 0, 0.25881913, 0, -0.9659258, 8.354762, 0.2382223, 9.647927)
 inventory = SubResource("Resource_enxnb")
 
 [node name="SnowChunk" parent="." unique_id=19788440 instance=ExtResource("12_g2qqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 9)
-mesh = SubResource("PlaneMesh_rcw8m")
+mesh = SubResource("PlaneMesh_kh3qk")
 
 [node name="SnowChunk2" parent="." unique_id=584522216 instance=ExtResource("12_g2qqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 41)
-mesh = SubResource("PlaneMesh_lvqma")
+mesh = SubResource("PlaneMesh_gbkhh")

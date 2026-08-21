@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func _on_equipped_item_changed(new_item: ItemData) -> void:
-	if new_item == null or new_item.use_type == ItemData.InsideOrOutside.OUTSIDE:
+	if new_item == null or new_item.use_type == ItemData.Location.OUTSIDE:
 		if equipped_item:
 			equipped_item.queue_free()
 		return

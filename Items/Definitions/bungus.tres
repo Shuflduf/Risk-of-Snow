@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cemb1v4fkv6um"]
+
+[ext_resource type="PackedScene" uid="uid://haf37cdptku0" path="res://Assets/Blender/bungus.glb" id="1_5q1ag"]
+[ext_resource type="PackedScene" uid="uid://c4ldgy3w7eqcq" path="res://Items/Equipped/bungus.tscn" id="2_fsakp"]
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="3_p0rrx"]
+[ext_resource type="Texture2D" uid="uid://dfeynkdbsx1vn" path="res://Assets/Aseprite/bungus.png" id="4_wygid"]
+
+[resource]
+script = ExtResource("3_p0rrx")
+display_name = "Bustling Fungus"
+tiles = Array[Vector2i]([Vector2i(0, 0)])
+sprite = ExtResource("4_wygid")
+equipped = ExtResource("2_fsakp")
+primary_action = "Throw"
+dropped_mesh = ExtResource("1_5q1ag")
+dropped_mesh_scale = Vector3(1.5, 1.5, 1.5)
+metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"

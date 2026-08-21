@@ -1,13 +1,13 @@
 class_name ItemData
 extends Resource
 
-enum InsideOrOutside { OUTSIDE, INSIDE }
+enum Location { OUTSIDE, INSIDE, EVERYWHERE }
 
 @export var display_name: String
 @export var tiles: Array[Vector2i] = []
 @export var sprite: Texture2D
 @export var equipped: PackedScene
-@export var use_type: InsideOrOutside = InsideOrOutside.OUTSIDE
+@export var use_type: Location = Location.EVERYWHERE
 @export var primary_action: String
 @export var secondary_action: String
 @export var dropped_mesh: PackedScene

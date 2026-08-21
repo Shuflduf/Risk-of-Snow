@@ -37,7 +37,7 @@ func create_saturation_timer() -> void:
 	add_child(timer)
 	timer.one_shot = false
 	timer.timeout.connect(_on_saturation_timer_timeout)
-	timer.start(0.1)
+	timer.start(10.0)
 	
 
 func can_run() -> bool:

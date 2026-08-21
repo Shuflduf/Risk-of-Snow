@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c4ldgy3w7eqcq"]
+
+[ext_resource type="Script" uid="uid://b6feqe7g1gxl8" path="res://Items/Equipped/bungus.gd" id="1_0scev"]
+[ext_resource type="Script" uid="uid://cp08uf3ltpixv" path="res://Items/Equipped/bungus_thrown.gd" id="2_8lpcw"]
+[ext_resource type="PackedScene" uid="uid://haf37cdptku0" path="res://Assets/Blender/bungus.glb" id="2_a355t"]
+[ext_resource type="PackedScene" uid="uid://4ec8gcjkxwa5" path="res://Items/Equipped/bungus_field.tscn" id="3_mk3em"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a355t"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvcmw"]
+radius = 0.19515507
+
+[node name="EquippedBungus" type="Node3D" unique_id=2099760427]
+script = ExtResource("1_0scev")
+
+[node name="Bomb" type="RigidBody3D" parent="." unique_id=712573618]
+top_level = true
+visible = false
+collision_layer = 0
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_a355t")
+freeze = true
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("2_8lpcw")
+field = ExtResource("3_mk3em")
+
+[node name="bungus" parent="Bomb" unique_id=658937468 instance=ExtResource("2_a355t")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bomb" unique_id=818995646]
+shape = SubResource("SphereShape3D_rvcmw")

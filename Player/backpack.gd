@@ -11,7 +11,7 @@ func _ready() -> void:
 	if PlayerData.inventory:
 		inventory = PlayerData.inventory
 	else:
-		inventory.items.set(Vector2i(0, 2), temp_item)
+		inventory.items.set(Vector2i(0, 4), temp_item)
 
 
 func _exit_tree() -> void:

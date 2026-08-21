@@ -1,7 +1,8 @@
 extends Node3D
 
 @export var ui: UI
-@export var raycast: RayCast3D
+@export var camera_raycast: RayCast3D
+@export var player_raycast: RayCast3D
 
 var equipped_item: EquippedItem
 
@@ -11,7 +12,7 @@ func _ready() -> void:
 
 
 func _on_equipped_item_changed(new_item: ItemData) -> void:
-	if new_item == null or new_item.use_type == ItemData.InsideOrOutside.INSIDE:
+	if new_item == null or new_item.use_type == ItemData.Location.INSIDE:
 		if equipped_item:
 			equipped_item.queue_free()
 		return
@@ -41,5 +42,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	rotation.x = raycast.global_rotation.x + PI
+	rotation.x = camera_raycast.global_rotation.x + PI
 	rotation.z = PI
