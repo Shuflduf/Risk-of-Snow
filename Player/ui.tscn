@@ -14,6 +14,26 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = SubResource("GradientTexture2D_ud3vi")
 
+[sub_resource type="Gradient" id="Gradient_4qruw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.48963732, 0.5984456)
+colors = PackedColorArray(0, 0, 0, 0, 0.5354209, 0.5354209, 0.5354209, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bxrt6"]
+gradient = SubResource("Gradient_4qruw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_d6uvt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.4015544, 0.6968912)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4qruw"]
+gradient = SubResource("Gradient_d6uvt")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="UI" type="Control" unique_id=1204069218]
 layout_mode = 3
 anchors_preset = 15
@@ -88,3 +108,20 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
+
+[node name="SaturationBar" type="TextureProgressBar" parent="." unique_id=508555794]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+value = 74.0
+fill_mode = 5
+texture_under = SubResource("GradientTexture2D_bxrt6")
+texture_progress = SubResource("GradientTexture2D_4qruw")

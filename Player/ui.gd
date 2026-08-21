@@ -5,11 +5,14 @@ extends Control
 @onready var secondary_action_label: Label = %SecondaryActionLabel
 @onready var display_name_label: Label = %DisplayNameLabel
 @onready var equipped_item: TextureRect = %EquippedItem
+@onready var saturation_bar: TextureProgressBar = %SaturationBar
 
 
 func _ready() -> void:
 	_equipped_item_changed(PlayerData.equipped_item)
+	_saturation_changed(PlayerData.saturation)
 	PlayerData.equipped_item_changed.connect(_equipped_item_changed)
+	PlayerData.saturation_changed.connect(_saturation_changed)
 
 
 func _equipped_item_changed(new_item: ItemData) -> void:
@@ -18,6 +21,9 @@ func _equipped_item_changed(new_item: ItemData) -> void:
 	else:
 		equipped_item.texture = null
 
+
+func _saturation_changed(saturation: int) -> void:
+	saturation_bar.value = saturation
 
 func set_display_name_text(new_text: String) -> void:
 	display_name_label.visible = new_text != ""
