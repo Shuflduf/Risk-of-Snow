@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d1lroq0shssmp" path="res://Systems/Weather/snow_chunk.tscn" id="12_g2qqk"]
 [ext_resource type="Shader" uid="uid://clkdg5npcsdrw" path="res://Systems/Weather/snow_chunk.gdshader" id="13_wh10h"]
 [ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="14_qu3yk"]
+[ext_resource type="PackedScene" uid="uid://cspdbbv8lg116" path="res://Assets/Blender/stone_golem.glb" id="17_kh3qk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_yvyhn")
@@ -30,7 +31,7 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 fog_enabled = true
 fog_light_color = Color(0.90327996, 0.9133536, 0.9290344, 1)
-fog_density = 0.02
+fog_density = 0.04
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsnr4"]
 albedo_texture = ExtResource("7_kh3qk")
@@ -55,30 +56,30 @@ script = ExtResource("8_8uemi")
 size = Vector2i(6, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcw8m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kh3qk"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_wh10h")
 shader_parameter/snow_depth_texture = ExtResource("14_qu3yk")
 shader_parameter/height_offset = -0.3
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_kh3qk"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_lvqma"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_rcw8m")
+material = SubResource("ShaderMaterial_kh3qk")
 size = Vector2(32, 32)
 subdivide_width = 64
 subdivide_depth = 64
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvqma"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbkhh"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_wh10h")
 shader_parameter/snow_depth_texture = ExtResource("14_qu3yk")
 shader_parameter/height_offset = -0.3
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_gbkhh"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_vj2cq"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_lvqma")
+material = SubResource("ShaderMaterial_gbkhh")
 size = Vector2(32, 32)
 subdivide_width = 64
 subdivide_depth = 64
@@ -151,8 +152,11 @@ inventory = SubResource("Resource_enxnb")
 
 [node name="SnowChunk" parent="." unique_id=19788440 instance=ExtResource("12_g2qqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 9)
-mesh = SubResource("PlaneMesh_kh3qk")
+mesh = SubResource("PlaneMesh_lvqma")
 
 [node name="SnowChunk2" parent="." unique_id=584522216 instance=ExtResource("12_g2qqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 41)
-mesh = SubResource("PlaneMesh_gbkhh")
+mesh = SubResource("PlaneMesh_vj2cq")
+
+[node name="stone_golem" parent="." unique_id=472441086 instance=ExtResource("17_kh3qk")]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -23, 2.4115458, 6)
