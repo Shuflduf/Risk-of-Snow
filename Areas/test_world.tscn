@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d1lroq0shssmp" path="res://Systems/Weather/snow_chunk.tscn" id="12_g2qqk"]
 [ext_resource type="Shader" uid="uid://clkdg5npcsdrw" path="res://Systems/Weather/snow_chunk.gdshader" id="13_wh10h"]
 [ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="14_qu3yk"]
-[ext_resource type="PackedScene" uid="uid://cspdbbv8lg116" path="res://Assets/Blender/stone_golem.glb" id="17_kh3qk"]
+[ext_resource type="PackedScene" uid="uid://5eev3jn6j5y8" path="res://Entities/golem.tscn" id="17_kh3qk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_yvyhn")
@@ -158,5 +158,5 @@ mesh = SubResource("PlaneMesh_lvqma")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 41)
 mesh = SubResource("PlaneMesh_vj2cq")
 
-[node name="stone_golem" parent="." unique_id=472441086 instance=ExtResource("17_kh3qk")]
-transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -23, 2.4115458, 6)
+[node name="Golem" parent="." unique_id=934301839 instance=ExtResource("17_kh3qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, 0)
