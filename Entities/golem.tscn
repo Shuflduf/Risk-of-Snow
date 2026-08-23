@@ -13,53 +13,14 @@ script = ExtResource("1_cpc0h")
 
 [node name="Mesh" parent="." unique_id=364168832 instance=ExtResource("2_ofig3")]
 
-[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(364168832, 1740168682) index="0" unique_id=1234379529]
-bones/0/position = Vector3(0.97021586, -2.5634878, 0.16064811)
-bones/0/rotation = Quaternion(0.49999985, 0.5000002, 0.5000001, 0.4999999)
-bones/2/position = Vector3(-0.97021586, -2.5634878, 0.16064811)
-bones/2/rotation = Quaternion(-0.49999985, 0.5000002, 0.5000001, -0.4999999)
-bones/4/position = Vector3(-0.010829997, 0.33624086, 1.3342718e-08)
-bones/4/rotation = Quaternion(-9.303661e-05, -0.009644863, -0.009644863, 0.9999071)
-bones/5/rotation = Quaternion(-0.006084411, 0.0074841394, -0.63078684, 0.7758962)
-bones/7/rotation = Quaternion(7.5482156e-08, -8.198713e-08, -0.22817403, 0.9736204)
-bones/8/rotation = Quaternion(0.0062276605, 0.007365324, 0.6456363, 0.76358414)
-bones/9/rotation = Quaternion(1.9117957e-07, -8.663532e-08, 0.65159017, 0.7585713)
-bones/11/rotation = Quaternion(9.30321e-05, 0.009644865, 0.009644866, 0.9999071)
-bones/14/rotation = Quaternion(-0.64473265, 0.046318624, 0.060706384, 0.7605847)
-bones/15/rotation = Quaternion(1.8290261e-07, 9.862729e-09, -0.22084159, 0.97530967)
-bones/16/rotation = Quaternion(0.45328996, -0.5427046, 0.45328996, 0.5427046)
-bones/17/rotation = Quaternion(-0.64317465, -0.04764175, -0.062017743, 0.76171553)
-bones/18/rotation = Quaternion(1.8369688e-07, -2.9647325e-09, 0.22084099, 0.97530985)
+[node name="Head" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(364168832, 597314174) index="4" unique_id=1442469619]
+transform = Transform3D(0.9999998, -3.203695e-09, 5.5879354e-09, 4.0727173e-09, 0.9999999, 8.96398e-09, -7.450581e-09, -8.993084e-09, 0.99999994, -0.010829995, 1.458909, 3.1748755e-09)
 
-[node name="Forearm_L" parent="Mesh/Armature/Skeleton3D" index="0" unique_id=1380534085]
-transform = Transform3D(-0.99248564, -0.12236118, -2.398101e-07, 0.12236118, -0.99248564, 1.7336707e-07, -2.5835067e-07, 1.4315607e-07, 0.99999994, 2.1596255, 0.3129084, 1.5916643e-07)
+[node name="Foot_R" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(364168832, 597314174) index="8" unique_id=371026539]
+transform = Transform3D(-6.6817216e-07, 2.2963178e-09, -1.0000002, -0.12534459, -0.99211323, 7.933042e-08, -0.9921134, 0.1253446, 6.6178063e-07, -0.9918758, -1.4352458, -0.14807746)
 
-[node name="Shoulder_L_001" parent="Mesh/Armature/Skeleton3D" index="1" unique_id=657899891]
-transform = Transform3D(-0.9435076, 0.33135092, -3.8663484e-07, -0.33135095, -0.9435077, 5.6760285e-09, -3.619386e-07, 1.3347018e-07, 0.99999994, 1.647398, 1.7714546, -4.716192e-08)
-
-[node name="Forearm_R" parent="Mesh/Armature/Skeleton3D" index="2" unique_id=1425201052]
-transform = Transform3D(-0.99248546, 0.1223613, 2.440741e-07, -0.12236124, -0.9924854, 1.7170471e-07, 2.6381497e-07, 1.4020138e-07, 0.99999994, -2.1596255, 0.31290877, 1.7814243e-07)
-
-[node name="Shoulder_R_001" parent="Mesh/Armature/Skeleton3D" index="3" unique_id=193448342]
-transform = Transform3D(-0.94350743, -0.33135086, 3.8983714e-07, 0.3313509, -0.9435074, 6.8936714e-09, 3.6619073e-07, 1.3561649e-07, 0.99999994, -1.6473979, 1.7714546, -3.1503927e-08)
-
-[node name="Head" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=702962205]
-transform = Transform3D(0.9999998, -5.064976e-09, 3.7252903e-09, 5.937636e-09, 0.9999999, 8.993084e-09, -5.5879354e-09, -9.051291e-09, 0.99999994, -0.01083, 1.458909, 3.1272736e-09)
-
-[node name="Root" parent="Mesh/Armature/Skeleton3D" index="5" unique_id=459673217]
-transform = Transform3D(0.9996278, 0.019289725, -0.019286135, -0.019286135, 0.9998139, 0.00037210257, 0.019289723, -9.153155e-09, 0.99981385, -0.010829997, 0.33624086, 1.3342718e-08)
-
-[node name="Foot_L" parent="Mesh/Armature/Skeleton3D" index="6" unique_id=70216819]
-transform = Transform3D(0.009790366, -0.0076768906, 0.9999228, 0.2848604, -0.9585153, -0.010148055, 0.95851904, 0.2849378, -0.0071974224, 0.97928435, -1.4311326, -0.17596714)
-
-[node name="Knee_L" parent="Mesh/Armature/Skeleton3D" index="7" unique_id=337225580]
-transform = Transform3D(0.0055282973, -0.011145905, 0.9999228, -0.15583262, -0.98773134, -0.010148421, 0.9877681, -0.15576443, -0.007197418, 0.99187595, -0.315291, 1.6502389e-07)
-
-[node name="Foot_R" parent="Mesh/Armature/Skeleton3D" index="8" unique_id=740870742]
-transform = Transform3D(0.009790455, 0.007676476, -0.99992275, -0.28486001, -0.9585153, -0.010147771, -0.9585192, 0.28493732, -0.0071975784, -0.97928464, -1.4311328, -0.17596646)
-
-[node name="Knee_R" parent="Mesh/Armature/Skeleton3D" index="9" unique_id=918145926]
-transform = Transform3D(0.005528556, 0.011145562, -0.99992275, 0.15583183, -0.98773146, -0.010148138, -0.98776823, -0.15576367, -0.00719756, -0.99187577, -0.31529105, 1.3332123e-08)
+[node name="Knee_R" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(364168832, 597314174) index="9" unique_id=1049755151]
+transform = Transform3D(-6.686896e-07, 4.4703484e-08, -1.0000002, 0.13107662, -0.9913722, -1.3411045e-07, -0.99137235, -0.13107662, 6.5565115e-07, -0.9918758, -0.31529105, 1.3332123e-08)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=932774561]
 shape = SubResource("BoxShape3D_rvcmw")

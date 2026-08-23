@@ -4,6 +4,7 @@ const SPEED: float = 100.0
 
 var player: CharacterBody3D
 @onready var anim: AnimationPlayer = $Mesh/AnimationPlayer
+@onready var head: MeshInstance3D = $Mesh/Armature/Skeleton3D/Head/Cube
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group(&"Player")
@@ -17,7 +18,8 @@ func _physics_process(delta: float) -> void:
 	if player:
 		
 		var dir: Vector3 = (player.position - position).normalized()
-		rotation.y = lerp_angle(rotation.y,atan2(-dir.x, -dir.z), delta * 5.0  ) 
+		head.look_at(player.position)
+		rotation.y = lerp_angle(rotation.y, atan2(-dir.x, -dir.z), delta * 1.0  ) 
 		velocity.x = dir.x * delta * SPEED
 		velocity.z = dir.z * delta * SPEED
 
