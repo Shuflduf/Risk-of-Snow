@@ -2,9 +2,10 @@ extends Node
 
 signal equipped_item_changed(new_item: ItemData)
 signal saturation_changed(new_saturation: int)
+signal health_changed(new_health: int)
 
 const MIN_RUN_SATURATION: int = 30
-const SATURATION_LEVELS: Array[Dictionary] = [
+const BAR_LEVELS: Array[Dictionary] = [
 	{ &"min": 0, &"col": Color("7a213a") },
 	{ &"min": 10, &"col": Color("e14141") },
 	{ &"min": 30, &"col": Color("ffbf36") },
@@ -18,6 +19,10 @@ var equipped_item: ItemData:
 	set(new_item):
 		equipped_item = new_item
 		equipped_item_changed.emit(new_item)
+var health: int = 100:
+	set(new_val):
+		health = new_val
+		health_changed.emit(new_val)
 var saturation: int = 100:
 	set(new_val):
 		saturation = new_val

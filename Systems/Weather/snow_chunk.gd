@@ -26,7 +26,6 @@ func _update_snow(body: Node3D) -> void:
 	var rel_pos: Vector3 = body.position - position  # -16 - 16
 	rel_pos += Vector3(16.0, 0.0, 16.0)  # 0 - 32
 	rel_pos *= 2  # 0 - 64
-	print(rel_pos)
 	depth_tex.blit_rect(
 		Rect2i(int(rel_pos.x - indent_size / 2.0), int(rel_pos.z - indent_size / 2.0), indent_size, indent_size),
 		indent_tex

@@ -6,13 +6,16 @@ extends Control
 @onready var display_name_label: Label = %DisplayNameLabel
 @onready var equipped_item: TextureRect = %EquippedItem
 @onready var saturation_bar: TextureProgressBar = %SaturationBar
+@onready var health_bar: TextureProgressBar = %HealthBar
 
 
 func _ready() -> void:
 	_equipped_item_changed(PlayerData.equipped_item)
 	_saturation_changed(PlayerData.saturation)
+	_health_changed(PlayerData.health)
 	PlayerData.equipped_item_changed.connect(_equipped_item_changed)
 	PlayerData.saturation_changed.connect(_saturation_changed)
+	PlayerData.health_changed.connect(_health_changed)
 
 
 func _equipped_item_changed(new_item: ItemData) -> void:
@@ -24,13 +27,23 @@ func _equipped_item_changed(new_item: ItemData) -> void:
 
 func _saturation_changed(saturation: int) -> void:
 	saturation_bar.value = saturation
-	var bar_tint: Color = PlayerData.SATURATION_LEVELS[0][&"col"]
-	for level: Dictionary[StringName, Variant] in PlayerData.SATURATION_LEVELS:
+	var bar_tint: Color = PlayerData.BAR_LEVELS[0][&"col"]
+	for level: Dictionary[StringName, Variant] in PlayerData.BAR_LEVELS:
 		if saturation > level[&"min"]:
 			bar_tint = level[&"col"]
 		else:
 			break
 	saturation_bar.tint_progress = bar_tint
+
+func _health_changed(health: int) -> void:
+	health_bar.value = health
+	var bar_tint: Color = PlayerData.BAR_LEVELS[0][&"col"]
+	for level: Dictionary[StringName, Variant] in PlayerData.BAR_LEVELS:
+		if health > level[&"min"]:
+			bar_tint = level[&"col"]
+		else:
+			break
+	health_bar.tint_progress = bar_tint
 
 func set_display_name_text(new_text: String) -> void:
 	display_name_label.visible = new_text != ""
