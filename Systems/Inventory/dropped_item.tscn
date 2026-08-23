@@ -44,6 +44,10 @@ curve_y = SubResource("Curve_v5773")
 curve_z = SubResource("Curve_tsqpe")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ix3wj"]
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.79999995
+initial_velocity_max = 0.79999995
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_v5773")
 color_ramp = SubResource("GradientTexture1D_7mbil")
@@ -75,8 +79,13 @@ shape = SubResource("BoxShape3D_ix3wj")
 mesh = SubResource("BoxMesh_rvcmw")
 
 [node name="Particles" type="GPUParticles3D" parent="." unique_id=227351106]
-emitting = false
+top_level = true
 amount = 3
 lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_ix3wj")
 draw_pass_1 = SubResource("TorusMesh_rvcmw")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=1011182371]
+remote_path = NodePath("../Particles")
+update_rotation = false
+update_scale = false
