@@ -4,13 +4,12 @@ uniform sampler2D snow_depth_texture;
 uniform float height_offset = 0.0;
 
 void vertex() {
-	VERTEX.y = height_offset + texture(snow_depth_texture, UV).r;
+	VERTEX.y = height_offset + texture(snow_depth_texture, (UV * 64.0 + 0.5) / 65.0).r;
 	
 }
 
 void fragment() {
-	ALBEDO.rgb = texture(snow_depth_texture, UV).rgb / 2.0 + 0.5;
-	ALBEDO.rg += UV;
+	ALBEDO.rgb = texture(snow_depth_texture, (UV * 64.0 + 0.5) / 65.0).rgb / 2.0 + 0.5;
 	// Called for every pixel the material is visible on.
 }
 
