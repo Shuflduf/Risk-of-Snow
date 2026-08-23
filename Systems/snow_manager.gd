@@ -14,6 +14,10 @@ var current_state: WeatherState = WeatherState.SPRINKLE
 @onready var snowflakes: GPUParticles3D = $Snowflakes
 @onready var big_snowflakes: GPUParticles3D = $BigSnowflakes
 @onready var clouds: GPUParticles3D = $Clouds
+@onready var snow_tick: Timer = $SnowTick
+
+func _ready() -> void:
+	snow_tick.timeout.connect(SnowServer.tick_snow)
 
 
 func change_state(new_state: WeatherState) -> void:

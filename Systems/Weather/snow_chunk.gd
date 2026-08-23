@@ -31,6 +31,9 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _update_snow(body: Node3D) -> void:
+	if not body in entity_detector.get_overlapping_bodies():
+		return
+	
 	var owner_chunk: Vector2i = Vector2i(
 		((Vector2(body.position.x, body.position.z) + Vector2.ONE * 16.0) / 32.0).floor()
 	)

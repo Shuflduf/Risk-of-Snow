@@ -284,6 +284,10 @@ visibility_aabb = AABB(-4, -40, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_4tg7h")
 draw_pass_1 = SubResource("QuadMesh_kt6p6")
 
+[node name="SnowTick" type="Timer" parent="SnowManager" unique_id=1177554872]
+wait_time = 5.0
+autostart = true
+
 [node name="UI" parent="." unique_id=1204069218 instance=ExtResource("4_yg5iq")]
 
 [node name="InteractionHandler" type="Node3D" parent="." unique_id=230701168 node_paths=PackedStringArray("ui", "backpack")]

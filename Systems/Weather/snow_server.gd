@@ -1,7 +1,9 @@
 extends Node
 
 const SNOW_CHUNK: PackedScene = preload("res://Systems/Weather/snow_chunk.tscn")
+const SNOW_TICK_TEX: GradientTexture2D = preload("res://Systems/Weather/snow_tick_tex.tres")
 const SNOW_AREA: String = "res://Areas/test_world.tscn"
+
 
 signal update_snow(body: Node3D)
 
@@ -57,3 +59,8 @@ func create_chunk(pos: Vector2i) -> void:
 	new_chunk.pos = pos
 
 	WorldData.add_child(new_chunk)
+
+
+func tick_snow() -> void:
+	for tex: DrawableTexture2D in chunks.values():
+		tex.blit_rect(Rect2i(0, 0, tex.get_width(), tex.get_height()), SNOW_TICK_TEX)

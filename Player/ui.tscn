@@ -122,10 +122,12 @@ offset_left = -128.0
 offset_top = -128.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Health" type="Control" parent="VBoxContainer2" unique_id=1514481895]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="VBoxContainer2/Health" unique_id=2013699345]
 unique_name_in_owner = true
@@ -135,6 +137,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 value = 74.0
 fill_mode = 5
 nine_patch_stretch = true
@@ -148,11 +151,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_d6uvt")
 
 [node name="Saturation" type="Control" parent="VBoxContainer2" unique_id=314039044]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="SaturationBar" type="TextureProgressBar" parent="VBoxContainer2/Saturation" unique_id=508555794]
 unique_name_in_owner = true
@@ -162,6 +167,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 value = 74.0
 fill_mode = 5
 nine_patch_stretch = true
@@ -175,4 +181,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_bxrt6")

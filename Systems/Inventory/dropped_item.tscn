@@ -80,6 +80,7 @@ mesh = SubResource("BoxMesh_rvcmw")
 
 [node name="Particles" type="GPUParticles3D" parent="." unique_id=227351106]
 top_level = true
+emitting = false
 amount = 3
 lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_ix3wj")
