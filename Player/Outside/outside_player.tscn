@@ -255,7 +255,6 @@ radius = 4.21514
 
 [node name="SnowManager" type="Node3D" parent="." unique_id=1476858386]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-visible = false
 script = ExtResource("3_o5g07")
 
 [node name="Snowflakes" type="GPUParticles3D" parent="SnowManager" unique_id=285092867]

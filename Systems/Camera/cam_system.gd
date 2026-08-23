@@ -12,7 +12,7 @@ extends Node3D
 @export var max_y: float = 10.0
 @export var max_z: float = 5.0
 
-var trauma: float = 1.0
+var trauma: float = 0.0
 var time: float = 0.0
 
 @onready var max_x_rotation:float = PI / 2.0 - look_margin
