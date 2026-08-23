@@ -157,7 +157,7 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 top_level = true
 script = ExtResource("13_jkblh")
 
-[node name="Skeleton3D" parent="Visuals/Root" parent_id_path=PackedInt32Array(1408361271, 1613272732) index="0" unique_id=1606883423]
+[node name="Skeleton3D" parent="Visuals/Root" parent_id_path=PackedInt32Array(1408361271, 932220023) index="0" unique_id=1475073637]
 bones/1/rotation = Quaternion(0.9411839, -8.056046e-08, -2.2439586e-07, 0.3378947)
 bones/3/rotation = Quaternion(0.5273029, 0.49925402, 0.49925402, -0.47269705)
 bones/4/rotation = Quaternion(-0.54078215, -0.30886948, 0.14155799, 0.76949054)
@@ -180,34 +180,34 @@ bones/21/rotation = Quaternion(0.71357834, 0, 0, 0.7005755)
 bones/22/position = Vector3(6.491551e-06, -0.00013072044, -0.0011479793)
 bones/22/rotation = Quaternion(-0.7064055, 0.031473946, 0.7064065, -0.0314734)
 
-[node name="Backpack" parent="Visuals/Root/Skeleton3D" index="0" unique_id=1888293396]
+[node name="Backpack" parent="Visuals/Root/Skeleton3D" index="0" unique_id=164312584]
 transform = Transform3D(1, -8.526514e-14, -4.7683784e-07, -3.0328877e-07, -0.7716545, -0.63604265, -3.6795365e-07, 0.6360422, -0.771655, 0, 1, 0)
 
-[node name="Hand_l" parent="Visuals/Root/Skeleton3D" index="2" unique_id=24765814]
+[node name="Hand_l" parent="Visuals/Root/Skeleton3D" index="2" unique_id=1678646891]
 transform = Transform3D(0.91938317, -0.2926445, -0.2628568, -0.19712906, -0.92103225, 0.33591646, -0.3404035, -0.2570194, -0.9044702, 0.82031053, 0.017133415, -0.039641216)
 
-[node name="Hand_r" parent="Visuals/Root/Skeleton3D" index="3" unique_id=1824574380]
+[node name="Hand_r" parent="Visuals/Root/Skeleton3D" index="3" unique_id=1085173698]
 transform = Transform3D(0.91938317, 0.29264432, 0.26285657, 0.19712895, -0.9210323, 0.33591646, 0.34040332, -0.25701946, -0.9044704, -0.82031053, 0.017133415, -0.039641216)
 
-[node name="Leg_L" parent="Visuals/Root/Skeleton3D" index="4" unique_id=951302932]
+[node name="Leg_L" parent="Visuals/Root/Skeleton3D" index="4" unique_id=639762864]
 transform = Transform3D(0.0057010846, 0.0055687134, 0.99996835, 0.09690984, -0.9952807, 0.004989935, 0.9952772, 0.09687837, -0.006213872, 0.41539448, -1.0127062, 0.037447847)
 
-[node name="Knee_L" parent="Visuals/Root/Skeleton3D" index="5" unique_id=226552381]
+[node name="Knee_L" parent="Visuals/Root/Skeleton3D" index="5" unique_id=1939417381]
 transform = Transform3D(-0.007616844, 0.0060012937, 0.9999532, 0.08865122, -0.99604076, 0.0066529214, 0.9960341, 0.08869778, 0.0070546377, 0.4128608, -0.5921845, 2.3665655e-07)
 
-[node name="Leg_R" parent="Visuals/Root/Skeleton3D" index="6" unique_id=589786931]
+[node name="Leg_R" parent="Visuals/Root/Skeleton3D" index="6" unique_id=790785304]
 transform = Transform3D(0.0057011754, -0.0055686533, -0.9999683, -0.09690987, -0.9952806, 0.004989874, -0.9952772, 0.096878394, -0.0062139495, -0.41539443, -1.0127062, 0.037447877)
 
-[node name="Knee_R" parent="Visuals/Root/Skeleton3D" index="7" unique_id=982672933]
+[node name="Knee_R" parent="Visuals/Root/Skeleton3D" index="7" unique_id=2022192325]
 transform = Transform3D(-0.0076167546, -0.006001234, -0.99995315, -0.08865125, -0.9960407, 0.006652862, -0.9960341, 0.088697806, 0.0070545613, -0.41286078, -0.5921845, 2.581708e-07)
 
-[node name="Foot_L" parent="Visuals/Root/Skeleton3D" index="8" unique_id=1158564667]
+[node name="Foot_L" parent="Visuals/Root/Skeleton3D" index="8" unique_id=604254741]
 transform = Transform3D(-1.1920928e-06, 7.189809e-07, 1.0000155, -0.9975045, -0.07060242, -1.2071173e-06, 0.07060242, -0.9975042, 8.049667e-07, 0.41989458, -1.8168848, 0.11572465)
 
-[node name="Foot_R" parent="Visuals/Root/Skeleton3D" index="9" unique_id=1869801950]
+[node name="Foot_R" parent="Visuals/Root/Skeleton3D" index="9" unique_id=437831523]
 transform = Transform3D(-1.3113021e-06, -7.1153033e-07, -1.0000155, 0.9975045, -0.07060242, -1.3860409e-06, -0.07060242, -0.9975042, 8.091281e-07, -0.41989458, -1.8168848, 0.11572465)
 
-[node name="AnimationPlayer" parent="Visuals" index="1" unique_id=1026538020]
+[node name="AnimationPlayer" parent="Visuals" index="1" unique_id=1007131146]
 autoplay = &"Idle"
 playback_default_blend_time = 1.0
 

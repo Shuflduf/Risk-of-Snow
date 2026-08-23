@@ -15,6 +15,54 @@ stencil_flags = 2
 material = SubResource("StandardMaterial3D_ix3wj")
 size = Vector3(0.3, 0.3, 0.3)
 
+[sub_resource type="Curve" id="Curve_nk4bj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.39247313, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0jhnk"]
+curve = SubResource("Curve_nk4bj")
+
+[sub_resource type="Gradient" id="Gradient_ix3wj"]
+offsets = PackedFloat32Array(0.49346405, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.25, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7mbil"]
+gradient = SubResource("Gradient_ix3wj")
+
+[sub_resource type="Curve" id="Curve_tsqpe"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_v5773"]
+_data = [Vector2(0, 0.3392858), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_v5773"]
+curve_x = SubResource("Curve_tsqpe")
+curve_y = SubResource("Curve_v5773")
+curve_z = SubResource("Curve_tsqpe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ix3wj"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_v5773")
+color_ramp = SubResource("GradientTexture1D_7mbil")
+alpha_curve = SubResource("CurveTexture_0jhnk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5re0e"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="TorusMesh" id="TorusMesh_rvcmw"]
+material = SubResource("StandardMaterial3D_5re0e")
+inner_radius = 0.2
+outer_radius = 0.22
+rings = 8
+ring_segments = 4
+
 [node name="DroppedItem" type="RigidBody3D" unique_id=1889178666]
 collision_layer = 8
 collision_mask = 3
@@ -25,3 +73,10 @@ shape = SubResource("BoxShape3D_ix3wj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=348839149]
 mesh = SubResource("BoxMesh_rvcmw")
+
+[node name="Particles" type="GPUParticles3D" parent="." unique_id=227351106]
+emitting = false
+amount = 3
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_ix3wj")
+draw_pass_1 = SubResource("TorusMesh_rvcmw")

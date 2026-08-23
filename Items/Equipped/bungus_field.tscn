@@ -56,3 +56,10 @@ draw_pass_1 = SubResource("CylinderMesh_tkije")
 
 [node name="HealTimer" type="Timer" parent="." unique_id=1298512275]
 autostart = true
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1837060913]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Bungi" type="Node3D" parent="." unique_id=728202191]

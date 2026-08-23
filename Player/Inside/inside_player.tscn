@@ -13,9 +13,13 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqbmf"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_as5sl"]
+noise_type = 0
+frequency = 1.0
+fractal_octaves = 4
+
 [sub_resource type="Resource" id="Resource_fvaq1"]
 script = ExtResource("6_5jf8j")
-id = &"backpack"
 size = Vector2i(4, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
@@ -40,6 +44,7 @@ shape = SubResource("CapsuleShape3D_oqbmf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
 script = ExtResource("2_1ynhl")
 look_margin = 0.1
+noise = SubResource("FastNoiseLite_as5sl")
 
 [node name="Pivot" type="Node3D" parent="CamSystem" unique_id=618504865]
 
