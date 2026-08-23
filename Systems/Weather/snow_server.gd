@@ -25,6 +25,9 @@ func _on_transition_ended() -> void:
 
 func _place_snow() -> void:
 	for pos: Vector2i in chunks.keys():
+		if pos == Vector2i.ZERO:
+			continue
+		
 		var new_chunk: SnowChunk = SNOW_CHUNK.instantiate()
 		var real_pos: Vector2 = SnowChunk.CHUNK_SIZE * Vector2(pos)
 		new_chunk.position = Vector3(real_pos.x, 0.0, real_pos.y)
