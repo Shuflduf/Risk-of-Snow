@@ -9,9 +9,10 @@ extends Area3D
 class DamageEntry:
 	var damage: int
 	var knockback: Vector3
+	var screen_shake: float
 
 func hit(dmg: DamageEntry) -> void:
 	if is_player:
 		PlayerData.health -= dmg.damage
 		body.velocity += dmg.knockback
-		cam_system.add_trauma(1.0)
+		cam_system.add_trauma(dmg.screen_shake)

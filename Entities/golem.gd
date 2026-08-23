@@ -57,5 +57,6 @@ func _stomp() -> void:
 		var dmg: Hurtbox.DamageEntry = Hurtbox.DamageEntry.new()
 		dmg.damage = 40
 		dmg.knockback = (hurtbox.global_position - global_position + Vector3(0.0, 4.0, 0.0)).normalized() * 20.0
+		dmg.screen_shake = 1.0
 		print(dmg.knockback.length())
 		hurtbox.hit(dmg)

@@ -1,10 +1,20 @@
 extends Area3D
 
 @export var bungus_mesh: PackedScene
+@onready var heal_timer: Timer = $HealTimer
 
 func _ready() -> void:
 	spawn_bungus()
-	
+	heal_timer.timeout.connect(_heal)
+
+
+func _heal() -> void:
+	for hurtbox: Hurtbox in get_overlapping_areas():
+		var dmg: Hurtbox.DamageEntry = Hurtbox.DamageEntry.new()
+		dmg.damage = -5
+		dmg.knockback = Vector3.ZERO
+		dmg.screen_shake = 0.0
+		hurtbox.hit(dmg)
 
 func spawn_bungus() -> void:
 	for i: int in 100:
