@@ -40,4 +40,3 @@ func _update_snow(body: Node3D) -> void:
 		Rect2i(int(rel_pos.x - indent_size / 2.0), int(rel_pos.z - indent_size / 2.0), indent_size, indent_size),
 		indent_tex
 	)
-	SnowServer.tmp_image.texture = depth_tex

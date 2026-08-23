@@ -1,6 +1,6 @@
 shader_type spatial;
 
-uniform sampler2D snow_depth_texture : hint_default_black;
+uniform sampler2D snow_depth_texture;
 uniform float height_offset = 0.0;
 
 void vertex() {
@@ -10,6 +10,7 @@ void vertex() {
 
 void fragment() {
 	ALBEDO.rgb = texture(snow_depth_texture, UV).rgb / 2.0 + 0.5;
+	ALBEDO.rg += UV;
 	// Called for every pixel the material is visible on.
 }
 

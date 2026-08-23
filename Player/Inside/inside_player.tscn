@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="6_5jf8j"]
 [ext_resource type="Script" uid="uid://daoqrb8k6pl77" path="res://Player/Inside/inside_held_item_user.gd" id="8_2xr8j"]
 [ext_resource type="Script" uid="uid://bqjpefpyj65a8" path="res://Player/item_pickup_handler.gd" id="8_as5sl"]
+[ext_resource type="Script" uid="uid://c3bjvqo4wp280" path="res://Entities/hurtbox.gd" id="9_2xr8j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aiegb"]
 
@@ -28,6 +29,9 @@ metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2xr8j"]
 radius = 2.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0t4io"]
+height = 2.3464355
 
 [node name="InsidePlayer" type="CharacterBody3D" unique_id=533373955 groups=["Player"]]
 collision_layer = 4
@@ -91,3 +95,15 @@ script = ExtResource("8_as5sl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPickupHandler" unique_id=1944851100]
 shape = SubResource("SphereShape3D_2xr8j")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1138516732 node_paths=PackedStringArray("cam_system")]
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+script = ExtResource("9_2xr8j")
+is_player = true
+cam_system = NodePath("../CamSystem")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1435161619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029174805, 0)
+shape = SubResource("CylinderShape3D_0t4io")
