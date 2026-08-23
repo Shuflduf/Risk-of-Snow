@@ -35,6 +35,7 @@ func _saturation_changed(saturation: int) -> void:
 			break
 	saturation_bar.tint_progress = bar_tint
 
+
 func _health_changed(health: int) -> void:
 	health_bar.value = health
 	var bar_tint: Color = PlayerData.BAR_LEVELS[0][&"col"]
@@ -44,6 +45,7 @@ func _health_changed(health: int) -> void:
 		else:
 			break
 	health_bar.tint_progress = bar_tint
+
 
 func set_display_name_text(new_text: String) -> void:
 	display_name_label.visible = new_text != ""

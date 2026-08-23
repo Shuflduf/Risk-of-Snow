@@ -6,10 +6,12 @@ extends Area3D
 
 @onready var body: CharacterBody3D = get_parent()
 
+
 class DamageEntry:
 	var damage: int
 	var knockback: Vector3
 	var screen_shake: float
+
 
 func hit(dmg: DamageEntry) -> void:
 	if is_player:

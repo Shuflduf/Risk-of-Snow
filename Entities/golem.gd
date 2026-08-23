@@ -14,16 +14,17 @@ var player: CharacterBody3D
 @onready var hitbox: Area3D = %Hitbox
 @onready var stomp_particles: GPUParticles3D = %StompParticles
 
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group(&"Player")
 	anim.play(&"Walk")
 	anim.animation_finished.connect(_on_anim_finished)
-	
+
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
+
 	if player:
 		var actual_rot: Vector3 = head.rotation
 		var dir: Vector3 = (player.position - position).normalized()
@@ -37,7 +38,7 @@ func _physics_process(delta: float) -> void:
 			head.look_at(player.position)
 			head.rotation.y = lerp_angle(actual_rot.y, head.rotation.y, delta * 2.0)
 			head.rotation.x = clamp(head.rotation.x, -max_x_rotation, max_x_rotation)
-			rotation.y = lerp_angle(rotation.y, atan2(-dir.x, -dir.z), delta * 1.0  ) 
+			rotation.y = lerp_angle(rotation.y, atan2(-dir.x, -dir.z), delta * 1.0)
 			velocity.x = dir.x * delta * SPEED
 			velocity.z = dir.z * delta * SPEED
 
@@ -56,7 +57,9 @@ func _stomp() -> void:
 	for hurtbox: Hurtbox in hitbox.get_overlapping_areas():
 		var dmg: Hurtbox.DamageEntry = Hurtbox.DamageEntry.new()
 		dmg.damage = 40
-		dmg.knockback = (hurtbox.global_position - global_position + Vector3(0.0, 4.0, 0.0)).normalized() * 20.0
+		dmg.knockback = (
+			(hurtbox.global_position - global_position + Vector3(0.0, 4.0, 0.0)).normalized() * 20.0
+		)
 		dmg.screen_shake = 1.0
 		print(dmg.knockback.length())
 		hurtbox.hit(dmg)

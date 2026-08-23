@@ -59,11 +59,14 @@ func show_dropped_items(items: Array[DroppedItem]) -> void:
 			)
 			. clamp(Vector2.ZERO, Vector2.ONE)
 		)
-		var screen_pos: Vector2 = (relative_pos * get_window().get_viewport().get_visible_rect().size).clamp(
-			Vector2.ZERO,
-			(
-				get_window().get_viewport().get_visible_rect().size
-				- Vector2(drop.data.bounds()) * TILE_SIZE
+		var screen_pos: Vector2 = (
+			(relative_pos * get_window().get_viewport().get_visible_rect().size)
+			. clamp(
+				Vector2.ZERO,
+				(
+					get_window().get_viewport().get_visible_rect().size
+					- Vector2(drop.data.bounds()) * TILE_SIZE
+				)
 			)
 		)
 		var item: InventoryItem = drop.data.build()
@@ -107,10 +110,10 @@ func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
 
 		if view.attempt_place(item, mouse_pos):
 			return
-		
+
 	force_drop_item(mouse_pos, item)
-		
-	
+
+
 func force_drop_item(mouse_pos: Vector2, item: InventoryItem) -> void:
 	var new_drop: DroppedItem = item.data.build_dropped()
 	var relative_pos: Vector2 = (

@@ -9,7 +9,9 @@ var is_open: bool = false
 
 func _ready() -> void:
 	await get_tree().physics_frame
-	var existing_inventories: Variant = WorldData.inventories.get(WorldData.current_area.scene_file_path)
+	var existing_inventories: Variant = WorldData.inventories.get(
+		WorldData.current_area.scene_file_path
+	)
 	if existing_inventories:
 		var inv: Inventory = existing_inventories.get(inventory.id)
 		if inv:
@@ -56,14 +58,14 @@ func close() -> void:
 func pickup(_caller: InteractionHandler) -> void:
 	if is_open:
 		InventoryManager.close_all()
-	
+
 	for data: ItemData in inventory.items.values():
 		var drop: DroppedItem = data.build_dropped()
 		drop.position = position
 		WorldData.current_area.add_child(drop)
 		drop.apply_impulse(Vector3(1.0, 3.0, 0.0).rotated(Vector3.UP, randf_range(0, PI * 2.0)))
 		drop.apply_torque_impulse(Vector3.UP * 0.1)
-		
+
 	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)
 	PlayerData.equipped_item = load(chest_item_path)
 	queue_free()

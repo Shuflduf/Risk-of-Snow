@@ -6,6 +6,7 @@ extends Node3D
 
 var equipped_item: EquippedItem
 
+
 func _ready() -> void:
 	_on_equipped_item_changed(PlayerData.equipped_item)
 	PlayerData.equipped_item_changed.connect(_on_equipped_item_changed)

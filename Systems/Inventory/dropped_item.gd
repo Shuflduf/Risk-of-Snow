@@ -12,7 +12,7 @@ func _ready() -> void:
 		visuals = data.dropped_mesh.instantiate()
 		add_child(visuals)
 		visuals.scale = data.dropped_mesh_scale
-	
+
 
 func set_in_range(in_range: bool) -> void:
 	particles.emitting = in_range

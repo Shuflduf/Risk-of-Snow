@@ -7,15 +7,13 @@ extends Node3D
 func _ready() -> void:
 	rotation.y = player.rotation.y + PI
 	anim.play(&"Idle")
-	
+
 
 func _process(delta: float) -> void:
 	var moving: bool = Vector2(player.velocity.x, player.velocity.z).length_squared() > 2.0
 	if moving:
 		rotation.y = lerp_angle(
-			rotation.y,
-			atan2(-player.velocity.x, -player.velocity.z),
-			delta * 10.0
+			rotation.y, atan2(-player.velocity.x, -player.velocity.z), delta * 10.0
 		)
 
 	if player.is_on_floor():

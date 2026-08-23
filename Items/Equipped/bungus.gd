@@ -2,6 +2,7 @@ extends EquippedItem
 
 @onready var bomb: RigidBody3D = $Bomb
 
+
 func primary_action() -> void:
 	bomb.reparent(WorldData.current_area)
 	bomb.show()

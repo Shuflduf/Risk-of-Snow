@@ -62,7 +62,9 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 
 
 func reset_hovered() -> void:
-	var panels: Array[Node] = get_children().filter(func(child: Node) -> bool: return child is Panel)
+	var panels: Array[Node] = get_children().filter(
+		func(child: Node) -> bool: return child is Panel
+	)
 	for panel: Panel in panels:
 		panel.modulate = Color.WHITE
 
@@ -72,6 +74,8 @@ func panel_at(pos: Vector2i) -> Panel:
 	if not inventory.is_valid_position(pos):
 		return null
 
-	var panels: Array[Node] = get_children().filter(func(child: Node) -> bool: return child is Panel)
+	var panels: Array[Node] = get_children().filter(
+		func(child: Node) -> bool: return child is Panel
+	)
 	var idx: int = pos.x + pos.y * inventory.size.x
 	return panels[idx]
