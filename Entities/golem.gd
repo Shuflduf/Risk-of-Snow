@@ -7,6 +7,7 @@ const FPS: int = 24
 
 var attacking: bool = false
 var player: CharacterBody3D
+var id: int = ResourceUID.create_id()
 
 @onready var anim: AnimationPlayer = $Mesh/AnimationPlayer
 @onready var head: MeshInstance3D = $Mesh/Armature/Skeleton3D/Head/Cube
@@ -63,3 +64,11 @@ func _stomp() -> void:
 		dmg.screen_shake = 1.0
 		print(dmg.knockback.length())
 		hurtbox.hit(dmg)
+
+
+func entity_data() -> EntityData:
+	var data: EntityData = EntityData.new()
+	data.position = position
+	data.rotation = rotation
+	data.scene = load(scene_file_path)
+	return data

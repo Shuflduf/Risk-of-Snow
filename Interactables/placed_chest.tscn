@@ -26,7 +26,7 @@ secondary_action = "Pickup"
 
 [node name="chest" parent="." unique_id=647377631 instance=ExtResource("2_44w68")]
 
-[node name="Cube" parent="chest" index="0" unique_id=2021287651]
+[node name="Cube" parent="chest" index="0" unique_id=806345710]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.153446, -0.630627)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1665687572]

@@ -47,6 +47,7 @@ import/blender/enabled=false
 Door=""
 Player=""
 PlaceableInteractable=""
+Entity=""
 
 [input]
 

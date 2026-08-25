@@ -39,27 +39,27 @@ size = Vector3(5.1054688, 5.4277344, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
 radius = 5.0
 
-[node name="Golem" type="CharacterBody3D" unique_id=934301839]
+[node name="Golem" type="CharacterBody3D" unique_id=934301839 groups=["Entity"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_cpc0h")
 
 [node name="Mesh" parent="." unique_id=364168832 instance=ExtResource("2_ofig3")]
 
-[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(364168832, 39305655) index="0" unique_id=223046936]
+[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(364168832, 1927788395) index="0" unique_id=424507534]
 bones/11/position = Vector3(-0.021651935, 1.1224594, 0.00041773764)
 bones/11/scale = Vector3(0.99999994, 0.99999994, 1.0000001)
 
-[node name="Head" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1289348393]
+[node name="Head" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=2098506437]
 override_pose = true
 
-[node name="Foot_R" parent="Mesh/Armature/Skeleton3D" index="8" unique_id=1447800481]
+[node name="Foot_R" parent="Mesh/Armature/Skeleton3D" index="8" unique_id=1921264954]
 transform = Transform3D(-6.6817216e-07, 2.2963178e-09, -1.0000002, -0.12534459, -0.99211323, 7.933042e-08, -0.9921134, 0.1253446, 6.6178063e-07, -0.9918758, -1.4352458, -0.14807746)
 
-[node name="Knee_R" parent="Mesh/Armature/Skeleton3D" index="9" unique_id=625661946]
+[node name="Knee_R" parent="Mesh/Armature/Skeleton3D" index="9" unique_id=157917298]
 transform = Transform3D(-6.686896e-07, 4.4703484e-08, -1.0000002, 0.13107662, -0.9913722, -1.3411045e-07, -0.99137235, -0.13107662, 6.5565115e-07, -0.9918758, -0.31529105, 1.3332123e-08)
 
-[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=990042637]
+[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=2042060364]
 playback_default_blend_time = 1.0
 
 [node name="StompParticles" type="GPUParticles3D" parent="Mesh" unique_id=1086292207]
