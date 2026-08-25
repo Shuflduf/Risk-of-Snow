@@ -2,11 +2,14 @@ extends Node3D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var player: CharacterBody3D = get_parent()
+@onready var physics_bones: PhysicalBoneSimulator3D = $Root/Skeleton3D/PhysicalBoneSimulator3D
 
 
 func _ready() -> void:
 	rotation.y = player.rotation.y + PI
 	anim.play(&"Idle")
+	PlayerData.health_changed.connect(_health_changed)
+	#
 
 
 func _process(delta: float) -> void:
@@ -30,3 +33,12 @@ func _process(delta: float) -> void:
 			anim.play(&"Jump")
 		else:
 			anim.play(&"Fall")
+
+
+func _health_changed(health: int) -> void:
+	if health <= 0:
+		pass
+		#top_level = false
+		#await get_tree().hysics_frame
+		#physics_bones.physical_bones_start_simulation([&"Shoulder_L", &"Shoulder_R", &"Waist_L", &"Waist_R", &"Head", &"Backpack"])
+		#remote_transform.remote_path = physics_bones.get_path()
