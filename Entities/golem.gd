@@ -4,6 +4,7 @@ const LOOK_MARGIN: float = 1.0
 const SPEED: float = 100.0
 const STOMP_HIT_FRAME: int = 27
 const FPS: int = 24
+const MIN_PLAYER_DIST: float = 60.0
 
 var attacking: bool = false
 var player: CharacterBody3D
@@ -27,21 +28,28 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	if player:
-		var actual_rot: Vector3 = head.rotation
-		var dir: Vector3 = (player.position - position).normalized()
-		if position.distance_squared_to(player.position) < 20.0 and not attacking:
-			anim.play(&"Stomp")
-			attacking = true
+		if position.distance_squared_to(player.position) > MIN_PLAYER_DIST * MIN_PLAYER_DIST:
+			anim.play(&"RESET")
 			velocity.x = 0.0
 			velocity.z = 0.0
-			get_tree().create_timer(float(STOMP_HIT_FRAME) / float(FPS)).timeout.connect(_stomp)
-		if not attacking:
-			head.look_at(player.position)
-			head.rotation.y = lerp_angle(actual_rot.y, head.rotation.y, delta * 2.0)
-			head.rotation.x = clamp(head.rotation.x, -max_x_rotation, max_x_rotation)
-			rotation.y = lerp_angle(rotation.y, atan2(-dir.x, -dir.z), delta * 1.0)
-			velocity.x = dir.x * delta * SPEED
-			velocity.z = dir.z * delta * SPEED
+		else:
+			if anim.current_animation == &"RESET":
+				anim.play(&"Walk")
+			var actual_rot: Vector3 = head.rotation
+			var dir: Vector3 = (player.position - position).normalized()
+			if position.distance_squared_to(player.position) < 20.0 and not attacking:
+				anim.play(&"Stomp")
+				attacking = true
+				velocity.x = 0.0
+				velocity.z = 0.0
+				get_tree().create_timer(float(STOMP_HIT_FRAME) / float(FPS)).timeout.connect(_stomp)
+			if not attacking:
+				head.look_at(player.position)
+				head.rotation.y = lerp_angle(actual_rot.y, head.rotation.y, delta * 2.0)
+				head.rotation.x = clamp(head.rotation.x, -max_x_rotation, max_x_rotation)
+				rotation.y = lerp_angle(rotation.y, atan2(-dir.x, -dir.z), delta * 1.0)
+				velocity.x = dir.x * delta * SPEED
+				velocity.z = dir.z * delta * SPEED
 
 	move_and_slide()
 
