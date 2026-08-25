@@ -233,6 +233,7 @@ remote_path = NodePath("../../../InteractionHandler/RayCast3D")
 [node name="SpringArm3D" type="SpringArm3D" parent="CamSystem/Pivot" unique_id=1359129552]
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+collision_mask = 3
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="CamSystem/Pivot/SpringArm3D" unique_id=857471001]

@@ -30,5 +30,6 @@ material = SubResource("StandardMaterial3D_wphqg")
 
 [node name="IndoorPlayer" parent="." unique_id=533373955 instance=ExtResource("2_ua6mp")]
 
-[node name="Door" parent="." unique_id=1968565005 instance=ExtResource("3_eyrdj")]
+[node name="Door" parent="." unique_id=1968565005 node_paths=PackedStringArray("scene_root") instance=ExtResource("3_eyrdj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100000024, -3.7000003)
+scene_root = NodePath("..")

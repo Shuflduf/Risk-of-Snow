@@ -33,3 +33,11 @@ material = SubResource("StandardMaterial3D_eghc1")
 
 [node name="SpawnPosition" type="Marker3D" parent="." unique_id=1765985421]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2014537013]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=456340904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_pugwq")

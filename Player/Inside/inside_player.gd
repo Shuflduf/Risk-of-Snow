@@ -3,7 +3,14 @@ extends CharacterBody3D
 const SPEED: float = 3.0
 const ACCELERATION: float = 8.0
 
+@export var hurtbox: Hurtbox
+
 @onready var cam_system: Node3D = $CamSystem
+@onready var passive_heal_timer: Timer = $PassiveHealTimer
+
+
+func _ready() -> void:
+	passive_heal_timer.timeout.connect(_passive_heal)
 
 
 func _physics_process(delta: float) -> void:
@@ -17,6 +24,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+
+func _passive_heal() -> void:
+	var dmg: Hurtbox.DamageEntry = Hurtbox.DamageEntry.new()
+	dmg.damage = -1
+	hurtbox.hit(dmg)
 
 func set_cam_rotation(new_rot: Vector3) -> void:
 	cam_system.set_cam_rotation(new_rot)

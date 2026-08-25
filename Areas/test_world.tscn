@@ -4,18 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://duqnoyfslua5f" path="res://Assets/skybox.png" id="1_yvyhn"]
 [ext_resource type="PackedScene" uid="uid://3jvnvl0k8wvx" path="res://Player/Outside/outside_player.tscn" id="2_1xon7"]
 [ext_resource type="Script" uid="uid://csbaujloxmsje" path="res://Systems/Inventory/inventory.gd" id="8_8uemi"]
-[ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="8_lvqma"]
 [ext_resource type="PackedScene" uid="uid://dqplny1nmlp83" path="res://Systems/Inventory/dropped_item.tscn" id="9_e8tc1"]
-[ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="9_gbkhh"]
 [ext_resource type="Resource" uid="uid://dxurxaue1utho" path="res://Items/Definitions/carpet.tres" id="9_wh10h"]
 [ext_resource type="PackedScene" uid="uid://budotg3ff7o1v" path="res://Interactables/placed_chest.tscn" id="10_pxgmu"]
 [ext_resource type="Resource" uid="uid://ddh0snhqibtwf" path="res://Items/Definitions/desk.tres" id="10_qu3yk"]
-[ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="10_vj2cq"]
 [ext_resource type="Resource" uid="uid://cemb1v4fkv6um" path="res://Items/Definitions/bungus.tres" id="11_rcw8m"]
 [ext_resource type="PackedScene" uid="uid://d1lroq0shssmp" path="res://Systems/Weather/snow_chunk.tscn" id="12_g2qqk"]
 [ext_resource type="Shader" uid="uid://clkdg5npcsdrw" path="res://Systems/Weather/snow_chunk.gdshader" id="13_wh10h"]
 [ext_resource type="Texture2D" uid="uid://683vg0j5ka7t" path="res://icon.svg" id="14_qu3yk"]
 [ext_resource type="PackedScene" uid="uid://5eev3jn6j5y8" path="res://Entities/golem.tscn" id="17_kh3qk"]
+[ext_resource type="PackedScene" uid="uid://lh0md855qco3" path="res://Interactables/bunker_entrance.tscn" id="17_lvqma"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1lwx6"]
 panorama = ExtResource("1_yvyhn")
@@ -36,34 +34,21 @@ fog_density = 0.04
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf0gk"]
-albedo_texture = ExtResource("8_lvqma")
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ud3vi"]
-data = PackedVector3Array(-1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, -1.5, -0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
-albedo_texture = ExtResource("9_gbkhh")
-uv1_triplanar = true
-uv1_world_triplanar = true
-
 [sub_resource type="Resource" id="Resource_enxnb"]
 script = ExtResource("8_8uemi")
 size = Vector2i(6, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kh3qk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wh10h"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_wh10h")
 shader_parameter/snow_depth_texture = ExtResource("14_qu3yk")
 shader_parameter/height_offset = -0.3
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_lvqma"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_qu3yk"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_kh3qk")
+material = SubResource("ShaderMaterial_wh10h")
 size = Vector2(32, 32)
 subdivide_width = 64
 subdivide_depth = 64
@@ -88,36 +73,6 @@ use_collision = true
 size = Vector3(100000, 1, 100000)
 material = SubResource("StandardMaterial3D_dsnr4")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1512691118]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.5, -10)
-use_collision = true
-size = Vector3(9, 4, 8)
-material = SubResource("StandardMaterial3D_lf0gk")
-
-[node name="Door" type="Area3D" parent="." unique_id=1321519513 groups=["Door"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1, -6.3)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("10_vj2cq")
-door_id = &"exit_room"
-target_scene = "uid://c1btrm2bfra51"
-target_door_id = &"enter_room"
-display_name = "Door"
-primary_action = "Enter"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=2003052737]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("ConcavePolygonShape3D_ud3vi")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Door" unique_id=603176758]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(3, 3, 1)
-material = SubResource("StandardMaterial3D_g4v7s")
-
-[node name="SpawnPosition" type="Marker3D" parent="Door" unique_id=989215401]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1)
-
 [node name="CarpetItem" parent="." unique_id=862602607 instance=ExtResource("9_e8tc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 0)
 data = ExtResource("9_wh10h")
@@ -135,7 +90,20 @@ transform = Transform3D(-0.9659258, 0, -0.25881913, 0, 1, 0, 0.25881913, 0, -0.9
 inventory = SubResource("Resource_enxnb")
 
 [node name="SnowChunk" parent="." unique_id=19788440 instance=ExtResource("12_g2qqk")]
-mesh = SubResource("PlaneMesh_lvqma")
+mesh = SubResource("PlaneMesh_qu3yk")
 
 [node name="Golem" parent="." unique_id=934301839 instance=ExtResource("17_kh3qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, 0)
+
+[node name="BunkerEntrance" parent="." unique_id=1983225791 instance=ExtResource("17_lvqma")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 2.9891226, -14)
+
+[node name="Door" parent="BunkerEntrance" index="1" unique_id=1968565005 node_paths=PackedStringArray("scene_root")]
+door_id = &"exit_room"
+target_scene = "uid://c1btrm2bfra51"
+target_door_id = &"enter_room"
+scene_root = NodePath("../..")
+primary_action = "Enter"
+
+[editable path="BunkerEntrance"]
+[editable path="BunkerEntrance/Door"]

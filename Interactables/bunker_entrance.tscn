@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://lh0md855qco3"]
+
+[ext_resource type="PackedScene" uid="uid://ditcy7vug1pkd" path="res://Assets/Blender/bunker.glb" id="1_yx3xk"]
+[ext_resource type="PackedScene" uid="uid://cy3ks31sinymg" path="res://Interactables/door.tscn" id="2_0mlax"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(3.9384766, 3.68042, 0.55249023)
+
+[node name="BunkerEntrance" type="Node3D" unique_id=1983225791]
+
+[node name="bunker" parent="." unique_id=1765180893 instance=ExtResource("1_yx3xk")]
+
+[node name="Door" parent="." unique_id=1968565005 instance=ExtResource("2_0mlax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="CollisionShape3D" parent="Door" index="0" unique_id=1155449522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1368408, 0)
+shape = SubResource("BoxShape3D_rvcmw")
+
+[node name="CSGBox3D3" parent="Door" index="1" unique_id=1048956167]
+visible = false
+
+[node name="SpawnPosition" parent="Door" index="2" unique_id=1765985421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, -2.1000004)
+
+[node name="CollisionShape3D" parent="Door/StaticBody3D" parent_id_path=PackedInt32Array(1968565005, 2014537013) index="0" unique_id=456340904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, -0.19999981)
+shape = SubResource("BoxShape3D_rvcmw")
+
+[editable path="Door"]
