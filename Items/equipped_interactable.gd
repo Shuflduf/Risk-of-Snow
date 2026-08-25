@@ -17,9 +17,6 @@ func primary_action() -> void:
 	WorldData.current_area.add_child(new_interactable)
 	new_interactable.global_transform = model.global_transform
 
-	WorldData.placed_interactables[WorldData.current_area.scene_file_path].set(
-		new_interactable.id, new_interactable.placed_data()
-	)
 
 	used_up.emit()
 

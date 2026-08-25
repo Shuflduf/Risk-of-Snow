@@ -33,7 +33,7 @@ func _on_body_entered(body: Node3D) -> void:
 func _update_snow(body: Node3D) -> void:
 	if not body in entity_detector.get_overlapping_bodies():
 		return
-	
+
 	var owner_chunk: Vector2i = Vector2i(
 		((Vector2(body.position.x, body.position.z) + Vector2.ONE * 16.0) / 32.0).floor()
 	)
@@ -48,7 +48,7 @@ func _update_snow(body: Node3D) -> void:
 			var tex: DrawableTexture2D = SnowServer.chunks.get(pos + Vector2i(x, y))
 			if tex == null:
 				continue
-			
+
 			var center: Vector2 = (rel_pos - Vector2(x, y) * 32.0 + Vector2(16.25, 16.25)) * 2.0
 			var rect: Rect2i = Rect2i(
 				Vector2i((center - Vector2.ONE * (indent_size / 2.0)).floor()),

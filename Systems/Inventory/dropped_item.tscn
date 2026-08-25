@@ -67,7 +67,7 @@ outer_radius = 0.22
 rings = 8
 ring_segments = 4
 
-[node name="DroppedItem" type="RigidBody3D" unique_id=1889178666]
+[node name="DroppedItem" type="RigidBody3D" unique_id=1889178666 groups=["DroppedItem"]]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_ix3wj")

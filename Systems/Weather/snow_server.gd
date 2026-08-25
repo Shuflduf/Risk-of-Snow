@@ -4,7 +4,6 @@ const SNOW_CHUNK: PackedScene = preload("res://Systems/Weather/snow_chunk.tscn")
 const SNOW_TICK_TEX: GradientTexture2D = preload("res://Systems/Weather/snow_tick_tex.tres")
 const SNOW_AREA: String = "res://Areas/test_world.tscn"
 
-
 signal update_snow(body: Node3D)
 
 var tracked_bodies: Dictionary[Node3D, Vector3]
@@ -29,7 +28,7 @@ func _place_snow() -> void:
 	for pos: Vector2i in chunks.keys():
 		if pos == Vector2i.ZERO:
 			continue
-		
+
 		var new_chunk: SnowChunk = SNOW_CHUNK.instantiate()
 		var real_pos: Vector2 = SnowChunk.CHUNK_SIZE * Vector2(pos)
 		new_chunk.position = Vector3(real_pos.x, 0.0, real_pos.y)

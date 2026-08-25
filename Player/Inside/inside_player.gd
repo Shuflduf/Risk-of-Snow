@@ -30,5 +30,6 @@ func _passive_heal() -> void:
 	dmg.damage = -1
 	hurtbox.hit(dmg)
 
+
 func set_cam_rotation(new_rot: Vector3) -> void:
 	cam_system.set_cam_rotation(new_rot)

@@ -66,6 +66,5 @@ func pickup(_caller: InteractionHandler) -> void:
 		drop.apply_impulse(Vector3(1.0, 3.0, 0.0).rotated(Vector3.UP, randf_range(0, PI * 2.0)))
 		drop.apply_torque_impulse(Vector3.UP * 0.1)
 
-	WorldData.placed_interactables[WorldData.current_area.scene_file_path].erase(id)
 	PlayerData.equipped_item = load(chest_item_path)
 	queue_free()
