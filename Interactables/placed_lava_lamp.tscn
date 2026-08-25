@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://gtnuconv3xb6"]
+
+[ext_resource type="Script" uid="uid://dlkgq0u8r7ykc" path="res://Interactables/decorative_interactable.gd" id="1_31igc"]
+[ext_resource type="PackedScene" uid="uid://ds4une7exrf3f" path="res://Interactables/fixed_lava_lamp.tscn" id="2_31igc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1prgj"]
+size = Vector3(0.5, 1.3486328, 0.5)
+
+[node name="PlacedLavaLamp" type="Area3D" unique_id=472414893 groups=["PlaceableInteractable"]]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_31igc")
+item_data = "uid://bojcx6nlin0j1"
+display_name = "Lava Lamp"
+secondary_action = "Pickup"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2075382902]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=84283026]
+shape = SubResource("BoxShape3D_1prgj")
+metadata/_edit_group_ = true
+
+[node name="FixedLavaLamp" parent="StaticBody3D" unique_id=618902839 instance=ExtResource("2_31igc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1560613929]
+shape = SubResource("BoxShape3D_1prgj")

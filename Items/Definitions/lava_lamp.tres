@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bojcx6nlin0j1"]
+
+[ext_resource type="Script" uid="uid://dv6t0mw2nwp0n" path="res://Systems/Inventory/item_data.gd" id="1_71ckw"]
+[ext_resource type="PackedScene" uid="uid://ds4une7exrf3f" path="res://Interactables/fixed_lava_lamp.tscn" id="1_dxbm5"]
+[ext_resource type="PackedScene" uid="uid://b8hlu82brchtq" path="res://Items/Equipped/lava_lamp.tscn" id="2_dxbm5"]
+[ext_resource type="Texture2D" uid="uid://dbe7o5q3jldul" path="res://Assets/Aseprite/lava_lamp.png" id="3_dxbm5"]
+
+[resource]
+script = ExtResource("1_71ckw")
+display_name = "Lava Lamp"
+tiles = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)])
+sprite = ExtResource("3_dxbm5")
+equipped = ExtResource("2_dxbm5")
+use_type = 1
+primary_action = "Place"
+dropped_mesh = ExtResource("1_dxbm5")
+metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"

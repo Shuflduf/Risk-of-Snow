@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b8hlu82brchtq"]
+
+[ext_resource type="Script" uid="uid://bbsnwfat1xmdu" path="res://Items/equipped_interactable.gd" id="1_kdy7b"]
+[ext_resource type="PackedScene" uid="uid://gtnuconv3xb6" path="res://Interactables/placed_lava_lamp.tscn" id="2_kdy7b"]
+[ext_resource type="PackedScene" uid="uid://ds4une7exrf3f" path="res://Interactables/fixed_lava_lamp.tscn" id="3_kdy7b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(0.4, 1.2, 0.4)
+
+[node name="LavaLamp" type="Node3D" unique_id=675449130]
+script = ExtResource("1_kdy7b")
+interactable = ExtResource("2_kdy7b")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1903016359]
+collision_mask = 3
+shape = SubResource("BoxShape3D_rvcmw")
+spring_length = 3.0
+margin = 0.2
+
+[node name="Model" parent="SpringArm3D" unique_id=618902839 instance=ExtResource("3_kdy7b")]
+unique_name_in_owner = true

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ds4une7exrf3f"]
+
+[ext_resource type="PackedScene" uid="uid://b3g5wjj44qnn3" path="res://Assets/Blender/lava_lamp.glb" id="1_4wrt3"]
+
+[node name="FixedLavaLamp" type="Node3D" unique_id=618902839]
+
+[node name="lava_lamp" parent="." unique_id=659857685 instance=ExtResource("1_4wrt3")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.5, 0)
+
+[node name="Sphere" parent="lava_lamp" index="7" unique_id=1428184247]
+transform = Transform3D(0.090309866, 0.0003615118, -0.0006601579, -0.00037346972, 0.09029726, -0.0016427278, 0.0006534674, 0.0016454003, 0.09029565, 0.09478121, 0.5984364, -0.0966153)
+
+[node name="AnimationPlayer" parent="lava_lamp" index="10" unique_id=481643838]
+autoplay = &"Loop"
+
+[editable path="lava_lamp"]

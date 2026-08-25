@@ -53,6 +53,9 @@ size = Vector2(32, 32)
 subdivide_width = 64
 subdivide_depth = 64
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
+size = Vector3(3.9384766, 3.68042, 0.55249023)
+
 [node name="TestWorld" type="Node3D" unique_id=1195026586]
 script = ExtResource("1_g2qqk")
 
@@ -104,6 +107,12 @@ target_scene = "uid://c1btrm2bfra51"
 target_door_id = &"enter_room"
 scene_root = NodePath("../..")
 primary_action = "Enter"
+
+[node name="CollisionShape3D" parent="BunkerEntrance/Door" index="0" unique_id=1155449522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1368408, -0.19999981)
+
+[node name="CollisionShape3D" parent="BunkerEntrance/Door/StaticBody3D" parent_id_path=PackedInt32Array(1983225791, 1968565005, 2014537013) index="0" unique_id=456340904]
+shape = SubResource("BoxShape3D_rvcmw")
 
 [editable path="BunkerEntrance"]
 [editable path="BunkerEntrance/Door"]

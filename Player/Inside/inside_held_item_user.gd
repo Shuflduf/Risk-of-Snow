@@ -20,9 +20,10 @@ func _on_equipped_item_changed(new_item: ItemData) -> void:
 	ui.set_display_name_text(new_item.display_name)
 	ui.set_primary_action_text(new_item.primary_action)
 	ui.set_secondary_action_text(new_item.secondary_action)
-	equipped_item = new_item.equipped.instantiate()
-	equipped_item.used_up.connect(_used_up)
-	add_child(equipped_item)
+	if new_item.equipped != null:
+		equipped_item = new_item.equipped.instantiate()
+		equipped_item.used_up.connect(_used_up)
+		add_child(equipped_item)
 
 
 func _used_up() -> void:

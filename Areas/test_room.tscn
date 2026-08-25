@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://d4e7kimk6hew8" path="res://Assets/orange.png" id="1_8fwrc"]
 [ext_resource type="PackedScene" uid="uid://bhwmqw6mtm4j2" path="res://Player/Inside/inside_player.tscn" id="2_ua6mp"]
 [ext_resource type="PackedScene" uid="uid://cy3ks31sinymg" path="res://Interactables/door.tscn" id="3_eyrdj"]
+[ext_resource type="PackedScene" uid="uid://dqplny1nmlp83" path="res://Systems/Inventory/dropped_item.tscn" id="4_81n4l"]
+[ext_resource type="Resource" uid="uid://bojcx6nlin0j1" path="res://Items/Definitions/lava_lamp.tres" id="5_81n4l"]
 
 [sub_resource type="Environment" id="Environment_8fwrc"]
 background_mode = 2
@@ -33,3 +35,7 @@ material = SubResource("StandardMaterial3D_wphqg")
 [node name="Door" parent="." unique_id=1968565005 node_paths=PackedStringArray("scene_root") instance=ExtResource("3_eyrdj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100000024, -3.7000003)
 scene_root = NodePath("..")
+
+[node name="DroppedItem" parent="." unique_id=1889178666 instance=ExtResource("4_81n4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 1.3000001)
+data = ExtResource("5_81n4l")
