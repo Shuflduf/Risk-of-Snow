@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Risk of Snow"
-run/main_scene="uid://cunqc3rpt10on"
+run/main_scene="uid://cslisnd7jif6t"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

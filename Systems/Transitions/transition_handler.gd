@@ -5,9 +5,12 @@ signal transition_ended
 
 @onready var panel: Panel = $Panel
 
+var bypassing_save_events: bool = false
 
 func switch_to_scene(old_scene: Node, new_scene: String, door_id: StringName) -> void:
-	transition_started.emit()
+	if not bypassing_save_events:
+		transition_started.emit()
+	bypassing_save_events = false
 	old_scene.process_mode = Node.PROCESS_MODE_DISABLED
 
 	var tween: Tween = get_tree().create_tween()
@@ -36,3 +39,7 @@ func load_next_scene(new_scene: String, door_id: StringName) -> void:
 	await tween.finished
 
 	new_area.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func bypass_save_events() -> void:
+	bypassing_save_events=  true

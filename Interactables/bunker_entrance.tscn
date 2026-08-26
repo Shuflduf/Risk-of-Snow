@@ -11,6 +11,6 @@
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.1586908, -6)
 
 [node name="SpawnPosition" parent="Door" index="1" unique_id=1765985421]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 1)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.8000001, 1)
 
 [editable path="Door"]
