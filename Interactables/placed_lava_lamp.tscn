@@ -13,7 +13,7 @@ monitoring = false
 script = ExtResource("1_31igc")
 item_data = "uid://bojcx6nlin0j1"
 display_name = "Lava Lamp"
-secondary_action = "Pickup"
+secondary_action = "Pick Up"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2075382902]
 

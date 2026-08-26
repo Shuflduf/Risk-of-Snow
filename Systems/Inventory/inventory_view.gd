@@ -17,6 +17,7 @@ static func build(inv: Inventory, per_item: Callable) -> InventoryView:
 	new_self.inventory = inv
 
 	new_self.custom_minimum_size = inv.size * TILE_SIZE
+	new_self.size_flags_vertical = Control.SIZE_SHRINK_CENTER | Control.SIZE_EXPAND
 	for y: int in inv.size.y:
 		for x: int in inv.size.x:
 			var tile: Panel = Panel.new()

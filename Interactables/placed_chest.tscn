@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_17u12"]
 resource_local_to_scene = true
 script = ExtResource("2_17u12")
-size = Vector2i(6, 4)
+size = Vector2i(4, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvcmw"]
@@ -22,7 +22,7 @@ inventory = SubResource("Resource_17u12")
 chest_item_path = "uid://343vlgrwr5wh"
 display_name = "Chest"
 primary_action = "Open"
-secondary_action = "Pickup"
+secondary_action = "Pick Up"
 
 [node name="chest" parent="." unique_id=647377631 instance=ExtResource("2_44w68")]
 

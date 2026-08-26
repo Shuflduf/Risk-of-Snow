@@ -9,6 +9,7 @@ var is_open: bool = false
 
 func _ready() -> void:
 	await get_tree().physics_frame
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var existing_inventories: Variant = WorldData.inventories.get(
 		WorldData.current_area.scene_file_path
 	)

@@ -50,6 +50,10 @@ PlaceableInteractable=""
 Entity=""
 DroppedItem=""
 
+[gui]
+
+theme/custom="uid://3bg0klael278"
+
 [input]
 
 forward={
