@@ -2,7 +2,6 @@ class_name Backpack
 extends Node3D
 
 @export var inventory: Inventory
-@export var temp_item: ItemData
 @export var item_pickup_handler: ItemPickupHandler
 
 
@@ -10,8 +9,6 @@ func _ready() -> void:
 	InventoryManager.player = get_parent()
 	if PlayerData.inventory:
 		inventory = PlayerData.inventory
-	else:
-		inventory.items.set(Vector2i(0, 4), temp_item)
 
 
 func _exit_tree() -> void:
@@ -26,5 +23,3 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			InventoryManager.show_dropped_items(item_pickup_handler.get_items())
 		else:
 			InventoryManager.close_all()
-	elif event.is_action_pressed(&"debug"):
-		inventory.items.set(Vector2i(0, 2), temp_item)

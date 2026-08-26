@@ -18,4 +18,4 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump"):
 		TransitionHandler.bypass_save_events()
-		TransitionHandler.switch_to_scene(self, starting_scene, &"exit_room")
+		TransitionHandler.switch_to_scene(self, starting_scene, &"enter_room")

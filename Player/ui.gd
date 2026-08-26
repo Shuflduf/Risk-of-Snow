@@ -60,3 +60,11 @@ func set_primary_action_text(new_text: String) -> void:
 func set_secondary_action_text(new_text: String) -> void:
 	secondary_action_label.visible = new_text != ""
 	secondary_action_label.text = "%s [RMB]" % new_text
+
+
+func blocked_item(item: ItemData) -> void:
+	print(item.display_name)
+	display_name_label.show()
+	display_name_label.text = item.display_name
+	primary_action_label.show()
+	primary_action_label.text = "Can not be used here"

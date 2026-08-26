@@ -13,9 +13,10 @@ func _ready() -> void:
 
 
 func _on_equipped_item_changed(new_item: ItemData) -> void:
-	if new_item == null or new_item.use_type == ItemData.Location.INSIDE:
-		if equipped_item:
-			equipped_item.queue_free()
+	if new_item == null:
+		return
+	elif new_item.use_type == ItemData.Location.INSIDE:
+		ui.blocked_item(new_item)
 		return
 	print(new_item.primary_action)
 	ui.set_display_name_text(new_item.display_name)

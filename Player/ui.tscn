@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://bxb8x7l7w18qd" path="res://Player/ui.gd" id="1_4qruw"]
 [ext_resource type="Texture2D" uid="uid://cn8ym25aibqtt" path="res://Assets/Aseprite/saturation_icon.png" id="2_bxrt6"]
 [ext_resource type="Texture2D" uid="uid://btsrb1la5gset" path="res://Assets/Aseprite/health_icon.png" id="2_d6uvt"]
+[ext_resource type="Shader" uid="uid://kbs1xn3onwdj" path="res://UI/vignette.gdshader" id="4_3hae7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5re0e"]
+shader = ExtResource("4_3hae7")
+shader_parameter/alpha = 0.2
+shader_parameter/inner_radius = 0.5
+shader_parameter/outer_radius = 1.0
 
 [sub_resource type="Gradient" id="Gradient_kt6p6"]
 offsets = PackedFloat32Array(0.17605634, 0.2535211)
@@ -45,6 +52,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4qruw")
+
+[node name="Panel2" type="Panel" parent="." unique_id=24667032]
+material = SubResource("ShaderMaterial_5re0e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="." unique_id=1403060224]
 visible = false

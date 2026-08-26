@@ -21,11 +21,8 @@ fractal_octaves = 4
 
 [sub_resource type="Resource" id="Resource_fvaq1"]
 script = ExtResource("6_5jf8j")
-size = Vector2i(4, 4)
+size = Vector2i(4, 6)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
-
-[sub_resource type="Resource" id="Resource_ln5hr"]
-metadata/_custom_type_script = "uid://dv6t0mw2nwp0n"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2xr8j"]
 radius = 2.5
@@ -85,7 +82,6 @@ collide_with_bodies = false
 [node name="Backpack" type="Node3D" parent="." unique_id=1572977664 node_paths=PackedStringArray("item_pickup_handler")]
 script = ExtResource("5_q1ncp")
 inventory = SubResource("Resource_fvaq1")
-temp_item = SubResource("Resource_ln5hr")
 item_pickup_handler = NodePath("../ItemPickupHandler")
 
 [node name="ItemPickupHandler" type="Area3D" parent="." unique_id=202794562]
