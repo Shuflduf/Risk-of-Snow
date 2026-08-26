@@ -1,15 +1,10 @@
 [gd_scene format=3 uid="uid://cy3ks31sinymg"]
 
 [ext_resource type="Script" uid="uid://bo48qti83unxy" path="res://Interactables/door.gd" id="1_pyvbm"]
-[ext_resource type="Texture2D" uid="uid://bq6jv8br0ceho" path="res://Assets/black.png" id="2_l3a2p"]
+[ext_resource type="PackedScene" uid="uid://bl8mloc4igt07" path="res://Assets/Blender/bunker_doors.glb" id="2_pyvbm"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pugwq"]
-data = PackedVector3Array(-1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, -1.5, -0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eghc1"]
-albedo_texture = ExtResource("2_l3a2p")
-uv1_triplanar = true
-uv1_world_triplanar = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3a2p"]
+size = Vector3(3.9587402, 3.671875, 0.68652344)
 
 [node name="Door" type="Area3D" unique_id=1968565005 groups=["Door"]]
 collision_layer = 16
@@ -23,13 +18,7 @@ display_name = "Door"
 primary_action = "Exit"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1155449522]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("ConcavePolygonShape3D_pugwq")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1048956167]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(3, 3, 1)
-material = SubResource("StandardMaterial3D_eghc1")
+shape = SubResource("BoxShape3D_l3a2p")
 
 [node name="SpawnPosition" type="Marker3D" parent="." unique_id=1765985421]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 1)
@@ -39,5 +28,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=456340904]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("ConcavePolygonShape3D_pugwq")
+shape = SubResource("BoxShape3D_l3a2p")
+
+[node name="bunker_doors" parent="." unique_id=152270212 instance=ExtResource("2_pyvbm")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
