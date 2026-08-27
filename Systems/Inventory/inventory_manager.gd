@@ -6,10 +6,17 @@ var player: Node3D
 var second_last_mouse_pos: Vector2
 var last_mouse_pos: Vector2
 
+@onready var views: HBoxContainer = $Views
+@onready var close_button: Button = $CloseButton
+
+func _ready() -> void:
+	close_button.pressed.connect(close_all)
+
 
 func open(inventory: Inventory) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
+	
+	close_button.show()
 	var view: InventoryView = InventoryView.build(
 		inventory,
 		func(item: InventoryItem) -> void:
@@ -18,27 +25,32 @@ func open(inventory: Inventory) -> void:
 			item.dropped.connect(item_dropped.bind(item))
 	)
 
-	add_child(view)
+	views.add_child(view)
 
 
 func none_shown() -> bool:
-	return get_child_count() == 0
+	return views.get_child_count() == 0
 
 
 func close_all() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	for child: Node in get_children():
-		if child is InventoryView:
-			child.closed.emit()
-		elif child is InventoryItem and child.being_dragged:
-			child.being_dragged = false
-			force_drop_item(last_mouse_pos, child)
-		child.queue_free()
+	for view: InventoryView in views.get_children():
+		view.closed.emit()
+		view.queue_free()
+	
+	for item: Node in get_children():
+		if item is InventoryItem:
+			if item.being_dragged:
+				item.being_dragged = false
+				force_drop_item(last_mouse_pos, item)
+			item.queue_free()
+	
+	close_button.hide()
 
 
 func show_held() -> void:
-	add_child(preload("res://Systems/Inventory/held_item_slot.tscn").instantiate())
+	views.add_child(preload("res://Systems/Inventory/held_item_slot.tscn").instantiate())
 
 
 func show_dropped_items(items: Array[DroppedItem]) -> void:
@@ -96,7 +108,7 @@ func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:
 	item.position = mouse_pos - Vector2(TILE_SIZE, TILE_SIZE) / 2.0
 	second_last_mouse_pos = last_mouse_pos
 	last_mouse_pos = mouse_pos
-	for view: Node in get_children():
+	for view: Node in views.get_children():
 		if view is not InventoryView:
 			continue
 
@@ -104,10 +116,7 @@ func item_moved(mouse_pos: Vector2, item: InventoryItem) -> void:
 
 
 func item_dropped(mouse_pos: Vector2, item: InventoryItem) -> void:
-	for view: Node in get_children():
-		if view is not InventoryView:
-			continue
-
+	for view: Node in views.get_children():
 		if view.attempt_place(item, mouse_pos):
 			return
 

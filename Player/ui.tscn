@@ -224,7 +224,6 @@ offset_right = 253.5
 offset_bottom = 261.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="DeathMessage" unique_id=1046953419]

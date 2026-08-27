@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkn7468jd0dv8"
 path.s3tc="res://.godot/imported/valorant-ascent-map-scheme-3638387481.webp-81260d89e41736d1446c19f369d2b523.s3tc.ctex"
+path.etc2="res://.godot/imported/valorant-ascent-map-scheme-3638387481.webp-81260d89e41736d1446c19f369d2b523.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/valorant-ascent-map-scheme-3638387481.webp"
-dest_files=["res://.godot/imported/valorant-ascent-map-scheme-3638387481.webp-81260d89e41736d1446c19f369d2b523.s3tc.ctex"]
+dest_files=["res://.godot/imported/valorant-ascent-map-scheme-3638387481.webp-81260d89e41736d1446c19f369d2b523.s3tc.ctex", "res://.godot/imported/valorant-ascent-map-scheme-3638387481.webp-81260d89e41736d1446c19f369d2b523.etc2.ctex"]
 
 [params]
 
