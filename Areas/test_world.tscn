@@ -38,16 +38,16 @@ script = ExtResource("8_8uemi")
 size = Vector2i(6, 4)
 metadata/_custom_type_script = "uid://csbaujloxmsje"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wh10h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhw3q"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_wh10h")
 shader_parameter/snow_depth_texture = ExtResource("14_qu3yk")
 shader_parameter/height_offset = -0.3
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_qu3yk"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_wh10h"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_wh10h")
+material = SubResource("ShaderMaterial_bhw3q")
 size = Vector2(32, 32)
 subdivide_width = 64
 subdivide_depth = 64
@@ -88,10 +88,10 @@ transform = Transform3D(-0.9659258, 0, -0.25881913, 0, 1, 0, 0.25881913, 0, -0.9
 inventory = SubResource("Resource_enxnb")
 
 [node name="SnowChunk" parent="." unique_id=19788440 instance=ExtResource("12_g2qqk")]
-mesh = SubResource("PlaneMesh_qu3yk")
+mesh = SubResource("PlaneMesh_wh10h")
 
 [node name="Golem" parent="." unique_id=934301839 instance=ExtResource("17_kh3qk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 7, -69)
 
 [node name="BunkerEntrance" parent="." unique_id=1983225791 instance=ExtResource("17_lvqma")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 2.9891226, -14)
@@ -103,5 +103,17 @@ target_door_id = &"enter_room"
 scene_root = NodePath("../..")
 primary_action = "Enter"
 
+[node name="BunkerEntrance2" parent="." unique_id=718133486 instance=ExtResource("17_lvqma")]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 56, 2.9891226, 120)
+
+[node name="Door" parent="BunkerEntrance2" index="1" unique_id=1968565005 node_paths=PackedStringArray("scene_root")]
+door_id = &"exit_dungeon_1"
+target_scene = "uid://bamyp763nxbj3"
+target_door_id = &"enter_dungeon_1"
+scene_root = NodePath("../..")
+primary_action = "Enter"
+
 [editable path="BunkerEntrance"]
 [editable path="BunkerEntrance/Door"]
+[editable path="BunkerEntrance2"]
+[editable path="BunkerEntrance2/Door"]

@@ -57,7 +57,7 @@ func create_chunk(pos: Vector2i) -> void:
 	new_chunk.position = Vector3(real_pos.x, 0.0, real_pos.y)
 	new_chunk.pos = pos
 
-	WorldData.add_child(new_chunk)
+	WorldData.current_area.add_child(new_chunk)
 
 
 func tick_snow() -> void:
