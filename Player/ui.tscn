@@ -43,6 +43,12 @@ gradient = SubResource("Gradient_d6uvt")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 189
+
+[sub_resource type="LabelSettings" id="LabelSettings_3hae7"]
+font_size = 50
+
 [node name="UI" type="Control" unique_id=1204069218]
 layout_mode = 3
 anchors_preset = 15
@@ -203,3 +209,32 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_bxrt6")
+
+[node name="DeathMessage" type="VBoxContainer" parent="." unique_id=838657243]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.5
+offset_top = -261.0
+offset_right = 253.5
+offset_bottom = 261.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="DeathMessage" unique_id=1046953419]
+layout_mode = 2
+text = "DEAD"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="DeathMessage" unique_id=1863393852]
+layout_mode = 2
+text = "Press space to exit"
+label_settings = SubResource("LabelSettings_3hae7")
+horizontal_alignment = 1

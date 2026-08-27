@@ -763,9 +763,9 @@ size = Vector3(0.5, 4, 3.1468563)
 material = SubResource("StandardMaterial3D_qvisn")
 
 [node name="CSGBox3D103" type="CSGBox3D" parent="Walls" unique_id=549733696]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2226305, 0, 17.645212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2226305, 0, 17.441782)
 use_collision = true
-size = Vector3(0.5, 4, 4.0068593)
+size = Vector3(0.5, 4, 3.6000001)
 material = SubResource("StandardMaterial3D_qvisn")
 
 [node name="CSGBox3D111" type="CSGBox3D" parent="Walls" unique_id=616544240]

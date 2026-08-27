@@ -7,6 +7,7 @@ extends Control
 @onready var equipped_item: TextureRect = %EquippedItem
 @onready var saturation_bar: TextureProgressBar = %SaturationBar
 @onready var health_bar: TextureProgressBar = %HealthBar
+@onready var death_message: VBoxContainer = $DeathMessage
 
 
 func _ready() -> void:
@@ -63,8 +64,11 @@ func set_secondary_action_text(new_text: String) -> void:
 
 
 func blocked_item(item: ItemData) -> void:
-	print(item.display_name)
 	display_name_label.show()
 	display_name_label.text = item.display_name
 	primary_action_label.show()
 	primary_action_label.text = "Can not be used here"
+
+
+func die() -> void:
+	death_message.show()
