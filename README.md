@@ -42,6 +42,11 @@ You play as a lone Drifter who came along on the UES [Redacted], now stranded on
 - Creative building system
 
 # Screenshots
+## Main Menu
+<img width="400" height="267" alt="Main Menu" src="https://github.com/user-attachments/assets/f3438149-44d4-4a76-b8ef-b9539a94e41d" />
+
+<img width="2256" height="1504" alt="image" src="https://github.com/user-attachments/assets/b676cf64-a4c2-48c9-ad6d-fba21838b1f2" />
+
 
 # Controls
 - **Movement**: WASD
