@@ -34,7 +34,8 @@ func _ready() -> void:
 
 
 func _on_saturation_timer_timeout() -> void:
-	saturation -= 1
+	#saturation -= 1
+	pass
 
 
 func create_saturation_timer() -> void:

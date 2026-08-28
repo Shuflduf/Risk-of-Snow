@@ -1,6 +1,5 @@
 extends InventoryView
 
-
 func _ready() -> void:
 	if not PlayerData.equipped_item:
 		return
@@ -10,8 +9,8 @@ func _ready() -> void:
 	item.set_placed()
 	item.position = Vector2.ZERO
 	item.picked_up.connect(item_picked_up.bind(item))
-	item.moved.connect(get_parent().item_moved.bind(item))
-	item.dropped.connect(get_parent().item_dropped.bind(item))
+	item.moved.connect(InventoryManager.item_moved.bind(item))
+	item.dropped.connect(InventoryManager.item_dropped.bind(item))
 
 	add_child(item)
 
@@ -46,12 +45,12 @@ func attempt_place(item: InventoryItem, mouse_pos: Vector2) -> bool:
 func item_picked_up(item: InventoryItem) -> void:
 	PlayerData.equipped_item = null
 	build_background()
-	item.reparent(get_parent())
+	item.reparent(InventoryManager)
 	item.set_not_placed()
 	for conn: Dictionary in item.picked_up.get_connections():
 		item.picked_up.disconnect(conn["callable"])
 
-	item.picked_up.connect(get_parent().item_picked_up.bind(item))
+	item.picked_up.connect(InventoryManager.item_picked_up.bind(item))
 
 
 func build_background(data: ItemData = null) -> void:
