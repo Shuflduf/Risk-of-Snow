@@ -34,19 +34,32 @@ You play as a lone Drifter who came along on the UES [Redacted], now stranded on
     4. Run it: `./RiskOfSnow_Linux.x86_64`
 
 # Features
-- Tetris-inspired inventory system
+- Tetris-inspired inventory system ([See screenshots](#inventory-system))
+  - *Left-most slot is the equipped item slot, it can fit ANY item size*
+  - *Dropped items are physical objects, pick them up by opening your inventory (by pressing E) near them and dragging them into your backpack*
 - Custom animations and models
+  - *Semi-plagiarized* from [Risk of Rain 2](https://store.steampowered.com/app/632360/Risk_of_Rain_2/) (aka peak)
 - Procedural and interactive snow
 - Hand-made dungeons to explore and loot
 - Enemies
 - Creative building system
 
 # Screenshots
+
+<details>
+<summary>Click to view screenshots</summary>
+  
+
 ## Main Menu
-<img width="400" height="267" alt="Main Menu" src="https://github.com/user-attachments/assets/f3438149-44d4-4a76-b8ef-b9539a94e41d" />
+<img height="800" alt="Main Menu" src="https://github.com/user-attachments/assets/f3438149-44d4-4a76-b8ef-b9539a94e41d" />
 
-<img width="2256" height="1504" alt="image" src="https://github.com/user-attachments/assets/b676cf64-a4c2-48c9-ad6d-fba21838b1f2" />
+## Starting Area
+<img height="800" alt="Starting Area" src="https://github.com/user-attachments/assets/b676cf64-a4c2-48c9-ad6d-fba21838b1f2" />
 
+## Inventory System
+<img height="800" alt="Inventory System" src="https://github.com/user-attachments/assets/fe8bf8d5-36ec-4ec2-be18-ec5c53bb2f20" />
+
+</details>
 
 # Controls
 - **Movement**: WASD
@@ -59,5 +72,6 @@ You play as a lone Drifter who came along on the UES [Redacted], now stranded on
 # Stuck?
 - **Look around and explore!** There are various dungeons to explore and loot.
 - **Build your base!** Take desks and chests from the dungeons to decorate and expand your own base. If your starter base isn't big enough, take over another one.
-- **Collect Shiny Rocks!** They're very rare and limited, the end goal of this game (FOR NOW) is finding all of them. 
+- **Collect Shiny Rocks!** They're very rare and limited, the end goal of this game (FOR NOW) is finding all of them.
+- **Bungus!** Bungus.
 
