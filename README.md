@@ -59,6 +59,10 @@ You play as a lone Drifter who came along on the UES [Redacted], now stranded on
 ## Inventory System
 <img height="800" alt="Inventory System" src="https://github.com/user-attachments/assets/fe8bf8d5-36ec-4ec2-be18-ec5c53bb2f20" />
 
+## Outside
+<img height="800" alt="Outside" src="https://github.com/user-attachments/assets/d3d84762-fece-42b5-8d31-6e62cbc76cfc" />
+
+
 </details>
 
 # Controls
